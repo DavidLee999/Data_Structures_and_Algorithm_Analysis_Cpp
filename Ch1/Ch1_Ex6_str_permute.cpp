@@ -18,14 +18,16 @@ void permute (const string str, int low, int high)
 	
 	if (low == high )
 		cout << str << endl;
-	
-	for ( int i = low; i <= high; ++i)
+	else
 	{
-		if(isSwap(strCopy, low, i))
+		for ( int i = low; i <= high; ++i)
 		{
-			swap(strCopy[low], strCopy[i]);
-			permute(strCopy, low + 1, high);
-			swap(strCopy[low], strCopy[i]);
+			if(isSwap(strCopy, low, i))
+			{
+				swap(strCopy[low], strCopy[i]);
+				permute(strCopy, low + 1, high);
+				swap(strCopy[low], strCopy[i]);
+			}
 		}
 	}
 }
