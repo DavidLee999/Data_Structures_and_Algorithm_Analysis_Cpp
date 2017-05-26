@@ -57,9 +57,9 @@ int main()
 	const int COL = 4;
 	
 	char puzzle[ROW][COL] {{'t', 'h', 'i', 's'},
-                             {'w', 'a', 't', 's'}, 
-							 {'o', 'a', 'h', 'g'}, 
-							 {'f', 'g', 'd', 't'}};
+                               {'w', 'a', 't', 's'}, 
+			       {'o', 'a', 'h', 'g'}, 
+			       {'f', 'g', 'd', 't'}};
 							 
 							 
 	char words[ROW][COL+1] {"this", "two", "fat", "that"};
