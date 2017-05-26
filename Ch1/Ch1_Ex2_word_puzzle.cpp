@@ -8,7 +8,7 @@ inline bool validate (int pos, int direction, int length)
 	return ((pos + 1) + direction*length >= 0 && pos + direction*length <= 4);
 }
 
-void findWords(const char puzzle[4][4], const char* word)
+void findWords(const char (*puzzle)[4], const char* word)
 {
 	const int length = strlen(word);
 	
