@@ -61,8 +61,9 @@ public:
 			array[counter++] = i;
 	}
 	
-	Collection ( const Collection &rhs ): length{ rhs.size() }, capacity { 2*length + 1 }
+	Collection ( Collection &rhs ):length{ rhs.size() }
 	{
+		capacity = 2*length+1;
 		array = new Type[capacity] {};
 		
 		for ( int i = 0; i < length; ++i)
@@ -168,7 +169,7 @@ public:
 			array[i] = array[i + 1];
 		}
 		
-		array[--length] = Type{};
+		--length;
 		
 		return true;
 		
@@ -188,13 +189,11 @@ int main()
 {
 	Collection<int> c {1,2,3};
 	
+	Collection<int> a = c;
+	
 	c.insert(1,0);
 	
-	cout<<c.size()<<endl;
-	
 	c.insert(c.size(),4);
-	
-	cout<<c.size()<<endl;
 	
 	c.insert(c.size(),5);
 	
@@ -208,6 +207,20 @@ int main()
 	
 	c.remove(3);
 	
+	cout<<c.size()<<endl;;
+	
 	c.print();
+	
+	a.print();
+	
+	a.remove(0);
+	
+	a.remove(0);
+	
+	a.remove(0);
+	
+	cout<<a.size()<<endl;
+	
+	
 	return 0;
 }
