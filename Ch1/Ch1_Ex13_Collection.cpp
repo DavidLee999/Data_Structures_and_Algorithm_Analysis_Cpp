@@ -7,9 +7,10 @@ class Collection{
 private:
 	size_t length;
 	Type* array;
+	size_t capacity;
 	
 public:
-	Collection() : length { 0 }, array { nullptr } {};
+	Collection() : length { 0 }, array { nullptr } {}, capacity { 10 };
 	
 	Collection( int len )
 	{
@@ -23,11 +24,14 @@ public:
 		
 		length = len;
 		array = new Type[len]{};
+		capacity = 2*length + 1;
 	}
 	
 	Collection(initializer_list<Type> ini_list)
 	{
 		length = ini_list.size();
+		
+		capacity = 2*length + 1;
 		
 		array = new Type[length] {};
 		
@@ -36,7 +40,7 @@ public:
 			array[counter++] = i;
 	}
 	
-	Collection ( const Collection &rhs ): length{ rhs.size() }
+	Collection ( const Collection &rhs ): length{ rhs.size() }. capacity { 2*length + 1; }
 	{
 		array = new Type[length] {};
 		
@@ -64,6 +68,8 @@ public:
 		if ( this !=  &rhs )
 		{
 			length = rhs.size();
+			
+			capacity = 2*length + 1;
 			
 			array = new Type[length] {};
 			
