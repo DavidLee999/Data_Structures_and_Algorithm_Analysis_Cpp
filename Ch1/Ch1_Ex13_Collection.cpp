@@ -44,6 +44,8 @@ public:
 			array[i] = rhs[i];
 	}
 	
+	~Collection() { delete[] array; }
+	
 	Type & at( int i )
 	{
 		if ( i < 0 || i >= length )
@@ -56,14 +58,37 @@ public:
 	}
 	
 	Type & operator[] ( int i ) { return at(i); }	
+	
+	Collection & operator= (const Collection &rhs)
+	{
+		if ( this !=  &rhs )
+		{
+			length = rhs.size();
+			
+			array = new Type[length] {};
+			
+			for (int i = 0; i < length; ++i)
+				array[i] = rhs[i];
+		}
+	}
+	
 	size_t size() { return length; }
 	
 	bool isEmpty() { return (length == 0); }
+	
+	void makeEmpty()
+	{
+		length = 0;
+		delete[] array;
+		array = nullptr;
+	}
 };
 int main()
 {
 	Collection<int> c {1,2,3};
 	
-	cout<<c[0]<<endl<<c.at(0);
+	c.makeEmpty();
+	
+	cout<<c.size();
 	return 0;
 }
