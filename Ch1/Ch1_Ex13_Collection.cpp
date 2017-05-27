@@ -40,11 +40,13 @@ public:
 	{
 		array = new Type[length] {};
 		
+		for ( int i = 0; i < length; ++i)
+			array[i] = rhs[i];
 	}
 	
-	Type & operator[] ( int i )
+	Type & at( int i )
 	{
-		if ( i < 0 || i > length )
+		if ( i < 0 || i >= length )
 		{
 			cout << "wrong index." << endl;
 			exit(0);
@@ -53,6 +55,7 @@ public:
 		return array[i];
 	}
 	
+	Type & operator[] ( int i ) { return at(i); }	
 	size_t size() { return length; }
 	
 	bool isEmpty() { return (length == 0); }
@@ -60,7 +63,7 @@ public:
 int main()
 {
 	Collection<int> c {1,2,3};
-	c[0] = c[1];
-	cout<<c[0];
+	
+	cout<<c[0]<<endl<<c.at(0);
 	return 0;
 }
