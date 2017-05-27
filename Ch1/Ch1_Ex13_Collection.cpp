@@ -184,6 +184,17 @@ public:
 	}
 	
 	size_t getCapacity() { return capacity; }
+	
+	bool contain(const Type &t) const
+	{
+		for ( size_t i = 0; i < length; ++i)
+		{
+			if (array[i] == t)
+				return true;
+		}
+		
+		return false;
+	}
 };
 int main()
 {
@@ -220,6 +231,8 @@ int main()
 	a.remove(0);
 	
 	cout<<a.size()<<endl;
+	
+	cout<<c.contain(4)<<" "<<c.contain(100)<<endl;;
 	
 	
 	return 0;
