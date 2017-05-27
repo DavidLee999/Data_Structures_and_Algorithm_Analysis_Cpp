@@ -20,10 +20,10 @@ private:
 		
 		for( size_t i = 0; i < length; ++i)
 		{
-			new_arr[i] == array[i];
+			new_arr[i] = array[i];
 		}
 		
-		swap(array, new_arr);
+		swap(array, new_arr);		
 		
 		delete[] new_arr;
 		
@@ -163,9 +163,9 @@ public:
 			return true;
 		}
 		
-		for ( size_t i = length - 1; i > index; --i)
+		for ( size_t i = index; i < length - 1; ++i)
 		{
-			array[i-1] = array[i];
+			array[i] = array[i + 1];
 		}
 		
 		array[--length] = Type{};
@@ -200,11 +200,13 @@ int main()
 	
 	c.insert(c.size(),6);
 	
-	//c.insert(c.size(),7);
+	c.insert(c.size(),7);
+	
+	c.print();
+	
+	cout<<c.size()<<endl<<c.getCapacity()<<endl;
 	
 	c.remove(3);
-	
-	cout<<c.size()<<endl<<c.getCapacity()<<endl;;
 	
 	c.print();
 	return 0;
