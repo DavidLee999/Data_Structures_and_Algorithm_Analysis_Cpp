@@ -147,6 +147,26 @@ public:
 		
 	}
 	
+	bool remove(int index)
+	{
+		if ( index < 0 || index >= length )
+		{
+			cout << "wrong index." <<endl;
+			return false;
+		}
+		
+		if( index == 0 && length == 1)
+			return makeEmpty();
+		
+		for ( size_t i = length - 1; i > index; --i)
+		{
+			array[i-1] = array[i];
+		}
+		
+		array[--length] = Type{};
+		
+	}
+	
 	void print()
 	{
 		for ( size_t i = 0; i < length; ++i)
@@ -155,7 +175,7 @@ public:
 		cout<<endl;
 	}
 	
-	
+	size_t getCapacity() { return capacity; }
 };
 int main()
 {
@@ -163,7 +183,11 @@ int main()
 	
 	c.insert(1,0);
 	
-	c.print();
+	c.insert(c.size(),4);
 	
+	
+	cout<<c.getCapacity();
+	
+	c.print();
 	return 0;
 }
