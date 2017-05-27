@@ -11,11 +11,25 @@ private:
 public:
 	Collection() : length { 0 }, array { nullptr } {};
 	
+	Collection( int len )
+	{
+		if (len <= 0)
+		{
+			length = 0;
+			array = nullptr;
+			cout<<"wrong input."<<endl;
+			return;
+		}
+		
+		length = len;
+		array = new Type[len]{};
+	}
+	
 	size_t size() { return length; }
 };
 int main()
 {
-	Collection<int> c {};
+	Collection<int> c {-1};
 	cout << c.size();
 	return 0;
 }
