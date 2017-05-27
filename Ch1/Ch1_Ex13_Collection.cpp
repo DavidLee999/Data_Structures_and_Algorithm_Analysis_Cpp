@@ -9,6 +9,25 @@ private:
 	Type* array;
 	size_t capacity;
 	
+	bool enlarge(size_t new_capac)
+	{
+		if (new_capac <= length || new_capac <= capacity)
+			return false;
+		
+		Type* new_arr = new Type[capacity];
+		
+		for( size_t i = 0; i < length; ++i)
+		{
+			new_arr[i] == array[i];
+		}
+		
+		swap(array, new_arr);
+		
+		delete[] new_arr;
+		
+		return true;
+	}
+	
 public:
 	Collection() : length { 0 }, array { nullptr } , capacity { 10 } {}
 	
@@ -23,8 +42,8 @@ public:
 		}
 		
 		length = len;
-		array = new Type[len]{};
 		capacity = 2*length + 1;
+		array = new Type[capacity]{};
 	}
 	
 	Collection(initializer_list<Type> ini_list)
@@ -33,7 +52,7 @@ public:
 		
 		capacity = 2*length + 1;
 		
-		array = new Type[length] {};
+		array = new Type[capacity] {};
 		
 		int counter { 0 };
 		for ( auto i:ini_list) //(initializer_list<Type>::interator ini_iter = ini_list.begin(); ini_iter != ini_list.end; ++ini_iter)
@@ -42,7 +61,7 @@ public:
 	
 	Collection ( const Collection &rhs ): length{ rhs.size() }, capacity { 2*length + 1 }
 	{
-		array = new Type[length] {};
+		array = new Type[capacity] {};
 		
 		for ( int i = 0; i < length; ++i)
 			array[i] = rhs[i];
@@ -71,7 +90,7 @@ public:
 			
 			capacity = 2*length + 1;
 			
-			array = new Type[length] {};
+			array = new Type[capacity] {};
 			
 			for (int i = 0; i < length; ++i)
 				array[i] = rhs[i];
@@ -87,16 +106,64 @@ public:
 	void makeEmpty()
 	{
 		length = 0;
-		delete[] array;
+		//delete[] array;
 		array = nullptr;
 	}
+	
+	bool insert( int index, const Type &t)
+	{
+		if ( index < 0 || index > length )
+		{
+			cout << "wrong index." <<endl;
+			return false;
+		}
+		
+		if ( index == 0 && length == 0)
+		{
+			++length;
+			capacity = 2*length + 1;
+			array = new Type[capacity] {};
+			
+			array[index] = t;
+		}
+		
+		if ( length == capacity )
+		{
+			bool su = enlarge(2*capacity);
+			
+			if (!su) return false;
+		}
+		
+		for ( size_t i = length-1; i >= index; --i )
+		{
+			array[i+1] = array[i];
+		}
+		
+		array[index] = t;
+		
+		length++;
+		
+		return true;
+		
+	}
+	
+	void print()
+	{
+		for ( size_t i = 0; i < length; ++i)
+			cout << array[i] << " ";
+		
+		cout<<endl;
+	}
+	
+	
 };
 int main()
 {
 	Collection<int> c {1,2,3};
 	
-	c.makeEmpty();
+	c.insert(1,0);
 	
-	cout<<c.size();
+	c.print();
+	
 	return 0;
 }
