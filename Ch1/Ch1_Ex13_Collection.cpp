@@ -158,7 +158,10 @@ public:
 		}
 		
 		if( index == 0 && length == 1)
-			return makeEmpty();
+		{
+			makeEmpty();
+			return true;
+		}
 		
 		for ( size_t i = length - 1; i > index; --i)
 		{
@@ -166,6 +169,8 @@ public:
 		}
 		
 		array[--length] = Type{};
+		
+		return true;
 		
 	}
 	
@@ -195,7 +200,9 @@ int main()
 	
 	c.insert(c.size(),6);
 	
-	c.insert(c.size(),7);
+	//c.insert(c.size(),7);
+	
+	c.remove(3);
 	
 	cout<<c.size()<<endl<<c.getCapacity()<<endl;;
 	
