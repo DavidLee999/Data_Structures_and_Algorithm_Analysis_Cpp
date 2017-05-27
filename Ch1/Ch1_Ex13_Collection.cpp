@@ -36,11 +36,31 @@ public:
 			array[counter++] = i;
 	}
 	
+	Collection ( const Collection &rhs ): length{ rhs.size() }
+	{
+		array = new Type[length] {};
+		
+	}
+	
+	Type & operator[] ( int i )
+	{
+		if ( i < 0 || i > length )
+		{
+			cout << "wrong index." << endl;
+			exit(0);
+		}
+		
+		return array[i];
+	}
+	
 	size_t size() { return length; }
+	
+	bool isEmpty() { return (length == 0); }
 };
 int main()
 {
 	Collection<int> c {1,2,3};
-	cout << c.size();
+	c[0] = c[1];
+	cout<<c[0];
 	return 0;
 }
