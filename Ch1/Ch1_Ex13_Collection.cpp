@@ -10,7 +10,7 @@ private:
 	size_t capacity;
 	
 public:
-	Collection() : length { 0 }, array { nullptr } {}, capacity { 10 };
+	Collection() : length { 0 }, array { nullptr } , capacity { 10 } {}
 	
 	Collection( int len )
 	{
@@ -40,7 +40,7 @@ public:
 			array[counter++] = i;
 	}
 	
-	Collection ( const Collection &rhs ): length{ rhs.size() }. capacity { 2*length + 1; }
+	Collection ( const Collection &rhs ): length{ rhs.size() }, capacity { 2*length + 1 }
 	{
 		array = new Type[length] {};
 		
@@ -76,6 +76,8 @@ public:
 			for (int i = 0; i < length; ++i)
 				array[i] = rhs[i];
 		}
+		
+		return *this;
 	}
 	
 	size_t size() { return length; }
