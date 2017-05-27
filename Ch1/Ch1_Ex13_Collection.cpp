@@ -71,9 +71,11 @@ public:
 			array[i] = rhs[i];
 	}
 	
-	Collection (Type* ini_arr)
+	Collection (Type* ini_arr, Type* end_arr)
 	{
-		length = sizeof(ini_arr) / sizeof(Type);
+		length = end_arr - ini_arr;
+		
+		//length = sizeof(ini_arr) / sizeof(Type);
 		
 		capacity = 2*length + 1;
 		
@@ -253,10 +255,10 @@ int main()
 	
 	int d[4] {4,3,2,1};
 	
-	Collection<int> e {d};
+	Collection<int> e{&d[0], &d[4]}; //one beyond the array's length is required
 	
 	e.print();
 
-	
+	cout<<e.size()<<endl<<e.getCapacity()<<endl;
 	return 0;
 }
