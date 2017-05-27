@@ -14,7 +14,9 @@ private:
 		if (new_capac <= length || new_capac <= capacity)
 			return false;
 		
-		Type* new_arr = new Type[capacity];
+		Type* new_arr = new Type[new_capac];
+		
+		capacity = new_capac;
 		
 		for( size_t i = 0; i < length; ++i)
 		{
@@ -183,10 +185,19 @@ int main()
 	
 	c.insert(1,0);
 	
+	cout<<c.size()<<endl;
+	
 	c.insert(c.size(),4);
 	
+	cout<<c.size()<<endl;
 	
-	cout<<c.getCapacity();
+	c.insert(c.size(),5);
+	
+	c.insert(c.size(),6);
+	
+	c.insert(c.size(),7);
+	
+	cout<<c.size()<<endl<<c.getCapacity()<<endl;;
 	
 	c.print();
 	return 0;
