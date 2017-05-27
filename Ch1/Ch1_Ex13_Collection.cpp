@@ -63,11 +63,24 @@ public:
 	
 	Collection ( Collection &rhs ):length{ rhs.size() }
 	{
-		capacity = 2*length+1;
+		capacity = 2*length + 1;
+		
 		array = new Type[capacity] {};
 		
 		for ( int i = 0; i < length; ++i)
 			array[i] = rhs[i];
+	}
+	
+	Collection (Type* ini_arr)
+	{
+		length = sizeof(ini_arr) / sizeof(Type);
+		
+		capacity = 2*length + 1;
+		
+		array = new Type[capacity]{};
+		
+		for ( size_t i = 0; i < length; ++i)
+			array[i] = ini_arr[i];
 	}
 	
 	~Collection() { delete[] array; }
@@ -200,7 +213,7 @@ int main()
 {
 	Collection<int> c {1,2,3};
 	
-	Collection<int> a = c;
+	Collection<int> a {c};
 	
 	c.insert(1,0);
 	
@@ -232,8 +245,18 @@ int main()
 	
 	cout<<a.size()<<endl;
 	
-	cout<<c.contain(4)<<" "<<c.contain(100)<<endl;;
+	cout<<c.contain(4)<<" "<<c.contain(100)<<endl;
 	
+	Collection<int> b = c;
+	
+	b.print();
+	
+	int d[4] {4,3,2,1};
+	
+	Collection<int> e {d};
+	
+	e.print();
+
 	
 	return 0;
 }
