@@ -148,7 +148,7 @@ public:
 	{
 		length = 0;
 		//delete[] array;
-		array = nullptr;
+		//array = nullptr;
 	}
 	
 	bool insert( int index, const Type &t)
@@ -213,13 +213,13 @@ public:
 		
 	}
 	
-	void print()
+	/* void print()
 	{
 		for ( size_t i = 0; i < length; ++i)
 			cout << array[i] << " ";
 		
 		cout<<endl;
-	}
+	} */
 	
 	size_t getCapacity() { return capacity; }
 	
