@@ -1,6 +1,10 @@
 #include <iostream>
+#include <ostream>
 #include <initializer_list>
 using namespace std;
+
+//template <typename Tpye>
+//ostream& operator<< (ostream &out, const Collection<Tpye> &obj);
 
 template <typename Type>
 class Collection{
@@ -136,9 +140,9 @@ public:
 		return *this;
 	}
 	
-	size_t size() { return length; }
+	size_t size() const { return length; }
 	
-	bool isEmpty() { return (length == 0); }
+	bool isEmpty() const { return (length == 0); }
 	
 	void makeEmpty()
 	{
@@ -229,6 +233,16 @@ public:
 		
 		return false;
 	}
+	
+	friend ostream& operator<<(ostream &out, Collection<Type> &obj)
+	{
+		for ( size_t i = 0; i < obj.size(); ++i )
+			out << obj[i] <<" ";
+	
+		out<<endl;
+	
+		return out;
+	}
 };
 
 
@@ -249,17 +263,19 @@ int main()
 	
 	c.insert(c.size(),7);
 	
-	c.print();
+	//c.print();
+	
+	cout << c;
 	
 	cout<<c.size()<<endl<<c.getCapacity()<<endl;
 	
 	c.remove(3);
 	
-	cout<<c.size()<<endl;;
+	cout<<c.size()<<endl;
 	
-	c.print();
+	cout << c;
 	
-	a.print();
+	cout << c;
 	
 	a.remove(0);
 	
@@ -279,7 +295,7 @@ int main()
 	
 	Collection<int> e{&d[0], &d[4]}; //one beyond the array's length is required
 	
-	e.print();
+	cout << e;
 
 	cout<<e.size()<<endl<<e.getCapacity()<<endl;
 	return 0;
