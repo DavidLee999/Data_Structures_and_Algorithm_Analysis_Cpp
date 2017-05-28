@@ -71,6 +71,17 @@ public:
 			array[i] = rhs[i];
 	}
 	
+	Collection ( Collection &&rhs ) // move constructor
+	{
+		swap( length, rhs.size() );
+		
+		capacity = 2*length + 1;
+		
+		array = new Type[capacity] {};		
+		
+		swap(array, rhs.array);
+	}
+	
 	Collection (Type* ini_arr, Type* end_arr) //array constructor
 	{
 		length = end_arr - ini_arr;
@@ -84,6 +95,7 @@ public:
 		for ( size_t i = 0; i < length; ++i)
 			array[i] = ini_arr[i];
 	}
+	
 	
 	~Collection() { delete[] array; }
 	
@@ -113,6 +125,13 @@ public:
 			for (int i = 0; i < length; ++i)
 				array[i] = rhs[i];
 		}
+		
+		return *this;
+	}
+	
+	Collection & operator= ( Collection &&rhs ) //move assignment
+	{
+		swap(*this, rhs);
 		
 		return *this;
 	}
