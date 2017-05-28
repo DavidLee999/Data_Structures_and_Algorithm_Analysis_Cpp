@@ -9,7 +9,7 @@ private:
 	Type* array;
 	size_t capacity;
 	
-	bool enlarge(size_t new_capac)
+	bool enlarge(size_t new_capac)  //increasing capacity
 	{
 		if (new_capac <= length || new_capac <= capacity)
 			return false;
@@ -31,9 +31,9 @@ private:
 	}
 	
 public:
-	Collection() : length { 0 }, array { nullptr } , capacity { 10 } {}
+	Collection() : length { 0 }, array { nullptr } , capacity { 10 } {} //default constructor
 	
-	Collection( int len )
+	Collection( int len ) // constructor
 	{
 		if (len <= 0)
 		{
@@ -48,7 +48,7 @@ public:
 		array = new Type[capacity]{};
 	}
 	
-	Collection(initializer_list<Type> ini_list)
+	Collection(initializer_list<Type> ini_list) // constructor
 	{
 		length = ini_list.size();
 		
@@ -61,7 +61,7 @@ public:
 			array[counter++] = i;
 	}
 	
-	Collection ( Collection &rhs ):length{ rhs.size() }
+	Collection ( Collection &rhs ):length{ rhs.size() } //copy constructor
 	{
 		capacity = 2*length + 1;
 		
@@ -71,7 +71,7 @@ public:
 			array[i] = rhs[i];
 	}
 	
-	Collection (Type* ini_arr, Type* end_arr)
+	Collection (Type* ini_arr, Type* end_arr) //array constructor
 	{
 		length = end_arr - ini_arr;
 		
@@ -87,7 +87,7 @@ public:
 	
 	~Collection() { delete[] array; }
 	
-	Type & at( int i )
+	Type & at( int i ) //element accessor
 	{
 		if ( i < 0 || i >= length )
 		{
@@ -100,7 +100,7 @@ public:
 	
 	Type & operator[] ( int i ) { return at(i); }	
 	
-	Collection & operator= (const Collection &rhs)
+	Collection & operator= (const Collection &rhs) //copy assignment
 	{
 		if ( this !=  &rhs )
 		{
@@ -211,6 +211,9 @@ public:
 		return false;
 	}
 };
+
+
+
 int main()
 {
 	Collection<int> c {1,2,3};
