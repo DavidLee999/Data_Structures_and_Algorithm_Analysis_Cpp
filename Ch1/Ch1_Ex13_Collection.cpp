@@ -289,7 +289,7 @@ int main()
 	
 	Collection<int> b = c;
 	
-	b.print();
+	cout << b;
 	
 	int d[4] {4,3,2,1};
 	
