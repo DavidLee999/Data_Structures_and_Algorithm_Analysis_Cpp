@@ -32,5 +32,22 @@ public:
 	
 	int numcols () const
 	{ return numrows() ? array[0].size() : 0; }
+	
+	bool resize ( int newRows, int newCols )
+	{
+		if (new Rows <= 0 || newCols <= 0)
+			return false;
+		
+		if ( newRows * newCols != numrows() * numCols() )
+			return false;
+		
+		// to be added
+		array.resize(newRows);
+		
+		for ( auto &thisRow : array )
+			thisRow.resize(newCols);
+		
+		return true;
+	}
 };
 #endif
