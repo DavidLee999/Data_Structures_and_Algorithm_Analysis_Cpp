@@ -3,7 +3,6 @@
 #include <initializer_list>
 using namespace std;
 
-namespace Contain{
 //template <typename Type> class Collection;
 
 //template <typename Tpye> ostream & operator << (ostream &, const Collection<Tpye> &);
@@ -252,7 +251,7 @@ ostream & operator << (ostream &out, const Collection<Type> &obj)
 }
 
 
-}
+
 
 
 int main()
