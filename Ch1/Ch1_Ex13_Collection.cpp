@@ -4,9 +4,9 @@
 using namespace std;
 
 
-template <typename Type> class Collection;
+//template <typename Type> class Collection;
 
-template <typename Tpye> ostream & operator << (ostream &, const Collection<Tpye> &);
+//template <typename Tpye> ostream & operator << (ostream &, const Collection<Tpye> &);
 
 template <typename Type>
 class Collection{
@@ -223,7 +223,7 @@ public:
 		cout<<endl;
 	} */
 	
-	size_t getCapacity() { return capacity; }
+	size_t getCapacity() const { return capacity; }
 	
 	bool contain(const Type &t) const
 	{
@@ -235,8 +235,8 @@ public:
 		
 		return false;
 	}
-	template <typename Tpye> 
-	friend ostream & operator << (ostream &, const Collection<Type> & );
+	//template <typename Tpye> 
+	//friend ostream & operator << (ostream &, const Collection<Type> & );
 	
 };
 
