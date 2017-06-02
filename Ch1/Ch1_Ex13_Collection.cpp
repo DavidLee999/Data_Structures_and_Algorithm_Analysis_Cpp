@@ -3,8 +3,10 @@
 #include <initializer_list>
 using namespace std;
 
-//template <typename Tpye>
-//ostream& operator<< (ostream &out, const Collection<Tpye> &obj);
+
+template <typename Type> class Collection;
+
+template <typename Tpye> ostream & operator << (ostream &, const Collection<Tpye> &);
 
 template <typename Type>
 class Collection{
@@ -103,7 +105,7 @@ public:
 	
 	~Collection() { delete[] array; }
 	
-	Type & at( int i ) //element accessor
+	Type & at( int i ) const //element accessor
 	{
 		if ( i < 0 || i >= length )
 		{
@@ -114,7 +116,7 @@ public:
 		return array[i];
 	}
 	
-	Type & operator[] ( int i ) { return at(i); }	
+	Type & operator[] ( int i ) const { return at(i); }	
 	
 	Collection & operator= (const Collection &rhs) //copy assignment
 	{
@@ -233,19 +235,21 @@ public:
 		
 		return false;
 	}
+	template <typename Tpye> 
+	friend ostream & operator << (ostream &, const Collection<Type> & );
 	
-	friend ostream& operator<<(ostream &out, Collection<Type> &obj)
-	{
-		for ( size_t i = 0; i < obj.size(); ++i )
-			out << obj[i] <<" ";
-	
-		out<<endl;
-	
-		return out;
-	}
 };
 
-
+template <typename Type>
+ostream & operator << (ostream &out, const Collection<Type> &obj)
+{
+	for ( size_t i = 0; i < obj.size(); ++i )
+		out << obj[i] <<" ";
+	
+	out<<endl;
+	
+	return out;
+}
 
 int main()
 {
