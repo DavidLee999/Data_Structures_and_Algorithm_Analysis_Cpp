@@ -12,8 +12,9 @@ template <typename Type>
 class Collection{
 private:
 	size_t length;
-	Type* array;
 	size_t capacity;
+	Type* array;
+	
 	
 	bool enlarge(size_t new_capac)  //increasing capacity
 	{
