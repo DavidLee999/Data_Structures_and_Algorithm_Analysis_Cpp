@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ostream>
 #include <initializer_list>
+#include <memory>
 using namespace std;
 
 //template <typename Type> class Collection;
@@ -53,17 +54,19 @@ public:
 		array = new Type[capacity]{};
 	}
 	
-	Collection(initializer_list<Type> ini_list) // constructor
+	Collection(initializer_list<Type> ini_list) : length { ini_list.size() }// constructor
 	{
-		length = ini_list.size();
+		//length = ini_list.size();
 		
 		capacity = 2*length + 1;
 		
 		array = new Type[capacity] {};
 		
-		int counter { 0 };
+		/* int counter { 0 };
 		for ( auto i:ini_list) //(initializer_list<Type>::interator ini_iter = ini_list.begin(); ini_iter != ini_list.end; ++ini_iter)
-			array[counter++] = i;
+			array[counter++] = i; */
+		
+		uninitialized_copy( ini_list.begin(), ini_list.end(), array );
 	}
 	
 	Collection ( Collection &rhs ):length{ rhs.size() } //copy constructor
