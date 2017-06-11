@@ -256,7 +256,11 @@ ostream & operator << (ostream &out, const Collection<Type> &obj)
 
 int main()
 {
-	Collection<int> c {1,2,3};
+	Collection<int> dd (10);
+	
+	cout<<dd.size()<<" "<< dd.getCapacity()<<endl;
+	
+	Collection<int> c {1, 2, 3};
 	
 	Collection<int> a {c};
 	
