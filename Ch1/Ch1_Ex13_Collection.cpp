@@ -134,8 +134,7 @@ public:
 			array = new Type[capacity] {};
 			
 			for (int i = 0; i < length; ++i)
-				array[i] = rhs[i];
-			
+				array[i] = rhs[i]; 
 			
 		}
 		
