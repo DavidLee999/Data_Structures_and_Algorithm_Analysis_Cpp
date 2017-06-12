@@ -70,7 +70,7 @@ public:
 		uninitialized_copy( ini_list.begin(), ini_list.end(), array );
 	}
 	
-	Collection ( Collection &rhs ):length{ rhs.size() } //copy constructor
+	Collection ( const Collection &rhs ):length{ rhs.size() } //copy constructor
 	{
 		capacity = 2*length + 1;
 		
