@@ -76,17 +76,19 @@ public:
 		
 		array = new Type[capacity] {};
 		
-		for ( int i = 0; i < length; ++i)
-			array[i] = rhs[i];
+		/* for ( int i = 0; i < length; ++i)
+			array[i] = rhs[i]; */
+		uninitialized_copy( &rhs[0], &rhs[0] + rhs.size(), array );
 	}
 	
 	Collection ( Collection &&rhs ) // move constructor
 	{
-		swap( length, rhs.size() );
+		
+		length =  rhs.size();
 		
 		capacity = 2*length + 1;
 		
-		array = new Type[capacity] {};		
+		//array = new Type[capacity] {};		
 		
 		swap(array, rhs.array);
 	}
@@ -121,7 +123,7 @@ public:
 	
 	Type & operator[] ( int i ) const { return at(i); }	
 	
-	Collection & operator= (const Collection &rhs) //copy assignment
+	Collection & operator = (const Collection &rhs) //copy assignment
 	{
 		if ( this !=  &rhs )
 		{
@@ -133,6 +135,8 @@ public:
 			
 			for (int i = 0; i < length; ++i)
 				array[i] = rhs[i];
+			
+			
 		}
 		
 		return *this;
@@ -140,7 +144,12 @@ public:
 	
 	Collection & operator= ( Collection &&rhs ) //move assignment
 	{
-		swap(*this, rhs);
+		cout<<"hrere"<<endl;
+		length = rhs.size();
+		
+		capacity = rhs.getCapacity();
+		
+		swap( array, rhs.array );
 		
 		return *this;
 	}
@@ -260,9 +269,11 @@ ostream & operator << (ostream &out, const Collection<Type> &obj)
 
 int main()
 {
-	Collection<int> dd (10);
+	Collection<int> dd {};
 	
-	cout<<dd.size()<<" "<< dd.getCapacity()<<endl;
+	dd = Collection<int> {1,2,3};
+	
+	cout<<"dd: " << dd;
 	
 	Collection<int> c {1, 2, 3};
 	
@@ -302,9 +313,10 @@ int main()
 	
 	cout<<c.contain(4)<<" "<<c.contain(100)<<endl;
 	
-	Collection<int> b = c;
+	Collection<int> b {};
+    b = c;
 	
-	cout << b;
+	cout << "b" << b;
 	
 	int d[4] {4,3,2,1};
 	
@@ -313,5 +325,6 @@ int main()
 	cout << e;
 
 	cout<<e.size()<<endl<<e.getCapacity()<<endl;
+	
 	return 0;
 }
