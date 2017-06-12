@@ -158,7 +158,10 @@ public:
 	
 	void makeEmpty()
 	{
-		length = 0;
+		for(size_t i = 0; i < length; ++i)
+			array[i] = 0;
+		
+ 		length = 0;
 		//delete[] array;
 		//array = nullptr;
 	}
@@ -322,6 +325,10 @@ int main()
 
 	cout<<e.size()<<endl<<e.getCapacity()<<endl;
 	
+	e.makeEmpty();
+	
+	cout << "e: " << e;
+	cout<<e.size()<<endl<<e.getCapacity()<<endl;
 	cout <<"c: " << c;
 	Collection<int>aa = move(c);
 	cout << "aa: " << aa;
