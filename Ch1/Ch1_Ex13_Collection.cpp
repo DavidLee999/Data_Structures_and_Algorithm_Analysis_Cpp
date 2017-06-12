@@ -81,16 +81,16 @@ public:
 		uninitialized_copy( &rhs[0], &rhs[0] + rhs.size(), array );
 	}
 	
-	Collection ( Collection &&rhs ) // move constructor
+	Collection ( Collection &&rhs ) : length { rhs.size() }, capacity { rhs.getCapacity() }, array { rhs.array }// move constructor
 	{
+		//length =  rhs.size();
 		
-		length =  rhs.size();
-		
-		capacity = 2*length + 1;
+		//capacity = 2*length + 1;
 		
 		//array = new Type[capacity] {};		
-		
-		swap(array, rhs.array);
+		rhs.length = 0;
+		rhs.array = nullptr;
+		//swap(array, rhs.array);
 	}
 	
 	Collection (Type* ini_arr, Type* end_arr) //array constructor
@@ -142,9 +142,8 @@ public:
 		return *this;
 	}
 	
-	Collection & operator= ( Collection &&rhs ) //move assignment
+	Collection & operator = ( Collection &&rhs ) //move assignment
 	{
-		cout<<"hrere"<<endl;
 		length = rhs.size();
 		
 		capacity = rhs.getCapacity();
@@ -301,15 +300,13 @@ int main()
 	
 	cout << c;
 	
-	cout << c;
-	
 	a.remove(0);
 	
 	a.remove(0);
 	
 	a.remove(0);
 	
-	cout<<a.size()<<endl;
+	cout<< a.size()<<endl;
 	
 	cout<<c.contain(4)<<" "<<c.contain(100)<<endl;
 	
@@ -326,5 +323,9 @@ int main()
 
 	cout<<e.size()<<endl<<e.getCapacity()<<endl;
 	
+	cout <<"c: " << c;
+	Collection<int>aa = move(c);
+	cout << "aa: " << aa;
+	cout << "c: " << c;
 	return 0;
 }
