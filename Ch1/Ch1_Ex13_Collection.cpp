@@ -55,7 +55,7 @@ public:
 		array = new Type[capacity]{};
 	}
 	
-	Collection(initializer_list<Type> ini_list) : length { ini_list.size() }// constructor
+	Collection(const initializer_list<Type> & ini_list) : length { ini_list.size() }// constructor
 	{
 		//length = ini_list.size();
 		
@@ -70,10 +70,8 @@ public:
 		uninitialized_copy( ini_list.begin(), ini_list.end(), array );
 	}
 	
-	Collection ( const Collection &rhs ):length{ rhs.size() } //copy constructor
-	{
-		capacity = 2*length + 1;
-		
+	Collection ( const Collection &rhs ):length{ rhs.size() }, capacity { rhs.getCapacity() } //copy constructor
+	{	
 		array = new Type[capacity] {};
 		
 		/* for ( int i = 0; i < length; ++i)
@@ -156,7 +154,7 @@ public:
 	
 	bool isEmpty() const { return (length == 0); }
 	
-	void makeEmpty()
+	void makeEmpty()// to be done
 	{
 		for(size_t i = 0; i < length; ++i)
 			array[i] = 0;
