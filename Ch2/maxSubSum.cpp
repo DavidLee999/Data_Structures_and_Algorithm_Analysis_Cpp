@@ -80,6 +80,23 @@ int maxSubSum3( const vector<int> & a )
 	return maxSumRec( a, 0, a.size() - 1 );
 }
 
+int maxSubSum4( const vector<int> & a )
+{
+	int maxSum { 0 }, thisSum { 0 };
+	
+	for ( int i = 0; i < a.size(); ++i )
+	{
+		thisSum += a[ i ];
+		
+		if ( thisSum > maxSum )
+			maxSum = thisSum;
+		else if ( thisSum < 0 )
+			thisSum = 0;
+	}
+	
+	return maxSum;
+}
+
 
 int main()
 {
@@ -87,7 +104,7 @@ int main()
 	
 	//clock_t begin = clock();
 	
-	int max1 = maxSubSum3( arr );
+	int max1 = maxSubSum4( arr );
 	
 	//clock_t end = clock();
 	
@@ -95,5 +112,4 @@ int main()
 	
 	cout << max1 << endl; //"\t" << spentTime << "msce.\n";
 	
-	cout<<max(max(1,2),3);
 }
