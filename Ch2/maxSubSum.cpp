@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ctime>
 #include <algorithm>
+#include <cstdlib>
 using namespace std;
 
 int maxSubSum1( const vector<int> & a )
@@ -100,16 +101,49 @@ int maxSubSum4( const vector<int> & a )
 
 int main()
 {
-	vector<int> arr { -2, 11, -4, 13, -5, -2 };
+	int n { 5000 };
 	
-	//clock_t begin = clock();
+	vector<int> arr ( n, 0 );
 	
-	int max1 = maxSubSum4( arr );
+	for ( int i = 0; i < n; ++i )
+		arr[ i ] = rand() % 201 - 100;
 	
-	//clock_t end = clock();
 	
-	//clock_t spentTime = end - begin;
+	clock_t begin1 = clock();
 	
-	cout << max1 << endl; //"\t" << spentTime << "msce.\n";
+	int max1 = maxSubSum1( arr );
+	
+	clock_t end1 = clock();
+	
+	clock_t spentTime1 = end1 - begin1;
+	
+	clock_t begin2 = clock();
+	
+	int max2 = maxSubSum2( arr );
+	
+	clock_t end2 = clock();
+	
+	clock_t spentTime2 = end2 - begin2;
+	
+	clock_t begin3 = clock();
+	
+	int max3 = maxSubSum3( arr );
+	
+	clock_t end3 = clock();
+	
+	clock_t spentTime3 = end3 - begin3;
+	
+	clock_t begin4 = clock();
+	
+	int max4 = maxSubSum4( arr );
+	
+	clock_t end4 = clock();
+	
+	clock_t spentTime4 = end4 - begin4;
+	
+	cout << max1 << "\t" << spentTime1 << "msce.\n";
+	cout << max2 << "\t" << spentTime2 << "msce.\n";
+	cout << max3 << "\t" << spentTime3 << "msce.\n";
+	cout << max4 << "\t" << spentTime4 << "msce.\n";
 	
 }
