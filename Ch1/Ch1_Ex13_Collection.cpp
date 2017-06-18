@@ -69,6 +69,8 @@ public:
 	
 	bool push_back ( const Type & t ) { return insert( length, t ); }
 	
+	bool pop_back () { return remove( length-1 ); }
+	
 	size_t getCapacity() const { return capacity; }
 	
 	bool contain(const Type &) const;
@@ -283,8 +285,9 @@ int main()
 	int d[4] {4,3,2,1};
 	Collection<int> e{&d[0], &d[4]};
 	
-	e.remove(3);
+	e.pop_back();
 	
-	cout<< e;
+	cout << e << e.size();
+	
 	return 0;
 }
