@@ -67,11 +67,15 @@ public:
 	
 	bool remove( int );
 	
+	bool push_back ( const Type & t ) { return insert( length, t ); }
+	
 	size_t getCapacity() const { return capacity; }
 	
 	bool contain(const Type &) const;
 	
 };
+
+
 
 template <typename Type>
 Collection<Type>::Collection( int len ) // constructor
@@ -86,11 +90,11 @@ Collection<Type>::Collection( int len ) // constructor
 		
 	length = len;
 	capacity = 2*length + 1;
-	array = new Type[capacity]{};
+	array = new Type[capacity] {};
 }
 
 template <typename Type>	
-Collection<Type>::Collection(const initializer_list<Type> & ini_list) : length { ini_list.size() }// constructor
+Collection<Type>::Collection( const initializer_list<Type> & ini_list ) : length { ini_list.size() }// constructor
 {		
 	capacity = 2*length + 1;
 		
@@ -121,8 +125,9 @@ Collection<Type>::Collection ( Collection &&rhs ) : length { rhs.size() }, capac
 }
 
 template <typename Type> 
-Collection<Type> & Collection<Type>::operator = (const Collection &rhs) //copy assignment
+Collection<Type> & Collection<Type>::operator = ( const Collection &rhs ) //copy assignment
 {
+	cout<<"dfd"<<endl;
 	if ( this !=  &rhs )
 	{
 		length = rhs.size();
@@ -131,8 +136,9 @@ Collection<Type> & Collection<Type>::operator = (const Collection &rhs) //copy a
 			
 		array = new Type[capacity] {};
 			
-		for ( int i = 0; i < length; ++i )
-			array[i] = rhs[i]; 
+		/* for ( int i = 0; i < length; ++i )
+			array[i] = rhs[i];  */
+		copy( &rhs[0], &rhs[0] + rhs.size(), array );
 			
 	}
 		
@@ -159,14 +165,13 @@ Collection<Type>::Collection ( Type* ini_arr, Type* end_arr ) //array constructo
 	capacity = 2*length + 1;
 		
 	array = new Type[capacity] {};
-		
-	for ( size_t i = 0; i < length; ++i )
-		array[i] = ini_arr[i];
+	
+	copy( ini_arr, end_arr, array );
 }
 	
 
 template <typename Type> 
-Type & Collection<Type>::at( int i ) const //element accessor
+inline Type & Collection<Type>::at( int i ) const //element accessor
 {
 	if ( i < 0 || i >= length )
 	{
@@ -180,10 +185,9 @@ Type & Collection<Type>::at( int i ) const //element accessor
 template <typename Type>
 void Collection<Type>::makeEmpty()// to be done
 {
-	for(size_t i = 0; i < length; ++i)
-		array[i] = 0;
-		
- 	length = 0;
+	fill( array, array + length, 0 );
+ 	
+	length = 0;
 }
 	
 template <typename Type>
@@ -253,13 +257,10 @@ bool Collection<Type>::remove(int index)
 template <typename Type>
 bool Collection<Type>::contain(const Type &t) const
 {
-	for ( size_t i = 0; i < length; ++i)
-	{
-		if (array[i] == t)
-			return true;
-	}
+	Type* result = find( array, array + length, t );
 	
-	return false;
+	if ( result == array + length ) return false;
+	else return true;
 }
 
 template <typename Type>
@@ -278,11 +279,12 @@ ostream & operator << (ostream &out, const Collection<Type> &obj)
 
 
 int main()
-{	
-	Collection<int> c {1, 2, 3};
-	c.insert(3, 4);
+{		
+	int d[4] {4,3,2,1};
+	Collection<int> e{&d[0], &d[4]};
 	
-	cout << c << c.size();
+	e.remove(3);
 	
+	cout<< e;
 	return 0;
 }
