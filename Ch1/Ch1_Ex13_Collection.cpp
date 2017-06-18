@@ -37,7 +37,7 @@ private:
 public:
 	Collection() : length { 0 }, array { nullptr } , capacity { 10 } {} // default constructor
 	
-	Collection( int ); // constructor
+	explicit Collection( const int, const Type t = Type {} ); // constructor
 	
 	Collection( const initializer_list<Type> &  ); // constructor
 	
@@ -80,7 +80,7 @@ public:
 
 
 template <typename Type>
-Collection<Type>::Collection( int len ) // constructor
+Collection<Type>::Collection( const int len, const Type t) // constructor
 {
 	if (len <= 0)
 	{
@@ -93,6 +93,9 @@ Collection<Type>::Collection( int len ) // constructor
 	length = len;
 	capacity = 2*length + 1;
 	array = new Type[capacity] {};
+	
+	if ( t != Type {} )
+		fill( array, array + length, t );
 }
 
 template <typename Type>	
@@ -281,13 +284,12 @@ ostream & operator << (ostream &out, const Collection<Type> &obj)
 
 
 int main()
-{		
-	int d[4] {4,3,2,1};
-	Collection<int> e{&d[0], &d[4]};
+{	
+    char p[] = "Penghua";
+	Collection<char> e (p, p+7);
+
+	cout << e << e.size() <<endl;
 	
-	e.pop_back();
-	
-	cout << e << e.size();
-	
+	cout << e[6];
 	return 0;
 }
