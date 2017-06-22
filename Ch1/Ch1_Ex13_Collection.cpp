@@ -34,6 +34,16 @@ private:
 		return true;
 	}
 	
+	bool check( int n ) const
+	{
+	    if ( n < 0 || length <= n ) {
+	        return false;
+	        throw std::out_of_range( "The index is out of range" );
+	    }
+	    
+	    return true;
+	}
+	
 public:
 	Collection() : length { 0 }, array { nullptr } , capacity { 10 } {} // default constructor
 	
@@ -53,9 +63,11 @@ public:
 	
 	~Collection() { delete[] array; }
 	
-	Type & at( int ) const; //element accessor
+	Type & at( int ); //element accessor
+	Type at( int ) const;
 	
-	Type & operator[] ( int i ) const { return at(i); }	
+	Type & operator[] ( int );
+	Type operator [] ( int ) const;
 		
 	size_t size() const { return length; }
 	
@@ -163,7 +175,7 @@ Collection<Type> & Collection<Type>::operator = ( Collection &&rhs ) //move assi
 }	
 
 template <typename Type>
-Collection<Type>::Collection ( Type* ini_arr, Type* end_arr ) //array constructor
+Collection<Type>::Collection ( Type* ini_arr, Type* end_arr ) // array constructor
 {
 	length = end_arr - ini_arr;
 		
@@ -173,20 +185,45 @@ Collection<Type>::Collection ( Type* ini_arr, Type* end_arr ) //array constructo
 	
 	copy( ini_arr, end_arr, array );
 }
-	
 
 template <typename Type> 
-inline Type & Collection<Type>::at( int i ) const //element accessor
+inline Type & Collection<Type>::at( int i ) // element accessor
 {
-	if ( i < 0 || i >= length )
+	/* if ( i < 0 || i >= length )
 	{
 		cout << "wrong index." << endl;
 		exit(0);
-	}
+	} */
+	
+	check( i );
 		
 	return array[i];
 }
-	
+
+template <typename Type> 
+inline Type Collection<Type>::at( int i ) const // element accessor
+{
+	check( i );
+		
+	return array[i];
+}
+
+template <typename Type> 
+inline Type & Collection<Type>:: operator [] ( int i ) // element accessor
+{
+	check( i );
+		
+	return array[i];
+}
+
+template <typename Type> 
+inline Type Collection<Type>:: operator [] ( int i ) const // element accessor
+{
+	check( i );
+		
+	return array[i];
+}
+
 template <typename Type>
 void Collection<Type>::makeEmpty()// to be done
 {
@@ -198,11 +235,7 @@ void Collection<Type>::makeEmpty()// to be done
 template <typename Type>
 bool Collection<Type>::insert( int index, const Type &t)
 {
-	if ( index < 0 || index > length )
-	{
-		cout << "wrong index." << endl;
-		return false;
-	}
+	check( index );
 		
 	if ( index == 0 && length == 0)
 	{
@@ -236,11 +269,7 @@ bool Collection<Type>::insert( int index, const Type &t)
 template <typename Type>
 bool Collection<Type>::remove(int index)
 {
-	if ( index < 0 || index >= length )
-	{
-		cout << "wrong index." << endl;
-		return false;
-	}
+	check ( index )
 	
 	if( index == 0 && length == 1)
 	{
