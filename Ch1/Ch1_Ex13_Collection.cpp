@@ -190,7 +190,7 @@ inline Type & Collection<Type>::at( int i ) const //element accessor
 template <typename Type>
 void Collection<Type>::makeEmpty()// to be done
 {
-	fill( array, array + length, 0 );
+	fill( array, array + length, Type{} );
  	
 	length = 0;
 }
