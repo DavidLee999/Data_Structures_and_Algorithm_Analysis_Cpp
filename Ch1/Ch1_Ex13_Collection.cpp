@@ -81,7 +81,15 @@ public:
 	
 	bool push_back ( const Type & t ) { return insert( length, t ); }
 	
-	bool pop_back () { return remove( length-1 ); }
+	Type pop_back ();
+	
+	Type* begin() const { return array; }
+	
+	const Type* begin() const { return array; }
+	
+	Type* end() const { return array + length; }
+	
+	const Type* end() const { return array + length; }
 	
 	size_t getCapacity() const { return capacity; }
 	
@@ -286,6 +294,15 @@ bool Collection<Type>::remove(int index)
 	
 	return true;
 	
+}
+
+template <typename Type>
+Type Collection<Type>::pop_back()
+{ 
+	Type item = array[length-1];
+	remove( length-1 );
+	
+	return item;
 }
 
 template <typename Type>
