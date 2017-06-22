@@ -85,11 +85,7 @@ public:
 	
 	Type* begin() const { return array; }
 	
-	const Type* begin() const { return array; }
-	
 	Type* end() const { return array + length; }
-	
-	const Type* end() const { return array + length; }
 	
 	size_t getCapacity() const { return capacity; }
 	
@@ -277,7 +273,7 @@ bool Collection<Type>::insert( int index, const Type &t)
 template <typename Type>
 bool Collection<Type>::remove(int index)
 {
-	check ( index )
+	check ( index );
 	
 	if( index == 0 && length == 1)
 	{
@@ -334,8 +330,9 @@ int main()
     char p[] = "Penghua";
 	Collection<char> e (p, p+7);
 
-	cout << e << e.size() <<endl;
+	cout << e << e.size() << endl;
 	
-	cout << e[6];
+	for ( char* a = e.begin(); a != e.end(); ++a )
+		cout<< *a << " ";
 	return 0;
 }
