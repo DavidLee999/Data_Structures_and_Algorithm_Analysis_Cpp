@@ -328,8 +328,9 @@ ostream & operator << (ostream &out, const Collection<Type> &obj)
 int main()
 {	
     char p[] = "Penghua";
-	Collection<char> e (p, p+7);
-
+	const Collection<char> e (p, p+7);
+	
+	
 	cout << e << e.size() << endl;
 	
 	for ( char* a = e.begin(); a != e.end(); ++a )
