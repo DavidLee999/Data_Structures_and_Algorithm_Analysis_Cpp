@@ -296,7 +296,13 @@ bool Collection<Type>::remove(int index)
 
 template <typename Type>
 Type Collection<Type>::pop_back()
-{ 
+{
+	if ( length == 0 )
+	{
+		cout << "The Collection is empty!." << endl;
+		exit(0);
+	}
+	
 	Type item = array[length-1];
 	remove( length-1 );
 	
