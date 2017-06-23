@@ -13,10 +13,10 @@ private:
 	Type* array;
 	
 	
-	bool enlarge(size_t new_capac)  //increasing capacity
+	bool resize(size_t new_capac)  //increasing capacity
 	{
-		if ( new_capac <= length || new_capac <= capacity )
-			return false;
+		/* if ( new_capac <= length || new_capac <= capacity )
+			return false; */
 		
 		Type* new_arr = new Type[new_capac];
 		
@@ -45,7 +45,7 @@ private:
 	}
 	
 public:
-	Collection() : length { 0 }, array { nullptr } , capacity { 10 } {} // default constructor
+	Collection() : length { 0 }, array { nullptr } , capacity { 2 } {} // default constructor
 	
 	explicit Collection( const int, const Type t = Type {} ); // constructor
 	
@@ -107,7 +107,7 @@ Collection<Type>::Collection( const int len, const Type t) // constructor
 	}
 		
 	length = len;
-	capacity = 2*length + 1;
+	capacity = 2*length;
 	array = new Type[capacity] {};
 	
 	if ( t != Type {} )
@@ -117,7 +117,7 @@ Collection<Type>::Collection( const int len, const Type t) // constructor
 template <typename Type>	
 Collection<Type>::Collection( const initializer_list<Type> & ini_list ) : length { ini_list.size() }// constructor
 {		
-	capacity = 2*length + 1;
+	capacity = 2*length;
 		
 	array = new Type[capacity] {};
 		
@@ -148,12 +148,11 @@ Collection<Type>::Collection ( Collection &&rhs ) : length { rhs.size() }, capac
 template <typename Type> 
 Collection<Type> & Collection<Type>::operator = ( const Collection &rhs ) //copy assignment
 {
-	cout<<"dfd"<<endl;
 	if ( this !=  &rhs )
 	{
 		length = rhs.size();
 			
-		capacity = 2*length + 1;
+		capacity = 2*length;
 			
 		array = new Type[capacity] {};
 			
@@ -183,7 +182,7 @@ Collection<Type>::Collection ( Type* ini_arr, Type* end_arr ) // array construct
 {
 	length = end_arr - ini_arr;
 		
-	capacity = 2*length + 1;
+	capacity = 2*length;
 		
 	array = new Type[capacity] {};
 	
@@ -244,7 +243,7 @@ bool Collection<Type>::insert( int index, const Type &t)
 	if ( index == 0 && length == 0)
 	{
 		++length;
-		capacity = 2*length + 1;
+		capacity = 2*length;
 		array = new Type[capacity] {};
 		
 		array[index] = t;
@@ -252,7 +251,7 @@ bool Collection<Type>::insert( int index, const Type &t)
 	
 	if ( length == capacity )
 	{
-		bool su = enlarge(2*capacity);
+		bool su = resize(2*capacity); //-------------------------hrere
 		
 		if (!su) return false;
 	}
@@ -287,6 +286,9 @@ bool Collection<Type>::remove(int index)
 	}
 	
 	--length;
+	
+	if( length > 0 && length == capacity / 4 )
+        resize(capacity / 2);
 	
 	return true;
 	
