@@ -329,13 +329,16 @@ ostream & operator << (ostream &out, const Collection<Type> &obj)
 
 int main()
 {	
-    char p[] = "Penghua";
-	const Collection<char> e (p, p+7);
+    char p[] = "li";
+	Collection<char> e (p, p+2);
 	
 	
-	cout << e << e.size() << endl;
+	cout << e << e.size() << '\t' << e.getCapacity() << endl;
 	
-	for ( char* a = e.begin(); a != e.end(); ++a )
-		cout<< *a << " ";
+	char ch;
+	while( cin >> ch && !isspace( ch ) ){
+		e.push_back(ch);
+		cout << e << e.size() << '\t' << e.getCapacity() << endl;
+	}
 	return 0;
 }
