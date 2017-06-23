@@ -251,7 +251,7 @@ bool Collection<Type>::insert( int index, const Type &t)
 	
 	if ( length == capacity )
 	{
-		bool su = resize(2*capacity); //-------------------------hrere
+		bool su = resize(2*capacity); 
 		
 		if (!su) return false;
 	}
@@ -332,12 +332,15 @@ int main()
     char p[] = "li";
 	Collection<char> e (p, p+2);
 	
-	
 	cout << e << e.size() << '\t' << e.getCapacity() << endl;
 	
 	char ch;
 	while( cin >> ch && !isspace( ch ) ){
-		e.push_back(ch);
+		if ( ch == '-' )
+			char temp = e.pop_back();	
+		else
+			e.push_back(ch);
+		
 		cout << e << e.size() << '\t' << e.getCapacity() << endl;
 	}
 	return 0;
