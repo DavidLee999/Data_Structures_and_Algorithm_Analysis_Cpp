@@ -3,6 +3,7 @@
 #include <initializer_list>
 #include <memory>
 #include <algorithm>
+#include <typeinfo>
 using namespace std;
 
 template <typename Type>
@@ -116,16 +117,17 @@ Collection<Type>::Collection( const int len, const Type t) // constructor
 
 template <typename Type>	
 Collection<Type>::Collection( const initializer_list<Type> & ini_list ) : length { ini_list.size() }// constructor
-{		
+{
 	capacity = 2*length;
 		
 	array = new Type[capacity] {};
 		
-		/* int counter { 0 };
-		for ( auto i:ini_list) //(initializer_list<Type>::interator ini_iter = ini_list.begin(); ini_iter != ini_list.end; ++ini_iter)
-			array[counter++] = i; */
+	int counter { 0 };
+	typename initializer_list<Type>::const_iterator ini_iter = ini_list.begin();
+	for (; ini_iter != ini_list.end(); ++ini_iter)
+		array[counter++] = *ini_iter;
 		
-	uninitialized_copy( ini_list.begin(), ini_list.end(), array );
+	//uninitialized_copy( ini_list.begin(), ini_list.end(), array );
 }
 template <typename Type>
 Collection<Type>::Collection ( const Collection &rhs ):length{ rhs.size() }, capacity { rhs.getCapacity() } //copy constructor
@@ -135,7 +137,7 @@ Collection<Type>::Collection ( const Collection &rhs ):length{ rhs.size() }, cap
 		/* for ( int i = 0; i < length; ++i)
 			array[i] = rhs[i]; */
 		
-	uninitialized_copy( &rhs[0], &rhs[0] + rhs.size(), array );
+	uninitialized_copy( rhs.begin(), rhs.end(), array );
 }
 	
 template <typename Type>
@@ -158,7 +160,7 @@ Collection<Type> & Collection<Type>::operator = ( const Collection &rhs ) //copy
 			
 		/* for ( int i = 0; i < length; ++i )
 			array[i] = rhs[i];  */
-		copy( &rhs[0], &rhs[0] + rhs.size(), array );
+		copy( rhs.begin(), rhs.end(), array );
 			
 	}
 		
@@ -338,9 +340,12 @@ int main()
     char p[] = "li";
 	Collection<char> e (p, p+2);
 	
-	cout << e << e.size() << '\t' << e.getCapacity() << endl;
+	Collection<int> a {1,2,3};
+	Collection<int> b = move(a);
+	cout << a << a.size() << '\t' << a.getCapacity() << endl;
+	cout << b << b.size() << '\t' << b.getCapacity() << endl;
 	
-	char ch;
+	/* char ch;
 	while( cin >> ch && !isspace( ch ) ){
 		if ( ch == '-' )
 			char temp = e.pop_back();	
@@ -348,6 +353,6 @@ int main()
 			e.push_back(ch);
 		
 		cout << e << e.size() << '\t' << e.getCapacity() << endl;
-	}
+	} */
 	return 0;
 }
