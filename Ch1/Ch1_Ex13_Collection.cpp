@@ -122,12 +122,12 @@ Collection<Type>::Collection( const initializer_list<Type> & ini_list ) : length
 		
 	array = new Type[capacity] {};
 		
-	int counter { 0 };
+	/* int counter { 0 };
 	typename initializer_list<Type>::const_iterator ini_iter = ini_list.begin();
 	for (; ini_iter != ini_list.end(); ++ini_iter)
-		array[counter++] = *ini_iter;
+		array[counter++] = *ini_iter; */
 		
-	//uninitialized_copy( ini_list.begin(), ini_list.end(), array );
+	uninitialized_copy( ini_list.begin(), ini_list.end(), array );
 }
 template <typename Type>
 Collection<Type>::Collection ( const Collection &rhs ):length{ rhs.size() }, capacity { rhs.getCapacity() } //copy constructor
@@ -173,9 +173,9 @@ Collection<Type> & Collection<Type>::operator = ( Collection &&rhs ) //move assi
 	length = rhs.size();
 		
 	capacity = rhs.getCapacity();
-		
+	
 	swap( array, rhs.array );
-		
+	
 	return *this;
 }	
 
@@ -332,20 +332,13 @@ ostream & operator << (ostream &out, const Collection<Type> &obj)
 }
 
 
-
-
-
 int main()
 {	
     char p[] = "li";
 	Collection<char> e (p, p+2);
+
 	
-	Collection<int> a {1,2,3};
-	Collection<int> b = move(a);
-	cout << a << a.size() << '\t' << a.getCapacity() << endl;
-	cout << b << b.size() << '\t' << b.getCapacity() << endl;
-	
-	/* char ch;
+	char ch;
 	while( cin >> ch && !isspace( ch ) ){
 		if ( ch == '-' )
 			char temp = e.pop_back();	
@@ -353,6 +346,6 @@ int main()
 			e.push_back(ch);
 		
 		cout << e << e.size() << '\t' << e.getCapacity() << endl;
-	} */
+	}
 	return 0;
 }
