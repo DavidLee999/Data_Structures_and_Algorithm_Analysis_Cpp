@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <iostream>
-
+#include <ostream>
 
 template <typename Object>
 class Vector
@@ -129,7 +129,14 @@ private:
     Object* objects;
 };
 
-
+template <typename T>
+std::ostream& operator << ( std::ostream& out, const Vector<T>& obj )
+{
+    for( int i = 0; i < obj.size(); ++i )
+        out << obj[i] << '\t';
+    
+    return out;
+}
 int main()
 {
     Vector<int> a{};
@@ -139,12 +146,13 @@ int main()
     a.push_back(4);
     a.push_back(5);
     std::cout<< a.size() <<'\t' << a.capacity() << '\n';
+    std::cout<< a << std::endl;
     
     a.push_back(6);
     a.push_back(7);
     a.pop_back();
     std::cout<< a.size() <<'\t' << a.capacity() << '\n';
-    
+    std::cout<< a << std::endl;
     
     return 0;
 }
