@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <iostream>
-#include <ostream>
-using namespace std;
+
+
 template <typename Object>
 class Vector
 {
@@ -121,7 +121,7 @@ public:
     const_iterator end() const
     { return &objects[size()]; }
     
-    static const int SPARE_CAPACITY = 5;
+    static const int SPARE_CAPACITY = 16;
     
 private:
     int theSize;
@@ -129,16 +129,6 @@ private:
     Object* objects;
 };
 
-template <typename Type>
-ostream& operator << (std::ostream &out, const Vector<Type>& obj)
-{
-	for ( int i = 0; i < obj.size(); ++i )
-		out << obj[i] <<" ";
-	
-    out<<std::endl;
-	
-	return out;
-}
 
 int main()
 {
@@ -149,13 +139,11 @@ int main()
     a.push_back(4);
     a.push_back(5);
     std::cout<< a.size() <<'\t' << a.capacity() << '\n';
-    std::cout << a;
     
     a.push_back(6);
     a.push_back(7);
     a.pop_back();
     std::cout<< a.size() <<'\t' << a.capacity() << '\n';
-    std::cout<<a;
     
     
     return 0;

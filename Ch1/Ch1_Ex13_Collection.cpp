@@ -3,7 +3,7 @@
 #include <initializer_list>
 #include <memory>
 #include <algorithm>
-#include <typeinfo>
+
 using namespace std;
 
 template <typename Type>
