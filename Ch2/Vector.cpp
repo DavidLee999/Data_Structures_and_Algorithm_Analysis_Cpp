@@ -1,5 +1,7 @@
 #include <algorithm>
-
+#include <iostream>
+#include <ostream>
+using namespace std;
 template <typename Object>
 class Vector
 {
@@ -42,7 +44,7 @@ public:
         std::swap( theCapacity, rhs.theCapacity );
         std::swap( objects, rhs.objects );
         
-        return* this
+        return* this;
     }
     
     void resize( int newSize )
@@ -58,7 +60,7 @@ public:
         if( newCapacity < theSize )
             return;
         
-        object* newArray = new Object[ newCapacity ];
+        Object* newArray = new Object[ newCapacity ];
         for( int k = 0; k < theSize; ++k )
             newArray[k] = std::move( objects[k] );
         
@@ -81,4 +83,86 @@ public:
     
     int capacity() const
     { return theCapacity; }
+    
+    void push_back(const Object& x)
+    {
+        if( theSize == theCapacity )
+            reserve( 2 * theCapacity + 1 );
+        
+        objects[theSize++] = x;
+    }
+
+    void push_back( Object&& x)
+    {
+        if( theSize == theCapacity )
+            reserve( 2 * theCapacity + 1 );
+        
+        objects[theSize++] = std::move(x);
+    }
+    
+    void pop_back()
+    { --theSize; }
+    
+    const Object& back() const
+    {
+        return objects[theSize - 1];
+    }
+    
+    typedef Object* iterator;
+    typedef const Object* const_iterator;
+    
+    iterator begin()
+    { return &objects[0]; }
+    const_iterator begin() const
+    { return &objects[0]; }
+    
+    iterator end()
+    { return &objects[size()]; }
+    const_iterator end() const
+    { return &objects[size()]; }
+    
+    static const int SPARE_CAPACITY = 5;
+    
+private:
+    int theSize;
+    int theCapacity;
+    Object* objects;
 };
+
+template <typename Type>
+ostream& operator << (std::ostream &out, const Vector<Type>& obj)
+{
+	for ( int i = 0; i < obj.size(); ++i )
+		out << obj[i] <<" ";
+	
+    out<<std::endl;
+	
+	return out;
+}
+
+int main()
+{
+    Vector<int> a{};
+    a.push_back(1);
+    a.push_back(2);
+    a.push_back(3);
+    a.push_back(4);
+    a.push_back(5);
+    std::cout<< a.size() <<'\t' << a.capacity() << '\n';
+    std::cout << a;
+    
+    a.push_back(6);
+    a.push_back(7);
+    a.pop_back();
+    std::cout<< a.size() <<'\t' << a.capacity() << '\n';
+    std::cout<<a;
+    
+    Vector<int> b;
+    
+    b = move(a);
+    
+    cout << b;
+    cout << a;
+    
+    return 0;
+}

@@ -170,9 +170,9 @@ Collection<Type> & Collection<Type>::operator = ( const Collection &rhs ) //copy
 template <typename Type>
 Collection<Type> & Collection<Type>::operator = ( Collection &&rhs ) //move assignment
 {
-	length = rhs.size();
+	swap( length, rhs.length );
 		
-	capacity = rhs.getCapacity();
+	swap( capacity, rhs.capacity );
 	
 	swap( array, rhs.array );
 	
@@ -331,12 +331,10 @@ ostream & operator << (ostream &out, const Collection<Type> &obj)
 	return out;
 }
 
-
 int main()
 {	
     char p[] = "li";
 	Collection<char> e (p, p+2);
-
 	
 	char ch;
 	while( cin >> ch && !isspace( ch ) ){
