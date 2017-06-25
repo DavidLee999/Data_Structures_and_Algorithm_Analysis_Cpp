@@ -67,4 +67,18 @@ public:
         
         delete[] newArray;
     }
+    
+    Object& operator [] ( int index )
+    { return objects[index]; }
+    const Object& operator [] ( int index ) const
+    { return objects[index]; }
+    
+    bool empty() const
+    { return size() == 0; }
+    
+    int size() const
+    { return theSize; }
+    
+    int capacity() const
+    { return theCapacity; }
 };
