@@ -157,12 +157,6 @@ int main()
     std::cout<< a.size() <<'\t' << a.capacity() << '\n';
     std::cout<<a;
     
-    Vector<int> b;
-    
-    b = move(a);
-    
-    cout << b;
-    cout << a;
     
     return 0;
 }
