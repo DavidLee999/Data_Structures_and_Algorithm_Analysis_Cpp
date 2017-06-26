@@ -37,7 +37,7 @@ private:
 	
 	bool check( int n ) const
 	{
-	    if ( n < 0 || length <= n ) {
+	    if ( n < 0 || n >= length ) {
 	        return false;
 	        throw std::out_of_range( "The index is out of range" );
 	    }
@@ -241,14 +241,16 @@ template <typename Type>
 bool Collection<Type>::insert( int index, const Type &t)
 {
 	check( index );
-		
+    
 	if ( index == 0 && length == 0)
 	{
 		++length;
 		capacity = 2*length;
+    
 		array = new Type[capacity] {};
-		
 		array[index] = t;
+        
+        return true;
 	}
 	
 	if ( length == capacity )
@@ -335,11 +337,13 @@ int main()
 {	
     char p[] = "li";
 	Collection<char> e (p, p+2);
-	
+    
 	char ch;
 	while( cin >> ch && !isspace( ch ) ){
 		if ( ch == '-' )
 			char temp = e.pop_back();	
+        else if ( ch == 'c' )
+            e.makeEmpty();
 		else
 			e.push_back(ch);
 		
