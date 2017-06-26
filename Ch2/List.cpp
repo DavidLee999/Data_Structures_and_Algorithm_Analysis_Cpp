@@ -55,4 +55,42 @@ public:
     { return *begin(); }
     const Object& front() const
     { return *begin(); }
+    
+    Object& back()
+    { return *--end(); }
+    const Object& back() const
+    { return *--end(); }
+    
+    void push_front( const Object& x )
+    { insert( begin(), x); }
+    void push_front( Object&& x )
+    { insert( begin(), std::move(x); }
+    
+    void push_back( const Object& x )
+    { insert( end(), x ); }
+    void push_back( Object&& x )
+    { insert( end(), std::move(x) ); }
+    
+    void pop_front()
+    { erase( begin() ); }
+    void pop_back()
+    { erase( --end() ); }
+    
+    iterator insert( iterator itr, const Object& x )
+    {}
+    iterator insert( iterator itr, Object&& x )
+    {}
+    
+    iterator erase( iterator itr )
+    {}
+    iterator erase( iterator from, iterator to )
+    {}
+    
+private:
+    int theSize;
+    Node* head;
+    Node* tail;
+    
+    void init()
+    {}
 };
