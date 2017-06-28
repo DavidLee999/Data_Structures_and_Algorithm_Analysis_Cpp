@@ -11,7 +11,7 @@ private:
         Node* next;
         
         Node( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {}
-        Node( Object&& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {} 
+        //Node( Object&& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {} 
     };
     
 public:    
@@ -58,7 +58,7 @@ public:
         
         void assertIsValid() const
         {
-            if( theList == nullptr || current == nullptr || current = theList->head )
+            if( theList == nullptr || current == nullptr || current == theList->head )
                 throw std::out_of_range{ "Iterator error!" };
         }
     };
@@ -169,7 +169,7 @@ public:
     void push_front( const Object& x )
     { insert( begin(), x); }
     void push_front( Object&& x )
-    { insert( begin(), std::move(x); }
+    { insert( begin(), std::move(x) ); }
     
     void push_back( const Object& x )
     { insert( end(), x ); }
@@ -190,7 +190,11 @@ public:
         Node* p = itr.current;
         theSize++;
         
-        return { p->prev = p->prev->next = new Node{ x, p->prev, p }};
+        Node* newNode = new Node{ x, p->prev, p };
+        p->prev = newNode;
+        p->prev->next = newNode;
+        
+        return { *this, newNode };
     }
     iterator insert( iterator itr, Object&& x )
     {
@@ -201,7 +205,11 @@ public:
         Node* p = itr.current;
         theSize++;
         
-        return { p->prev = p->prev->next = new Node{ std::move(x), p->orev, p} };
+        Node* newNode = new Node{ std::move(x), p->prev, p };
+        p->prev = newNode;
+        p->prev->next = newNode;
+        
+        return { *this, newNode };
     }
     
     iterator erase( iterator itr )
@@ -211,7 +219,7 @@ public:
             std::invalid_argument{ "The iterator does not belong to this List!" };
         
         Node* p = itr.current;
-        iterator retVal{ p->next };
+        iterator retVal{ *this, p->next };
         p->prev->next = p->next;
         p->next->prev = p->prev;
         
@@ -222,8 +230,11 @@ public:
     }
     iterator erase( iterator from, iterator to )
     {
-        itr.assertIsValid();
-        if( itr.theList != this )
+        from.assertIsValid();
+        if( from.theList != this )
+            std::invalid_argument{ "The iterator does not belong to this List!" };
+        to.assertIsValid();
+        if( to.theList != this )
             std::invalid_argument{ "The iterator does not belong to this List!" };
         
         for( iterator itr = from; itr != to; )
@@ -247,3 +258,15 @@ private:
         tail->prev = head;
     }
 };
+
+int main()
+{
+    List<int> a;
+    a.push_back(1);
+    a.push_back(2);
+    a.push_back(3);
+    a.push_back(4);
+    a.push_back(5);
+    
+    return 0;
+}
