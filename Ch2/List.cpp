@@ -37,6 +37,33 @@ public:
             return *old;
         }
         
+        const_iterator& operator -- ()
+        {
+            current = current->prev;
+            return *this;
+        }
+        const_iterator& operator -- ( int )
+        {
+            const_iterator old = *this;
+            --( *this );
+            return *old;
+        }
+        
+        const_iterator& operator + ( const int i )
+        {
+            //const_iterator* res = this;
+            for(int j = 0; j < i; ++j )
+                this->current = this->current->next;
+            return *this;
+        }
+        const_iterator& operator - ( const int i )
+        {
+            //const_iterator* res = this;
+            for(int j = i; j >0; --j )
+                this->current = this->current->prev;
+            return *this;
+        }
+        
         bool operator == ( const const_iterator& rhs ) const
         { return current == rhs.current; }
         
@@ -89,6 +116,35 @@ public:
             return old;
         }
         
+        iterator& operator -- ()
+        {
+            this->current = this->current->prev;
+            
+            return *this;
+        }
+        iterator& operator -- ( int )
+        {
+            iterator old = *this;
+            --(*this);
+            
+            return old;
+        }
+        
+        iterator& operator + ( const int& i )
+        {
+            //iterator* res = this;
+            for(int j = 0; j < i; ++j )
+                this->current = this->current->next;
+            return *this;
+        }
+        iterator& operator - ( const int& i )
+        {
+            //iterator* res = this;
+            for(int j = i; j >0; --j )
+                this->current = this->current->prev;
+            return *this;
+        }
+        
     protected:
         iterator ( const List<Object>& lst, Node* p ) : const_iterator{ lst, p } {}
         
@@ -137,9 +193,15 @@ public:
     }
     
     iterator begin()
-    { return { *this, head->next }; }
+    { 
+        iterator itr{ *this, head };
+        return ++itr; 
+    }
     const_iterator begin() const
-    { return { *this, head->next }; }
+    { 
+        const_iterator itr{ *this, head };
+        return ++itr; 
+    }
     
     iterator end()
     { return { *this, tail }; }
@@ -270,6 +332,19 @@ int main()
     a.push_back(3);
     a.push_back(4);
     a.push_back(5);
+    a.push_front(0);
+    
+    a.pop_back();
+    a.pop_front();
+    
+    std::cout << a << std::endl;
+    
+    std::cout << a.front() << '\n';
+    std::cout << a.back() << '\n';
+   
+    
+    a.insert( a.end()-2, 10 );
+    a.erase( a.begin()+1 );
     std::cout << a << std::endl;
     return 0;
 }
