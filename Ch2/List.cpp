@@ -37,27 +37,89 @@ public:
         const_iterator( Node* p ) : current{ p } {}
         
         friend class List<Object>;
+        
+        const List<Object> *thisList;
+        Node* current;
+        
+        const_iterator( const List<Object>& lst, Node* p ) : theList{ &lst }, current{ p } {}
+        
+        void assertIsValid() const
+        {
+            if( theList == nullptr || current == nullptr || current = theList->head )
+                throw IteratorOutOfBoundsException{};
+        }
     };
     
     class iterator : public const_iterator
-    {};
+    {
+    public:
+        iterator() {}
+        
+        Object& operator * ()
+        { return const_iterator::retrieve(); }
+        const Object& operator * () const
+        { return const_iterator::operator * (); }
+        
+        iterator& operator ++ ()
+        {
+            this->current = this->current->next;
+            
+            return *this;
+        }
+        iterator& operator ++ ( int )
+        {
+            iterator old = *this;
+            ==(*this);
+            
+            return old;
+        }
+        
+    protected:
+        iterator ( Node* p ) : const_iterator{ p } {}
+        
+        friend class List<Object>;
+    };
     
     List()
-    {}
+    { init(); }
     
     List( const List& rhs )
-    {}
+    {
+        init();
+        for( auto& x : rhs )
+            push_back(x);
+    }
     
     ~List()
-    {}
+    {
+        clear();
+        delete head;
+        delete tail;
+    }
     
     List& operator = ( const List& rhs )
-    {}
+    {
+        List copy = rhs;
+        std::swap( *this, copy );
+        
+        return *this;
+    }
     
-    List( List&& rhs )
-    {}
+    List( List&& rhs ) : theSize{ rhs.theSize }, head{ rhs.head }, tail{ rhs.tail }
+    {
+        rhs.theSize = 0;
+        rhs.head = nullptr;
+        rhs.tail = nullptr;
+    }
     
     List& operator = ( List&& rhs )
+    {
+        std::swap( theSize, rhs.theSize );
+        std::swap( head, rhs.head );
+        std::swap( tail, rhs.tail );
+        
+        return *this;
+    }
     
     iterator begin()
     { return { head->next }; }
@@ -107,14 +169,39 @@ public:
     { erase( --end() ); }
     
     iterator insert( iterator itr, const Object& x )
-    {}
+    {
+        Node* p = itr.current;
+        theSize++;
+        
+        return { p->prev = p->prev->next = new Node{ x, p->prev, p }};
+    }
     iterator insert( iterator itr, Object&& x )
-    {}
+    {
+        Node* p = itr.current;
+        theSize++;
+        
+        return { p->prev = p->prev->next = new Node{ std::move(x), p->orev, p} };
+    }
     
     iterator erase( iterator itr )
-    {}
+    {
+        Node* p = itr.current;
+        iterator retVal{ p->next };
+        p->prev->next = p->next;
+        p->next->prev = p->prev;
+        
+        delete p;
+        theSize--;
+        
+        return retVal;
+    }
     iterator erase( iterator from, iterator to )
-    {}
+    {
+        for( iterator itr = from; itr != to; )
+            itr = erase( itr );
+        
+        return to;
+    }
     
 private:
 
@@ -133,5 +220,12 @@ private:
     Node* tail;
     
     void init()
-    {}
+    {
+        theSize = 0;
+        head = new Node;
+        tail = new Node;
+        
+        head->next = tail;
+        tail->prev = head;
+    }
 };
