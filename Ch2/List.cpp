@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 template <typename Object>
 class List
 {
@@ -40,16 +42,16 @@ public:
         { return !( *this == rhs ); }
         
     protected:
-        Node* current;
+        //Node* current;
         
         Object& retrieve() const
         { return current->data; }
         
-        const_iterator( Node* p ) : current{ p } {}
+        //const_iterator( Node* p ) : current{ p } {}
         
         friend class List<Object>;
         
-        /* const List<Object> *theList;
+        const List<Object> *theList;
         Node* current;
         
         const_iterator( const List<Object>& lst, Node* p ) : theList{ &lst }, current{ p } {}
@@ -57,8 +59,8 @@ public:
         void assertIsValid() const
         {
             if( theList == nullptr || current == nullptr || current = theList->head )
-                throw IteratorOutOfBoundsException{};
-        } */
+                throw std::out_of_range{ "Iterator error!" };
+        }
     };
     
     class iterator : public const_iterator
@@ -86,7 +88,7 @@ public:
         }
         
     protected:
-        iterator ( Node* p ) : const_iterator{ p } {}
+        iterator ( const List<Object>& lst, Node* p ) : const_iterator{ lst, p } {}
         
         friend class List<Object>;
     };
@@ -133,14 +135,14 @@ public:
     }
     
     iterator begin()
-    { return { head->next }; }
+    { return { *this, head->next }; }
     const_iterator begin() const
-    { return { head->next }; }
+    { return { *this, head->next }; }
     
     iterator end()
-    { return { tail }; }
+    { return { *this, tail }; }
     const_iterator end() const
-    { return { tail }; }
+    { return { *this, tail }; }
     
     int size() const
     { return theSize; }
@@ -181,6 +183,10 @@ public:
     
     iterator insert( iterator itr, const Object& x )
     {
+        itr.assertIsValid();
+        if( itr.theList != this )
+            std::invalid_argument{ "The iterator does not belong to this List!" };
+        
         Node* p = itr.current;
         theSize++;
         
@@ -188,6 +194,10 @@ public:
     }
     iterator insert( iterator itr, Object&& x )
     {
+        itr.assertIsValid();
+        if( itr.theList != this )
+            std::invalid_argument{ "The iterator does not belong to this List!" };
+        
         Node* p = itr.current;
         theSize++;
         
@@ -196,6 +206,10 @@ public:
     
     iterator erase( iterator itr )
     {
+        itr.assertIsValid();
+        if( itr.theList != this )
+            std::invalid_argument{ "The iterator does not belong to this List!" };
+        
         Node* p = itr.current;
         iterator retVal{ p->next };
         p->prev->next = p->next;
@@ -208,6 +222,10 @@ public:
     }
     iterator erase( iterator from, iterator to )
     {
+        itr.assertIsValid();
+        if( itr.theList != this )
+            std::invalid_argument{ "The iterator does not belong to this List!" };
+        
         for( iterator itr = from; itr != to; )
             itr = erase( itr );
         
