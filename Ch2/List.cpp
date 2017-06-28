@@ -1,7 +1,6 @@
 template <typename Object>
 class List
 {
-public:
 private:
     struct Node
     {
@@ -13,6 +12,7 @@ private:
         Node( Object&& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {} 
     };
     
+public:    
     class const_iterator
     {
     public:
@@ -143,7 +143,7 @@ private:
     { return { tail }; }
     
     int size() const
-    { return the Size; }
+    { return theSize; }
     
     bool empty() const
     { return size() == 0; }
