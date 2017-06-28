@@ -1,4 +1,6 @@
 #include <stdexcept>
+#include <ostream>
+#include <iostream>
 
 template <typename Object>
 class List
@@ -20,7 +22,7 @@ public:
     public:
         const_iterator() : current{ nullptr } {}
         
-        const Object* operator * () const
+        const Object& operator * () const
         { return retrieve(); }
         
         const_iterator& operator ++ ()
@@ -190,11 +192,7 @@ public:
         Node* p = itr.current;
         theSize++;
         
-        Node* newNode = new Node{ x, p->prev, p };
-        p->prev = newNode;
-        p->prev->next = newNode;
-        
-        return { *this, newNode };
+        return iterator{*this, p->prev = p->prev->next = new Node{ x, p->prev, p } };
     }
     iterator insert( iterator itr, Object&& x )
     {
@@ -205,11 +203,7 @@ public:
         Node* p = itr.current;
         theSize++;
         
-        Node* newNode = new Node{ std::move(x), p->prev, p };
-        p->prev = newNode;
-        p->prev->next = newNode;
-        
-        return { *this, newNode };
+        return iterator{*this, p->prev = p->prev->next = new Node{ std::move(x), p->prev, p} };
     }
     
     iterator erase( iterator itr )
@@ -259,6 +253,15 @@ private:
     }
 };
 
+template <typename T>
+std::ostream& operator << ( std::ostream& out, const List<T>& obj )
+{
+    for( typename List<T>::const_iterator itr = obj.begin(); itr != obj.end(); ++itr )
+        out << *itr << " ";
+    
+    return out;
+}
+
 int main()
 {
     List<int> a;
@@ -267,6 +270,6 @@ int main()
     a.push_back(3);
     a.push_back(4);
     a.push_back(5);
-    
+    std::cout << a << std::endl;
     return 0;
 }
