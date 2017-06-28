@@ -2,6 +2,17 @@ template <typename Object>
 class List
 {
 public:
+private:
+    struct Node
+    {
+        Object data;
+        Node* prev;
+        Node* next;
+        
+        Node( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {}
+        Node( Object&& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {} 
+    };
+    
     class const_iterator
     {
     public:
@@ -38,7 +49,7 @@ public:
         
         friend class List<Object>;
         
-        const List<Object> *thisList;
+        /* const List<Object> *theList;
         Node* current;
         
         const_iterator( const List<Object>& lst, Node* p ) : theList{ &lst }, current{ p } {}
@@ -47,7 +58,7 @@ public:
         {
             if( theList == nullptr || current == nullptr || current = theList->head )
                 throw IteratorOutOfBoundsException{};
-        }
+        } */
     };
     
     class iterator : public const_iterator
@@ -69,7 +80,7 @@ public:
         iterator& operator ++ ( int )
         {
             iterator old = *this;
-            ==(*this);
+            ++(*this);
             
             return old;
         }
@@ -204,17 +215,6 @@ public:
     }
     
 private:
-
-    struct Node
-    {
-        Object data;
-        Node* prev;
-        Node* next;
-        
-        Node( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {}
-        Node( Object&& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {} 
-    };
-    
     int theSize;
     Node* head;
     Node* tail;
