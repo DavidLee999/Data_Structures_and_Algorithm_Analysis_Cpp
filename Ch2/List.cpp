@@ -346,5 +346,9 @@ int main()
     a.insert( a.end()-2, 10 );
     a.erase( a.begin()+1 );
     std::cout << a << std::endl;
+    
+    a.clear();
+    
+    std::cout << a << std::endl;
     return 0;
 }
