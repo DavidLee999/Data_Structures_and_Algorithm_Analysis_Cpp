@@ -13,10 +13,10 @@ private:
         Node* next;
         
         Node( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {}
-        //Node( Object&& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {} 
+        //Node( Object&& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {}
     };
     
-public:    
+public:
     class const_iterator
     {
     public:
@@ -53,14 +53,25 @@ public:
         {
             //const_iterator* res = this;
             for(int j = 0; j < i; ++j )
+            {
+                if( this->current->next == nullptr )
+                    throw std::out_of_range{ "Iterator error!" };
+
                 this->current = this->current->next;
+            }
+
             return *this;
         }
         const_iterator& operator - ( const int i )
         {
             //const_iterator* res = this;
             for(int j = i; j >0; --j )
+            {
+                if( this->current->prev == nullptr )
+                    throw std::out_of_range{ "Iterator error!" };
+
                 this->current = this->current->prev;
+            }
             return *this;
         }
         
@@ -342,7 +353,6 @@ int main()
     std::cout << a.front() << '\n';
     std::cout << a.back() << '\n';
    
-    
     a.insert( a.end()-2, 10 );
     a.erase( a.begin()+1 );
     std::cout << a << std::endl;

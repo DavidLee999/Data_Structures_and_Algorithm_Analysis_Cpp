@@ -1,0 +1,204 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+List	.\List.cpp	/^    List( List&& rhs ) : theSize{ rhs.theSize }, head{ rhs.head }, tail{ rhs.tail }$/;"	f	class:List	access:public	signature:( List&& rhs )
+List	.\List.cpp	/^    List( const List& rhs )$/;"	f	class:List	access:public	signature:( const List& rhs )
+List	.\List.cpp	/^    List()$/;"	f	class:List	access:public	signature:()
+List	.\List.cpp	/^class List$/;"	c	file:
+List::List	.\List.cpp	/^    List( List&& rhs ) : theSize{ rhs.theSize }, head{ rhs.head }, tail{ rhs.tail }$/;"	f	class:List	access:public	signature:( List&& rhs )
+List::List	.\List.cpp	/^    List( const List& rhs )$/;"	f	class:List	access:public	signature:( const List& rhs )
+List::List	.\List.cpp	/^    List()$/;"	f	class:List	access:public	signature:()
+List::Node	.\List.cpp	/^    struct Node$/;"	s	class:List	file:	access:private
+List::Node::Node	.\List.cpp	/^        Node( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {}$/;"	f	struct:List::Node	access:public	signature:( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr )
+List::Node::data	.\List.cpp	/^        Object data;$/;"	m	struct:List::Node	file:	access:public
+List::Node::next	.\List.cpp	/^        Node* next;$/;"	m	struct:List::Node	file:	access:public
+List::Node::prev	.\List.cpp	/^        Node* prev;$/;"	m	struct:List::Node	file:	access:public
+List::back	.\List.cpp	/^    Object& back()$/;"	f	class:List	access:public	signature:()
+List::back	.\List.cpp	/^    const Object& back() const$/;"	f	class:List	access:public	signature:() const
+List::begin	.\List.cpp	/^    const_iterator begin() const$/;"	f	class:List	access:public	signature:() const
+List::begin	.\List.cpp	/^    iterator begin()$/;"	f	class:List	access:public	signature:()
+List::clear	.\List.cpp	/^    void clear()$/;"	f	class:List	access:public	signature:()
+List::const_iterator	.\List.cpp	/^    class const_iterator$/;"	c	class:List	file:	access:public
+List::const_iterator::assertIsValid	.\List.cpp	/^        void assertIsValid() const$/;"	f	class:List::const_iterator	access:protected	signature:() const
+List::const_iterator::const_iterator	.\List.cpp	/^        const_iterator( const List<Object>& lst, Node* p ) : theList{ &lst }, current{ p } {}$/;"	f	class:List::const_iterator	access:protected	signature:( const List<Object>& lst, Node* p )
+List::const_iterator::const_iterator	.\List.cpp	/^        const_iterator() : current{ nullptr } {}$/;"	f	class:List::const_iterator	access:public	signature:()
+List::const_iterator::current	.\List.cpp	/^        Node* current;$/;"	m	class:List::const_iterator	file:	access:protected
+List::const_iterator::operator !=	.\List.cpp	/^        bool operator != ( const const_iterator& rhs ) const$/;"	f	class:List::const_iterator	access:public	signature:( const const_iterator& rhs ) const
+List::const_iterator::operator *	.\List.cpp	/^        const Object& operator * () const$/;"	f	class:List::const_iterator	access:public	signature:() const
+List::const_iterator::operator +	.\List.cpp	/^        const_iterator& operator + ( const int i )$/;"	f	class:List::const_iterator	access:public	signature:( const int i )
+List::const_iterator::operator ++	.\List.cpp	/^        const_iterator& operator ++ ( int )$/;"	f	class:List::const_iterator	access:public	signature:( int )
+List::const_iterator::operator ++	.\List.cpp	/^        const_iterator& operator ++ ()$/;"	f	class:List::const_iterator	access:public	signature:()
+List::const_iterator::operator -	.\List.cpp	/^        const_iterator& operator - ( const int i )$/;"	f	class:List::const_iterator	access:public	signature:( const int i )
+List::const_iterator::operator --	.\List.cpp	/^        const_iterator& operator -- ( int )$/;"	f	class:List::const_iterator	access:public	signature:( int )
+List::const_iterator::operator --	.\List.cpp	/^        const_iterator& operator -- ()$/;"	f	class:List::const_iterator	access:public	signature:()
+List::const_iterator::operator ==	.\List.cpp	/^        bool operator == ( const const_iterator& rhs ) const$/;"	f	class:List::const_iterator	access:public	signature:( const const_iterator& rhs ) const
+List::const_iterator::retrieve	.\List.cpp	/^        Object& retrieve() const$/;"	f	class:List::const_iterator	access:protected	signature:() const
+List::const_iterator::theList	.\List.cpp	/^        const List<Object> *theList;$/;"	m	class:List::const_iterator	file:	access:protected
+List::empty	.\List.cpp	/^    bool empty() const$/;"	f	class:List	access:public	signature:() const
+List::end	.\List.cpp	/^    const_iterator end() const$/;"	f	class:List	access:public	signature:() const
+List::end	.\List.cpp	/^    iterator end()$/;"	f	class:List	access:public	signature:()
+List::erase	.\List.cpp	/^    iterator erase( iterator from, iterator to )$/;"	f	class:List	access:public	signature:( iterator from, iterator to )
+List::erase	.\List.cpp	/^    iterator erase( iterator itr )$/;"	f	class:List	access:public	signature:( iterator itr )
+List::front	.\List.cpp	/^    Object& front()$/;"	f	class:List	access:public	signature:()
+List::front	.\List.cpp	/^    const Object& front() const$/;"	f	class:List	access:public	signature:() const
+List::head	.\List.cpp	/^    Node* head;$/;"	m	class:List	file:	access:private
+List::init	.\List.cpp	/^    void init()$/;"	f	class:List	file:	access:private	signature:()
+List::insert	.\List.cpp	/^    iterator insert( iterator itr, Object&& x )$/;"	f	class:List	access:public	signature:( iterator itr, Object&& x )
+List::insert	.\List.cpp	/^    iterator insert( iterator itr, const Object& x )$/;"	f	class:List	access:public	signature:( iterator itr, const Object& x )
+List::iterator	.\List.cpp	/^    class iterator : public const_iterator$/;"	c	class:List	file:	inherits:const_iterator	access:public
+List::iterator::iterator	.\List.cpp	/^        iterator ( const List<Object>& lst, Node* p ) : const_iterator{ lst, p } {}$/;"	f	class:List::iterator	access:protected	signature:( const List<Object>& lst, Node* p )
+List::iterator::iterator	.\List.cpp	/^        iterator() {}$/;"	f	class:List::iterator	access:public	signature:()
+List::iterator::operator *	.\List.cpp	/^        Object& operator * ()$/;"	f	class:List::iterator	access:public	signature:()
+List::iterator::operator *	.\List.cpp	/^        const Object& operator * () const$/;"	f	class:List::iterator	access:public	signature:() const
+List::iterator::operator +	.\List.cpp	/^        iterator& operator + ( const int& i )$/;"	f	class:List::iterator	access:public	signature:( const int& i )
+List::iterator::operator ++	.\List.cpp	/^        iterator& operator ++ ( int )$/;"	f	class:List::iterator	access:public	signature:( int )
+List::iterator::operator ++	.\List.cpp	/^        iterator& operator ++ ()$/;"	f	class:List::iterator	access:public	signature:()
+List::iterator::operator -	.\List.cpp	/^        iterator& operator - ( const int& i )$/;"	f	class:List::iterator	access:public	signature:( const int& i )
+List::iterator::operator --	.\List.cpp	/^        iterator& operator -- ( int )$/;"	f	class:List::iterator	access:public	signature:( int )
+List::iterator::operator --	.\List.cpp	/^        iterator& operator -- ()$/;"	f	class:List::iterator	access:public	signature:()
+List::operator =	.\List.cpp	/^    List& operator = ( List&& rhs )$/;"	f	class:List	access:public	signature:( List&& rhs )
+List::operator =	.\List.cpp	/^    List& operator = ( const List& rhs )$/;"	f	class:List	access:public	signature:( const List& rhs )
+List::pop_back	.\List.cpp	/^    void pop_back()$/;"	f	class:List	access:public	signature:()
+List::pop_front	.\List.cpp	/^    void pop_front()$/;"	f	class:List	access:public	signature:()
+List::push_back	.\List.cpp	/^    void push_back( Object&& x )$/;"	f	class:List	access:public	signature:( Object&& x )
+List::push_back	.\List.cpp	/^    void push_back( const Object& x )$/;"	f	class:List	access:public	signature:( const Object& x )
+List::push_front	.\List.cpp	/^    void push_front( Object&& x )$/;"	f	class:List	access:public	signature:( Object&& x )
+List::push_front	.\List.cpp	/^    void push_front( const Object& x )$/;"	f	class:List	access:public	signature:( const Object& x )
+List::size	.\List.cpp	/^    int size() const$/;"	f	class:List	access:public	signature:() const
+List::tail	.\List.cpp	/^    Node* tail;$/;"	m	class:List	file:	access:private
+List::theSize	.\List.cpp	/^    int theSize;$/;"	m	class:List	file:	access:private
+List::~List	.\List.cpp	/^    ~List()$/;"	f	class:List	access:public	signature:()
+Node	.\List.cpp	/^        Node( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {}$/;"	f	struct:List::Node	access:public	signature:( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr )
+Node	.\List.cpp	/^    struct Node$/;"	s	class:List	file:	access:private
+SPARE_CAPACITY	.\Vector.cpp	/^    static const int SPARE_CAPACITY = 16;$/;"	m	class:Vector	file:	access:public
+Vector	.\Vector.cpp	/^    Vector( Vector&& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, objects{ rhs.objects }$/;"	f	class:Vector	access:public	signature:( Vector&& rhs )
+Vector	.\Vector.cpp	/^    Vector( const Vector& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, objects { nullptr }$/;"	f	class:Vector	access:public	signature:( const Vector& rhs )
+Vector	.\Vector.cpp	/^    explicit Vector( int initSize = 0 ) : theSize{ initSize }, theCapacity{ initSize + SPARE_CAPACITY }$/;"	f	class:Vector	access:public	signature:( int initSize = 0 )
+Vector	.\Vector.cpp	/^class Vector$/;"	c	file:
+Vector::SPARE_CAPACITY	.\Vector.cpp	/^    static const int SPARE_CAPACITY = 16;$/;"	m	class:Vector	file:	access:public
+Vector::Vector	.\Vector.cpp	/^    Vector( Vector&& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, objects{ rhs.objects }$/;"	f	class:Vector	access:public	signature:( Vector&& rhs )
+Vector::Vector	.\Vector.cpp	/^    Vector( const Vector& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, objects { nullptr }$/;"	f	class:Vector	access:public	signature:( const Vector& rhs )
+Vector::Vector	.\Vector.cpp	/^    explicit Vector( int initSize = 0 ) : theSize{ initSize }, theCapacity{ initSize + SPARE_CAPACITY }$/;"	f	class:Vector	access:public	signature:( int initSize = 0 )
+Vector::back	.\Vector.cpp	/^    const Object& back() const$/;"	f	class:Vector	access:public	signature:() const
+Vector::begin	.\Vector.cpp	/^    const_iterator begin() const$/;"	f	class:Vector	access:public	signature:() const
+Vector::begin	.\Vector.cpp	/^    iterator begin()$/;"	f	class:Vector	access:public	signature:()
+Vector::capacity	.\Vector.cpp	/^    int capacity() const$/;"	f	class:Vector	access:public	signature:() const
+Vector::const_iterator	.\Vector.cpp	/^    typedef const Object* const_iterator;$/;"	t	class:Vector	file:	access:public
+Vector::empty	.\Vector.cpp	/^    bool empty() const$/;"	f	class:Vector	access:public	signature:() const
+Vector::end	.\Vector.cpp	/^    const_iterator end() const$/;"	f	class:Vector	access:public	signature:() const
+Vector::end	.\Vector.cpp	/^    iterator end()$/;"	f	class:Vector	access:public	signature:()
+Vector::iterator	.\Vector.cpp	/^    typedef Object* iterator;$/;"	t	class:Vector	file:	access:public
+Vector::objects	.\Vector.cpp	/^    Object* objects;$/;"	m	class:Vector	file:	access:private
+Vector::operator =	.\Vector.cpp	/^    Vector& operator = ( Vector&& rhs )$/;"	f	class:Vector	access:public	signature:( Vector&& rhs )
+Vector::operator =	.\Vector.cpp	/^    Vector& operator = ( const Vector& rhs )$/;"	f	class:Vector	access:public	signature:( const Vector& rhs )
+Vector::operator []	.\Vector.cpp	/^    Object& operator [] ( int index )$/;"	f	class:Vector	access:public	signature:( int index )
+Vector::operator []	.\Vector.cpp	/^    const Object& operator [] ( int index ) const$/;"	f	class:Vector	access:public	signature:( int index ) const
+Vector::pop_back	.\Vector.cpp	/^    void pop_back()$/;"	f	class:Vector	access:public	signature:()
+Vector::push_back	.\Vector.cpp	/^    void push_back( Object&& x)$/;"	f	class:Vector	access:public	signature:( Object&& x)
+Vector::push_back	.\Vector.cpp	/^    void push_back(const Object& x)$/;"	f	class:Vector	access:public	signature:(const Object& x)
+Vector::reserve	.\Vector.cpp	/^    void reserve( int newCapacity )$/;"	f	class:Vector	access:public	signature:( int newCapacity )
+Vector::resize	.\Vector.cpp	/^    void resize( int newSize )$/;"	f	class:Vector	access:public	signature:( int newSize )
+Vector::size	.\Vector.cpp	/^    int size() const$/;"	f	class:Vector	access:public	signature:() const
+Vector::theCapacity	.\Vector.cpp	/^    int theCapacity;$/;"	m	class:Vector	file:	access:private
+Vector::theSize	.\Vector.cpp	/^    int theSize;$/;"	m	class:Vector	file:	access:private
+Vector::~Vector	.\Vector.cpp	/^    ~Vector()$/;"	f	class:Vector	access:public	signature:()
+assertIsValid	.\List.cpp	/^        void assertIsValid() const$/;"	f	class:List::const_iterator	access:protected	signature:() const
+back	.\List.cpp	/^    Object& back()$/;"	f	class:List	access:public	signature:()
+back	.\List.cpp	/^    const Object& back() const$/;"	f	class:List	access:public	signature:() const
+back	.\Vector.cpp	/^    const Object& back() const$/;"	f	class:Vector	access:public	signature:() const
+begin	.\List.cpp	/^    const_iterator begin() const$/;"	f	class:List	access:public	signature:() const
+begin	.\List.cpp	/^    iterator begin()$/;"	f	class:List	access:public	signature:()
+begin	.\Vector.cpp	/^    const_iterator begin() const$/;"	f	class:Vector	access:public	signature:() const
+begin	.\Vector.cpp	/^    iterator begin()$/;"	f	class:Vector	access:public	signature:()
+binarySearch	.\binarySearch.cpp	/^int binarySearch( const vector<Comparable> & a, const Comparable & x)$/;"	f	signature:( const vector<Comparable> & a, const Comparable & x)
+capacity	.\Vector.cpp	/^    int capacity() const$/;"	f	class:Vector	access:public	signature:() const
+clear	.\List.cpp	/^    void clear()$/;"	f	class:List	access:public	signature:()
+const_iterator	.\List.cpp	/^        const_iterator( const List<Object>& lst, Node* p ) : theList{ &lst }, current{ p } {}$/;"	f	class:List::const_iterator	access:protected	signature:( const List<Object>& lst, Node* p )
+const_iterator	.\List.cpp	/^        const_iterator() : current{ nullptr } {}$/;"	f	class:List::const_iterator	access:public	signature:()
+const_iterator	.\List.cpp	/^    class const_iterator$/;"	c	class:List	file:	access:public
+const_iterator	.\Vector.cpp	/^    typedef const Object* const_iterator;$/;"	t	class:Vector	file:	access:public
+current	.\List.cpp	/^        Node* current;$/;"	m	class:List::const_iterator	file:	access:protected
+data	.\List.cpp	/^        Object data;$/;"	m	struct:List::Node	file:	access:public
+empty	.\List.cpp	/^    bool empty() const$/;"	f	class:List	access:public	signature:() const
+empty	.\Vector.cpp	/^    bool empty() const$/;"	f	class:Vector	access:public	signature:() const
+end	.\List.cpp	/^    const_iterator end() const$/;"	f	class:List	access:public	signature:() const
+end	.\List.cpp	/^    iterator end()$/;"	f	class:List	access:public	signature:()
+end	.\Vector.cpp	/^    const_iterator end() const$/;"	f	class:Vector	access:public	signature:() const
+end	.\Vector.cpp	/^    iterator end()$/;"	f	class:Vector	access:public	signature:()
+erase	.\List.cpp	/^    iterator erase( iterator from, iterator to )$/;"	f	class:List	access:public	signature:( iterator from, iterator to )
+erase	.\List.cpp	/^    iterator erase( iterator itr )$/;"	f	class:List	access:public	signature:( iterator itr )
+front	.\List.cpp	/^    Object& front()$/;"	f	class:List	access:public	signature:()
+front	.\List.cpp	/^    const Object& front() const$/;"	f	class:List	access:public	signature:() const
+gcd	.\Greatest_common_divisor.cpp	/^long gcd (long m, long n)$/;"	f	signature:(long m, long n)
+head	.\List.cpp	/^    Node* head;$/;"	m	class:List	file:	access:private
+init	.\List.cpp	/^    void init()$/;"	f	class:List	file:	access:private	signature:()
+insert	.\List.cpp	/^    iterator insert( iterator itr, Object&& x )$/;"	f	class:List	access:public	signature:( iterator itr, Object&& x )
+insert	.\List.cpp	/^    iterator insert( iterator itr, const Object& x )$/;"	f	class:List	access:public	signature:( iterator itr, const Object& x )
+iterator	.\List.cpp	/^        iterator ( const List<Object>& lst, Node* p ) : const_iterator{ lst, p } {}$/;"	f	class:List::iterator	access:protected	signature:( const List<Object>& lst, Node* p )
+iterator	.\List.cpp	/^        iterator() {}$/;"	f	class:List::iterator	access:public	signature:()
+iterator	.\List.cpp	/^    class iterator : public const_iterator$/;"	c	class:List	file:	inherits:const_iterator	access:public
+iterator	.\Vector.cpp	/^    typedef Object* iterator;$/;"	t	class:Vector	file:	access:public
+main	.\Greatest_common_divisor.cpp	/^int main()$/;"	f	signature:()
+main	.\List.cpp	/^int main()$/;"	f	signature:()
+main	.\Vector.cpp	/^int main()$/;"	f	signature:()
+main	.\binarySearch.cpp	/^int main()$/;"	f	signature:()
+main	.\maxSubSum.cpp	/^int main()$/;"	f	signature:()
+main	.\pow.cpp	/^int main()$/;"	f	signature:()
+maxSubSum1	.\maxSubSum.cpp	/^int maxSubSum1( const vector<int> & a )$/;"	f	signature:( const vector<int> & a )
+maxSubSum2	.\maxSubSum.cpp	/^int maxSubSum2( const vector<int> & a )$/;"	f	signature:( const vector<int> & a )
+maxSubSum3	.\maxSubSum.cpp	/^int maxSubSum3( const vector<int> & a )$/;"	f	signature:( const vector<int> & a )
+maxSubSum4	.\maxSubSum.cpp	/^int maxSubSum4( const vector<int> & a )$/;"	f	signature:( const vector<int> & a )
+maxSumRec	.\maxSubSum.cpp	/^int maxSumRec( const vector<int> & a, int left, int right )$/;"	f	signature:( const vector<int> & a, int left, int right )
+next	.\List.cpp	/^        Node* next;$/;"	m	struct:List::Node	file:	access:public
+objects	.\Vector.cpp	/^    Object* objects;$/;"	m	class:Vector	file:	access:private
+operator !=	.\List.cpp	/^        bool operator != ( const const_iterator& rhs ) const$/;"	f	class:List::const_iterator	access:public	signature:( const const_iterator& rhs ) const
+operator *	.\List.cpp	/^        Object& operator * ()$/;"	f	class:List::iterator	access:public	signature:()
+operator *	.\List.cpp	/^        const Object& operator * () const$/;"	f	class:List::const_iterator	access:public	signature:() const
+operator *	.\List.cpp	/^        const Object& operator * () const$/;"	f	class:List::iterator	access:public	signature:() const
+operator +	.\List.cpp	/^        const_iterator& operator + ( const int i )$/;"	f	class:List::const_iterator	access:public	signature:( const int i )
+operator +	.\List.cpp	/^        iterator& operator + ( const int& i )$/;"	f	class:List::iterator	access:public	signature:( const int& i )
+operator ++	.\List.cpp	/^        const_iterator& operator ++ ( int )$/;"	f	class:List::const_iterator	access:public	signature:( int )
+operator ++	.\List.cpp	/^        const_iterator& operator ++ ()$/;"	f	class:List::const_iterator	access:public	signature:()
+operator ++	.\List.cpp	/^        iterator& operator ++ ( int )$/;"	f	class:List::iterator	access:public	signature:( int )
+operator ++	.\List.cpp	/^        iterator& operator ++ ()$/;"	f	class:List::iterator	access:public	signature:()
+operator -	.\List.cpp	/^        const_iterator& operator - ( const int i )$/;"	f	class:List::const_iterator	access:public	signature:( const int i )
+operator -	.\List.cpp	/^        iterator& operator - ( const int& i )$/;"	f	class:List::iterator	access:public	signature:( const int& i )
+operator --	.\List.cpp	/^        const_iterator& operator -- ( int )$/;"	f	class:List::const_iterator	access:public	signature:( int )
+operator --	.\List.cpp	/^        const_iterator& operator -- ()$/;"	f	class:List::const_iterator	access:public	signature:()
+operator --	.\List.cpp	/^        iterator& operator -- ( int )$/;"	f	class:List::iterator	access:public	signature:( int )
+operator --	.\List.cpp	/^        iterator& operator -- ()$/;"	f	class:List::iterator	access:public	signature:()
+operator <<	.\List.cpp	/^std::ostream& operator << ( std::ostream& out, const List<T>& obj )$/;"	f	signature:( std::ostream& out, const List<T>& obj )
+operator <<	.\Vector.cpp	/^std::ostream& operator << ( std::ostream& out, const Vector<T>& obj )$/;"	f	signature:( std::ostream& out, const Vector<T>& obj )
+operator =	.\List.cpp	/^    List& operator = ( List&& rhs )$/;"	f	class:List	access:public	signature:( List&& rhs )
+operator =	.\List.cpp	/^    List& operator = ( const List& rhs )$/;"	f	class:List	access:public	signature:( const List& rhs )
+operator =	.\Vector.cpp	/^    Vector& operator = ( Vector&& rhs )$/;"	f	class:Vector	access:public	signature:( Vector&& rhs )
+operator =	.\Vector.cpp	/^    Vector& operator = ( const Vector& rhs )$/;"	f	class:Vector	access:public	signature:( const Vector& rhs )
+operator ==	.\List.cpp	/^        bool operator == ( const const_iterator& rhs ) const$/;"	f	class:List::const_iterator	access:public	signature:( const const_iterator& rhs ) const
+operator []	.\Vector.cpp	/^    Object& operator [] ( int index )$/;"	f	class:Vector	access:public	signature:( int index )
+operator []	.\Vector.cpp	/^    const Object& operator [] ( int index ) const$/;"	f	class:Vector	access:public	signature:( int index ) const
+pop_back	.\List.cpp	/^    void pop_back()$/;"	f	class:List	access:public	signature:()
+pop_back	.\Vector.cpp	/^    void pop_back()$/;"	f	class:Vector	access:public	signature:()
+pop_front	.\List.cpp	/^    void pop_front()$/;"	f	class:List	access:public	signature:()
+power	.\pow.cpp	/^long long power( long long x, int n )$/;"	f	signature:( long long x, int n )
+prev	.\List.cpp	/^        Node* prev;$/;"	m	struct:List::Node	file:	access:public
+push_back	.\List.cpp	/^    void push_back( Object&& x )$/;"	f	class:List	access:public	signature:( Object&& x )
+push_back	.\List.cpp	/^    void push_back( const Object& x )$/;"	f	class:List	access:public	signature:( const Object& x )
+push_back	.\Vector.cpp	/^    void push_back( Object&& x)$/;"	f	class:Vector	access:public	signature:( Object&& x)
+push_back	.\Vector.cpp	/^    void push_back(const Object& x)$/;"	f	class:Vector	access:public	signature:(const Object& x)
+push_front	.\List.cpp	/^    void push_front( Object&& x )$/;"	f	class:List	access:public	signature:( Object&& x )
+push_front	.\List.cpp	/^    void push_front( const Object& x )$/;"	f	class:List	access:public	signature:( const Object& x )
+reserve	.\Vector.cpp	/^    void reserve( int newCapacity )$/;"	f	class:Vector	access:public	signature:( int newCapacity )
+resize	.\Vector.cpp	/^    void resize( int newSize )$/;"	f	class:Vector	access:public	signature:( int newSize )
+retrieve	.\List.cpp	/^        Object& retrieve() const$/;"	f	class:List::const_iterator	access:protected	signature:() const
+size	.\List.cpp	/^    int size() const$/;"	f	class:List	access:public	signature:() const
+size	.\Vector.cpp	/^    int size() const$/;"	f	class:Vector	access:public	signature:() const
+tail	.\List.cpp	/^    Node* tail;$/;"	m	class:List	file:	access:private
+theCapacity	.\Vector.cpp	/^    int theCapacity;$/;"	m	class:Vector	file:	access:private
+theList	.\List.cpp	/^        const List<Object> *theList;$/;"	m	class:List::const_iterator	file:	access:protected
+theSize	.\List.cpp	/^    int theSize;$/;"	m	class:List	file:	access:private
+theSize	.\Vector.cpp	/^    int theSize;$/;"	m	class:Vector	file:	access:private
+~List	.\List.cpp	/^    ~List()$/;"	f	class:List	access:public	signature:()
+~Vector	.\Vector.cpp	/^    ~Vector()$/;"	f	class:Vector	access:public	signature:()
