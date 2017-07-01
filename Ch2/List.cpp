@@ -145,14 +145,24 @@ public:
         {
             //iterator* res = this;
             for(int j = 0; j < i; ++j )
+            {
+                if( this->current->next == nullptr )
+                    throw std::out_of_range{ "Iterator error!" };
+
                 this->current = this->current->next;
+            }
             return *this;
         }
         iterator& operator - ( const int& i )
         {
             //iterator* res = this;
             for(int j = i; j >0; --j )
+            {
+                if( this->current->next == nullptr )
+                    throw std::out_of_range{ "Iterator error!" };
+
                 this->current = this->current->prev;
+            }
             return *this;
         }
         

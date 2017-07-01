@@ -1,0 +1,184 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Collection	.\Ch1_Ex13_Collection.cpp	/^	Collection ( Collection && ); \/\/ move constructor$/;"	p	class:Collection	file:	access:public	signature:( Collection && )
+Collection	.\Ch1_Ex13_Collection.cpp	/^	Collection ( Type* ini_arr, Type* end_arr ); \/\/ array constructor$/;"	p	class:Collection	file:	access:public	signature:( Type* ini_arr, Type* end_arr )
+Collection	.\Ch1_Ex13_Collection.cpp	/^	Collection ( const Collection & ); \/\/ copy constructor$/;"	p	class:Collection	file:	access:public	signature:( const Collection & )
+Collection	.\Ch1_Ex13_Collection.cpp	/^	Collection( const initializer_list<Type> &  ); \/\/ constructor$/;"	p	class:Collection	file:	access:public	signature:( const initializer_list<Type> & )
+Collection	.\Ch1_Ex13_Collection.cpp	/^	Collection() : length { 0 }, array { nullptr } , capacity { 2 } {} \/\/ default constructor$/;"	f	class:Collection	access:public	signature:()
+Collection	.\Ch1_Ex13_Collection.cpp	/^	explicit Collection( const int, const Type t = Type {} ); \/\/ constructor$/;"	p	class:Collection	file:	access:public	signature:( const int, const Type t = Type {} )
+Collection	.\Ch1_Ex13_Collection.cpp	/^Collection<Type>::Collection ( Collection &&rhs ) : length { rhs.size() }, capacity { rhs.getCapacity() }, array { rhs.array }\/\/ move constructor$/;"	f	class:Collection	signature:( Collection &&rhs )
+Collection	.\Ch1_Ex13_Collection.cpp	/^Collection<Type>::Collection ( Type* ini_arr, Type* end_arr ) \/\/ array constructor$/;"	f	class:Collection	signature:( Type* ini_arr, Type* end_arr )
+Collection	.\Ch1_Ex13_Collection.cpp	/^Collection<Type>::Collection ( const Collection &rhs ):length{ rhs.size() }, capacity { rhs.getCapacity() } \/\/copy constructor$/;"	f	class:Collection	signature:( const Collection &rhs )
+Collection	.\Ch1_Ex13_Collection.cpp	/^Collection<Type>::Collection( const initializer_list<Type> & ini_list ) : length { ini_list.size() }\/\/ constructor$/;"	f	class:Collection	signature:( const initializer_list<Type> & ini_list )
+Collection	.\Ch1_Ex13_Collection.cpp	/^Collection<Type>::Collection( const int len, const Type t) \/\/ constructor$/;"	f	class:Collection	signature:( const int len, const Type t)
+Collection	.\Ch1_Ex13_Collection.cpp	/^class Collection{$/;"	c	file:
+Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection ( Collection &&rhs ) \/\/ move constructor$/;"	f	class:Collection	access:public	signature:( Collection &&rhs )
+Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection ( Collection &rhs ):length{ rhs.size() } \/\/copy constructor$/;"	f	class:Collection	access:public	signature:( Collection &rhs )
+Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection (Type* ini_arr, Type* end_arr) \/\/array constructor$/;"	f	class:Collection	access:public	signature:(Type* ini_arr, Type* end_arr)
+Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection( int len ) \/\/ constructor$/;"	f	class:Collection	access:public	signature:( int len )
+Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection() : length { 0 }, array { nullptr } , capacity { 10 } {} \/\/default constructor$/;"	f	class:Collection	access:public	signature:()
+Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection(initializer_list<Type> ini_list) \/\/ constructor$/;"	f	class:Collection	access:public	signature:(initializer_list<Type> ini_list)
+Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^class Collection{$/;"	c	file:
+Collection::Collection	.\Ch1_Ex13_Collection.cpp	/^	Collection ( Collection && ); \/\/ move constructor$/;"	p	class:Collection	file:	access:public	signature:( Collection && )
+Collection::Collection	.\Ch1_Ex13_Collection.cpp	/^	Collection ( Type* ini_arr, Type* end_arr ); \/\/ array constructor$/;"	p	class:Collection	file:	access:public	signature:( Type* ini_arr, Type* end_arr )
+Collection::Collection	.\Ch1_Ex13_Collection.cpp	/^	Collection ( const Collection & ); \/\/ copy constructor$/;"	p	class:Collection	file:	access:public	signature:( const Collection & )
+Collection::Collection	.\Ch1_Ex13_Collection.cpp	/^	Collection( const initializer_list<Type> &  ); \/\/ constructor$/;"	p	class:Collection	file:	access:public	signature:( const initializer_list<Type> & )
+Collection::Collection	.\Ch1_Ex13_Collection.cpp	/^	Collection() : length { 0 }, array { nullptr } , capacity { 2 } {} \/\/ default constructor$/;"	f	class:Collection	access:public	signature:()
+Collection::Collection	.\Ch1_Ex13_Collection.cpp	/^	explicit Collection( const int, const Type t = Type {} ); \/\/ constructor$/;"	p	class:Collection	file:	access:public	signature:( const int, const Type t = Type {} )
+Collection::Collection	.\Ch1_Ex13_Collection.cpp	/^Collection<Type>::Collection ( Collection &&rhs ) : length { rhs.size() }, capacity { rhs.getCapacity() }, array { rhs.array }\/\/ move constructor$/;"	f	class:Collection	signature:( Collection &&rhs )
+Collection::Collection	.\Ch1_Ex13_Collection.cpp	/^Collection<Type>::Collection ( Type* ini_arr, Type* end_arr ) \/\/ array constructor$/;"	f	class:Collection	signature:( Type* ini_arr, Type* end_arr )
+Collection::Collection	.\Ch1_Ex13_Collection.cpp	/^Collection<Type>::Collection ( const Collection &rhs ):length{ rhs.size() }, capacity { rhs.getCapacity() } \/\/copy constructor$/;"	f	class:Collection	signature:( const Collection &rhs )
+Collection::Collection	.\Ch1_Ex13_Collection.cpp	/^Collection<Type>::Collection( const initializer_list<Type> & ini_list ) : length { ini_list.size() }\/\/ constructor$/;"	f	class:Collection	signature:( const initializer_list<Type> & ini_list )
+Collection::Collection	.\Ch1_Ex13_Collection.cpp	/^Collection<Type>::Collection( const int len, const Type t) \/\/ constructor$/;"	f	class:Collection	signature:( const int len, const Type t)
+Collection::Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection ( Collection &&rhs ) \/\/ move constructor$/;"	f	class:Collection	access:public	signature:( Collection &&rhs )
+Collection::Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection ( Collection &rhs ):length{ rhs.size() } \/\/copy constructor$/;"	f	class:Collection	access:public	signature:( Collection &rhs )
+Collection::Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection (Type* ini_arr, Type* end_arr) \/\/array constructor$/;"	f	class:Collection	access:public	signature:(Type* ini_arr, Type* end_arr)
+Collection::Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection( int len ) \/\/ constructor$/;"	f	class:Collection	access:public	signature:( int len )
+Collection::Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection() : length { 0 }, array { nullptr } , capacity { 10 } {} \/\/default constructor$/;"	f	class:Collection	access:public	signature:()
+Collection::Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection(initializer_list<Type> ini_list) \/\/ constructor$/;"	f	class:Collection	access:public	signature:(initializer_list<Type> ini_list)
+Collection::array	.\Ch1_Ex13_Collection.cpp	/^	Type* array;$/;"	m	class:Collection	file:	access:private
+Collection::array	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Type* array;$/;"	m	class:Collection	file:	access:private
+Collection::at	.\Ch1_Ex13_Collection.cpp	/^	Type & at( int ); \/\/element accessor$/;"	p	class:Collection	file:	access:public	signature:( int )
+Collection::at	.\Ch1_Ex13_Collection.cpp	/^	Type at( int ) const;$/;"	p	class:Collection	file:	access:public	signature:( int ) const
+Collection::at	.\Ch1_Ex13_Collection.cpp	/^inline Type & Collection<Type>::at( int i ) \/\/ element accessor$/;"	f	class:Collection	signature:( int i )
+Collection::at	.\Ch1_Ex13_Collection.cpp	/^inline Type Collection<Type>::at( int i ) const \/\/ element accessor$/;"	f	class:Collection	signature:( int i ) const
+Collection::at	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Type & at( int i ) \/\/element accessor$/;"	f	class:Collection	access:public	signature:( int i )
+Collection::begin	.\Ch1_Ex13_Collection.cpp	/^	Type* begin() const { return array; }$/;"	f	class:Collection	access:public	signature:() const
+Collection::bubbleSort	.\Ch1_Ex14_Sorted_Collection.cpp	/^	void bubbleSort()$/;"	f	class:Collection	file:	access:private	signature:()
+Collection::capacity	.\Ch1_Ex13_Collection.cpp	/^	size_t capacity;$/;"	m	class:Collection	file:	access:private
+Collection::capacity	.\Ch1_Ex14_Sorted_Collection.cpp	/^	size_t capacity;$/;"	m	class:Collection	file:	access:private
+Collection::check	.\Ch1_Ex13_Collection.cpp	/^	bool check( int n ) const$/;"	f	class:Collection	file:	access:private	signature:( int n ) const
+Collection::contain	.\Ch1_Ex13_Collection.cpp	/^	bool contain(const Type &) const;$/;"	p	class:Collection	file:	access:public	signature:(const Type &) const
+Collection::contain	.\Ch1_Ex13_Collection.cpp	/^bool Collection<Type>::contain(const Type &t) const$/;"	f	class:Collection	signature:(const Type &t) const
+Collection::contain	.\Ch1_Ex14_Sorted_Collection.cpp	/^	bool contain(const Type &t) const$/;"	f	class:Collection	access:public	signature:(const Type &t) const
+Collection::end	.\Ch1_Ex13_Collection.cpp	/^	Type* end() const { return array + length; }$/;"	f	class:Collection	access:public	signature:() const
+Collection::enlarge	.\Ch1_Ex14_Sorted_Collection.cpp	/^	bool enlarge(size_t new_capac)  \/\/increasing capacity$/;"	f	class:Collection	file:	access:private	signature:(size_t new_capac)
+Collection::findMax	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Type findMax() const { return array[length-1]; }$/;"	f	class:Collection	access:public	signature:() const
+Collection::findMin	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Type findMin() const { return array[0]; }$/;"	f	class:Collection	access:public	signature:() const
+Collection::getCapacity	.\Ch1_Ex13_Collection.cpp	/^	size_t getCapacity() const { return capacity; }$/;"	f	class:Collection	access:public	signature:() const
+Collection::getCapacity	.\Ch1_Ex14_Sorted_Collection.cpp	/^	size_t getCapacity() { return capacity; }$/;"	f	class:Collection	access:public	signature:()
+Collection::insert	.\Ch1_Ex13_Collection.cpp	/^	bool insert( int , const Type & );$/;"	p	class:Collection	file:	access:public	signature:( int , const Type & )
+Collection::insert	.\Ch1_Ex13_Collection.cpp	/^bool Collection<Type>::insert( int index, const Type &t)$/;"	f	class:Collection	signature:( int index, const Type &t)
+Collection::insert	.\Ch1_Ex14_Sorted_Collection.cpp	/^	bool insert( int index, const Type &t)$/;"	f	class:Collection	access:public	signature:( int index, const Type &t)
+Collection::isEmpty	.\Ch1_Ex13_Collection.cpp	/^	bool isEmpty() const { return ( length == 0 ); }$/;"	f	class:Collection	access:public	signature:() const
+Collection::isEmpty	.\Ch1_Ex14_Sorted_Collection.cpp	/^	bool isEmpty() const { return (length == 0); }$/;"	f	class:Collection	access:public	signature:() const
+Collection::length	.\Ch1_Ex13_Collection.cpp	/^	size_t length;$/;"	m	class:Collection	file:	access:private
+Collection::length	.\Ch1_Ex14_Sorted_Collection.cpp	/^	size_t length;$/;"	m	class:Collection	file:	access:private
+Collection::makeEmpty	.\Ch1_Ex13_Collection.cpp	/^	void makeEmpty(); \/\/ to be done$/;"	p	class:Collection	file:	access:public	signature:()
+Collection::makeEmpty	.\Ch1_Ex13_Collection.cpp	/^void Collection<Type>::makeEmpty()\/\/ to be done$/;"	f	class:Collection	signature:()
+Collection::makeEmpty	.\Ch1_Ex14_Sorted_Collection.cpp	/^	void makeEmpty()$/;"	f	class:Collection	access:public	signature:()
+Collection::operator <<	.\Ch1_Ex14_Sorted_Collection.cpp	/^	friend ostream& operator<<(ostream &out, Collection<Type> &obj)$/;"	f	class:Collection	access:friend	signature:(ostream &out, Collection<Type> &obj)
+Collection::operator =	.\Ch1_Ex13_Collection.cpp	/^	Collection & operator = ( Collection && ); \/\/move assignment$/;"	p	class:Collection	file:	access:public	signature:( Collection && )
+Collection::operator =	.\Ch1_Ex13_Collection.cpp	/^	Collection & operator = ( const Collection & ); \/\/ copy assignment$/;"	p	class:Collection	file:	access:public	signature:( const Collection & )
+Collection::operator =	.\Ch1_Ex13_Collection.cpp	/^Collection<Type> & Collection<Type>::operator = ( Collection &&rhs ) \/\/move assignment$/;"	f	class:Collection	signature:( Collection &&rhs )
+Collection::operator =	.\Ch1_Ex13_Collection.cpp	/^Collection<Type> & Collection<Type>::operator = ( const Collection &rhs ) \/\/copy assignment$/;"	f	class:Collection	signature:( const Collection &rhs )
+Collection::operator =	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection & operator= ( Collection &&rhs ) \/\/move assignment$/;"	f	class:Collection	access:public	signature:( Collection &&rhs )
+Collection::operator =	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection & operator= (const Collection &rhs) \/\/copy assignment$/;"	f	class:Collection	access:public	signature:(const Collection &rhs)
+Collection::operator []	.\Ch1_Ex13_Collection.cpp	/^	Type & operator[] ( int );$/;"	p	class:Collection	file:	access:public	signature:( int )
+Collection::operator []	.\Ch1_Ex13_Collection.cpp	/^	Type operator [] ( int ) const;$/;"	p	class:Collection	file:	access:public	signature:( int ) const
+Collection::operator []	.\Ch1_Ex13_Collection.cpp	/^inline Type & Collection<Type>:: operator [] ( int i ) \/\/ element accessor$/;"	f	class:Collection	signature:( int i )
+Collection::operator []	.\Ch1_Ex13_Collection.cpp	/^inline Type Collection<Type>:: operator [] ( int i ) const \/\/ element accessor$/;"	f	class:Collection	signature:( int i ) const
+Collection::operator []	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Type & operator[] ( int i ) { return at(i); }	$/;"	f	class:Collection	access:public	signature:( int i )
+Collection::pop_back	.\Ch1_Ex13_Collection.cpp	/^	Type pop_back ();$/;"	p	class:Collection	file:	access:public	signature:()
+Collection::pop_back	.\Ch1_Ex13_Collection.cpp	/^Type Collection<Type>::pop_back()$/;"	f	class:Collection	signature:()
+Collection::push_back	.\Ch1_Ex13_Collection.cpp	/^	bool push_back ( const Type & t ) { return insert( length, t ); }$/;"	f	class:Collection	access:public	signature:( const Type & t )
+Collection::remove	.\Ch1_Ex13_Collection.cpp	/^	bool remove( int );$/;"	p	class:Collection	file:	access:public	signature:( int )
+Collection::remove	.\Ch1_Ex13_Collection.cpp	/^bool Collection<Type>::remove(int index)$/;"	f	class:Collection	signature:(int index)
+Collection::remove	.\Ch1_Ex14_Sorted_Collection.cpp	/^	bool remove(int index)$/;"	f	class:Collection	access:public	signature:(int index)
+Collection::resize	.\Ch1_Ex13_Collection.cpp	/^	bool resize(size_t new_capac)  \/\/increasing capacity$/;"	f	class:Collection	file:	access:private	signature:(size_t new_capac)
+Collection::size	.\Ch1_Ex13_Collection.cpp	/^	size_t size() const { return length; }$/;"	f	class:Collection	access:public	signature:() const
+Collection::size	.\Ch1_Ex14_Sorted_Collection.cpp	/^	size_t size() const { return length; }$/;"	f	class:Collection	access:public	signature:() const
+Collection::~Collection	.\Ch1_Ex13_Collection.cpp	/^	~Collection() { delete[] array; }$/;"	f	class:Collection	access:public	signature:()
+Collection::~Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	~Collection() { delete[] array; }$/;"	f	class:Collection	access:public	signature:()
+MATRIX_H	.\Ch1_Ex13_Matrix.h	2;"	d
+array	.\Ch1_Ex13_Collection.cpp	/^	Type* array;$/;"	m	class:Collection	file:	access:private
+array	.\Ch1_Ex13_Matrix.h	/^	vector<vector<Object>> array;$/;"	m	class:matrix	access:private
+array	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Type* array;$/;"	m	class:Collection	file:	access:private
+at	.\Ch1_Ex13_Collection.cpp	/^	Type & at( int ); \/\/element accessor$/;"	p	class:Collection	file:	access:public	signature:( int )
+at	.\Ch1_Ex13_Collection.cpp	/^	Type at( int ) const;$/;"	p	class:Collection	file:	access:public	signature:( int ) const
+at	.\Ch1_Ex13_Collection.cpp	/^inline Type & Collection<Type>::at( int i ) \/\/ element accessor$/;"	f	class:Collection	signature:( int i )
+at	.\Ch1_Ex13_Collection.cpp	/^inline Type Collection<Type>::at( int i ) const \/\/ element accessor$/;"	f	class:Collection	signature:( int i ) const
+at	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Type & at( int i ) \/\/element accessor$/;"	f	class:Collection	access:public	signature:( int i )
+begin	.\Ch1_Ex13_Collection.cpp	/^	Type* begin() const { return array; }$/;"	f	class:Collection	access:public	signature:() const
+bubbleSort	.\Ch1_Ex14_Sorted_Collection.cpp	/^	void bubbleSort()$/;"	f	class:Collection	file:	access:private	signature:()
+bubbleSort	.\Ch1_Ex1_kth_largest_num.cpp	/^void bubbleSort(T* arr, size_t N)$/;"	f	signature:(T* arr, size_t N)
+capacity	.\Ch1_Ex13_Collection.cpp	/^	size_t capacity;$/;"	m	class:Collection	file:	access:private
+capacity	.\Ch1_Ex14_Sorted_Collection.cpp	/^	size_t capacity;$/;"	m	class:Collection	file:	access:private
+check	.\Ch1_Ex13_Collection.cpp	/^	bool check( int n ) const$/;"	f	class:Collection	file:	access:private	signature:( int n ) const
+contain	.\Ch1_Ex13_Collection.cpp	/^	bool contain(const Type &) const;$/;"	p	class:Collection	file:	access:public	signature:(const Type &) const
+contain	.\Ch1_Ex13_Collection.cpp	/^bool Collection<Type>::contain(const Type &t) const$/;"	f	class:Collection	signature:(const Type &t) const
+contain	.\Ch1_Ex14_Sorted_Collection.cpp	/^	bool contain(const Type &t) const$/;"	f	class:Collection	access:public	signature:(const Type &t) const
+countOne	.\Ch1_Ex5_Num_of_1_in_binary_Rep.cpp	/^int countOne(const int N)$/;"	f	signature:(const int N)
+end	.\Ch1_Ex13_Collection.cpp	/^	Type* end() const { return array + length; }$/;"	f	class:Collection	access:public	signature:() const
+enlarge	.\Ch1_Ex14_Sorted_Collection.cpp	/^	bool enlarge(size_t new_capac)  \/\/increasing capacity$/;"	f	class:Collection	file:	access:private	signature:(size_t new_capac)
+findMax	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Type findMax() const { return array[length-1]; }$/;"	f	class:Collection	access:public	signature:() const
+findMin	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Type findMin() const { return array[0]; }$/;"	f	class:Collection	access:public	signature:() const
+findWords	.\Ch1_Ex2_word_puzzle.cpp	/^void findWords(const char (*puzzle)[4], const char* word)$/;"	f	signature:(const char (*puzzle)[4], const char* word)
+getCapacity	.\Ch1_Ex13_Collection.cpp	/^	size_t getCapacity() const { return capacity; }$/;"	f	class:Collection	access:public	signature:() const
+getCapacity	.\Ch1_Ex14_Sorted_Collection.cpp	/^	size_t getCapacity() { return capacity; }$/;"	f	class:Collection	access:public	signature:()
+insert	.\Ch1_Ex13_Collection.cpp	/^	bool insert( int , const Type & );$/;"	p	class:Collection	file:	access:public	signature:( int , const Type & )
+insert	.\Ch1_Ex13_Collection.cpp	/^bool Collection<Type>::insert( int index, const Type &t)$/;"	f	class:Collection	signature:( int index, const Type &t)
+insert	.\Ch1_Ex14_Sorted_Collection.cpp	/^	bool insert( int index, const Type &t)$/;"	f	class:Collection	access:public	signature:( int index, const Type &t)
+isEmpty	.\Ch1_Ex13_Collection.cpp	/^	bool isEmpty() const { return ( length == 0 ); }$/;"	f	class:Collection	access:public	signature:() const
+isEmpty	.\Ch1_Ex14_Sorted_Collection.cpp	/^	bool isEmpty() const { return (length == 0); }$/;"	f	class:Collection	access:public	signature:() const
+isSwap	.\Ch1_Ex6_str_permute.cpp	/^bool isSwap(const string str, const int begin, const int end)$/;"	f	signature:(const string str, const int begin, const int end)
+length	.\Ch1_Ex13_Collection.cpp	/^	size_t length;$/;"	m	class:Collection	file:	access:private
+length	.\Ch1_Ex14_Sorted_Collection.cpp	/^	size_t length;$/;"	m	class:Collection	file:	access:private
+main	.\Ch1_Ex13_Collection.cpp	/^int main()$/;"	f	signature:()
+main	.\Ch1_Ex14_Sorted_Collection.cpp	/^int main()$/;"	f	signature:()
+main	.\Ch1_Ex1_kth_largest_num.cpp	/^int main()$/;"	f	signature:()
+main	.\Ch1_Ex2_word_puzzle.cpp	/^int main()$/;"	f	signature:()
+main	.\Ch1_Ex5_Num_of_1_in_binary_Rep.cpp	/^int main()$/;"	f	signature:()
+main	.\Ch1_Ex6_str_permute.cpp	/^int main()$/;"	f	signature:()
+makeEmpty	.\Ch1_Ex13_Collection.cpp	/^	void makeEmpty(); \/\/ to be done$/;"	p	class:Collection	file:	access:public	signature:()
+makeEmpty	.\Ch1_Ex13_Collection.cpp	/^void Collection<Type>::makeEmpty()\/\/ to be done$/;"	f	class:Collection	signature:()
+makeEmpty	.\Ch1_Ex14_Sorted_Collection.cpp	/^	void makeEmpty()$/;"	f	class:Collection	access:public	signature:()
+matrix	.\Ch1_Ex13_Matrix.h	/^	matrix ( int rows = 0, int cols = 0) : array{ rows }$/;"	f	class:matrix	access:public	signature:( int rows = 0, int cols = 0)
+matrix	.\Ch1_Ex13_Matrix.h	/^	matrix ( vector<vector<Type>> &&v) : array{ std::move( v ) } {}$/;"	f	class:matrix	access:public	signature:( vector<vector<Type>> &&v)
+matrix	.\Ch1_Ex13_Matrix.h	/^	matrix ( vector<vector<Type>> v) : array{ v } {}$/;"	f	class:matrix	access:public	signature:( vector<vector<Type>> v)
+matrix	.\Ch1_Ex13_Matrix.h	/^class matrix{$/;"	c
+matrix::array	.\Ch1_Ex13_Matrix.h	/^	vector<vector<Object>> array;$/;"	m	class:matrix	access:private
+matrix::matrix	.\Ch1_Ex13_Matrix.h	/^	matrix ( int rows = 0, int cols = 0) : array{ rows }$/;"	f	class:matrix	access:public	signature:( int rows = 0, int cols = 0)
+matrix::matrix	.\Ch1_Ex13_Matrix.h	/^	matrix ( vector<vector<Type>> &&v) : array{ std::move( v ) } {}$/;"	f	class:matrix	access:public	signature:( vector<vector<Type>> &&v)
+matrix::matrix	.\Ch1_Ex13_Matrix.h	/^	matrix ( vector<vector<Type>> v) : array{ v } {}$/;"	f	class:matrix	access:public	signature:( vector<vector<Type>> v)
+matrix::numcols	.\Ch1_Ex13_Matrix.h	/^	int numcols () const$/;"	f	class:matrix	access:public	signature:() const
+matrix::numrows	.\Ch1_Ex13_Matrix.h	/^	int numrows () const$/;"	f	class:matrix	access:public	signature:() const
+matrix::operator []	.\Ch1_Ex13_Matrix.h	/^	const vector<Type> & operator[] ( int row ) const$/;"	f	class:matrix	access:public	signature:( int row ) const
+matrix::operator []	.\Ch1_Ex13_Matrix.h	/^	vector<Type> & operator[] ( int row )$/;"	f	class:matrix	access:public	signature:( int row )
+matrix::resize	.\Ch1_Ex13_Matrix.h	/^	bool resize ( int newRows, int newCols )$/;"	f	class:matrix	access:public	signature:( int newRows, int newCols )
+numcols	.\Ch1_Ex13_Matrix.h	/^	int numcols () const$/;"	f	class:matrix	access:public	signature:() const
+numrows	.\Ch1_Ex13_Matrix.h	/^	int numrows () const$/;"	f	class:matrix	access:public	signature:() const
+operator <<	.\Ch1_Ex13_Collection.cpp	/^ostream & operator << (ostream &out, const Collection<Type> &obj)$/;"	f	signature:(ostream &out, const Collection<Type> &obj)
+operator <<	.\Ch1_Ex14_Sorted_Collection.cpp	/^	friend ostream& operator<<(ostream &out, Collection<Type> &obj)$/;"	f	class:Collection	access:friend	signature:(ostream &out, Collection<Type> &obj)
+operator =	.\Ch1_Ex13_Collection.cpp	/^	Collection & operator = ( Collection && ); \/\/move assignment$/;"	p	class:Collection	file:	access:public	signature:( Collection && )
+operator =	.\Ch1_Ex13_Collection.cpp	/^	Collection & operator = ( const Collection & ); \/\/ copy assignment$/;"	p	class:Collection	file:	access:public	signature:( const Collection & )
+operator =	.\Ch1_Ex13_Collection.cpp	/^Collection<Type> & Collection<Type>::operator = ( Collection &&rhs ) \/\/move assignment$/;"	f	class:Collection	signature:( Collection &&rhs )
+operator =	.\Ch1_Ex13_Collection.cpp	/^Collection<Type> & Collection<Type>::operator = ( const Collection &rhs ) \/\/copy assignment$/;"	f	class:Collection	signature:( const Collection &rhs )
+operator =	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection & operator= ( Collection &&rhs ) \/\/move assignment$/;"	f	class:Collection	access:public	signature:( Collection &&rhs )
+operator =	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Collection & operator= (const Collection &rhs) \/\/copy assignment$/;"	f	class:Collection	access:public	signature:(const Collection &rhs)
+operator []	.\Ch1_Ex13_Collection.cpp	/^	Type & operator[] ( int );$/;"	p	class:Collection	file:	access:public	signature:( int )
+operator []	.\Ch1_Ex13_Collection.cpp	/^	Type operator [] ( int ) const;$/;"	p	class:Collection	file:	access:public	signature:( int ) const
+operator []	.\Ch1_Ex13_Collection.cpp	/^inline Type & Collection<Type>:: operator [] ( int i ) \/\/ element accessor$/;"	f	class:Collection	signature:( int i )
+operator []	.\Ch1_Ex13_Collection.cpp	/^inline Type Collection<Type>:: operator [] ( int i ) const \/\/ element accessor$/;"	f	class:Collection	signature:( int i ) const
+operator []	.\Ch1_Ex13_Matrix.h	/^	const vector<Type> & operator[] ( int row ) const$/;"	f	class:matrix	access:public	signature:( int row ) const
+operator []	.\Ch1_Ex13_Matrix.h	/^	vector<Type> & operator[] ( int row )$/;"	f	class:matrix	access:public	signature:( int row )
+operator []	.\Ch1_Ex14_Sorted_Collection.cpp	/^	Type & operator[] ( int i ) { return at(i); }	$/;"	f	class:Collection	access:public	signature:( int i )
+permute	.\Ch1_Ex6_str_permute.cpp	/^void permute ( const string str )$/;"	f	signature:( const string str )
+permute	.\Ch1_Ex6_str_permute.cpp	/^void permute (const string str, int low, int high)$/;"	f	signature:(const string str, int low, int high)
+pop_back	.\Ch1_Ex13_Collection.cpp	/^	Type pop_back ();$/;"	p	class:Collection	file:	access:public	signature:()
+pop_back	.\Ch1_Ex13_Collection.cpp	/^Type Collection<Type>::pop_back()$/;"	f	class:Collection	signature:()
+push_back	.\Ch1_Ex13_Collection.cpp	/^	bool push_back ( const Type & t ) { return insert( length, t ); }$/;"	f	class:Collection	access:public	signature:( const Type & t )
+remove	.\Ch1_Ex13_Collection.cpp	/^	bool remove( int );$/;"	p	class:Collection	file:	access:public	signature:( int )
+remove	.\Ch1_Ex13_Collection.cpp	/^bool Collection<Type>::remove(int index)$/;"	f	class:Collection	signature:(int index)
+remove	.\Ch1_Ex14_Sorted_Collection.cpp	/^	bool remove(int index)$/;"	f	class:Collection	access:public	signature:(int index)
+resize	.\Ch1_Ex13_Collection.cpp	/^	bool resize(size_t new_capac)  \/\/increasing capacity$/;"	f	class:Collection	file:	access:private	signature:(size_t new_capac)
+resize	.\Ch1_Ex13_Matrix.h	/^	bool resize ( int newRows, int newCols )$/;"	f	class:matrix	access:public	signature:( int newRows, int newCols )
+size	.\Ch1_Ex13_Collection.cpp	/^	size_t size() const { return length; }$/;"	f	class:Collection	access:public	signature:() const
+size	.\Ch1_Ex14_Sorted_Collection.cpp	/^	size_t size() const { return length; }$/;"	f	class:Collection	access:public	signature:() const
+validate	.\Ch1_Ex2_word_puzzle.cpp	/^inline bool validate (int pos, int direction, int length)$/;"	f	signature:(int pos, int direction, int length)
+~Collection	.\Ch1_Ex13_Collection.cpp	/^	~Collection() { delete[] array; }$/;"	f	class:Collection	access:public	signature:()
+~Collection	.\Ch1_Ex14_Sorted_Collection.cpp	/^	~Collection() { delete[] array; }$/;"	f	class:Collection	access:public	signature:()
