@@ -73,7 +73,26 @@ List::theSize	.\List.cpp	/^    int theSize;$/;"	m	class:List	file:	access:privat
 List::~List	.\List.cpp	/^    ~List()$/;"	f	class:List	access:public	signature:()
 Node	.\List.cpp	/^        Node( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {}$/;"	f	struct:List::Node	access:public	signature:( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr )
 Node	.\List.cpp	/^    struct Node$/;"	s	class:List	file:	access:private
+SPARE_CAPACITY	.\ArrayStack.cpp	/^        static const int SPARE_CAPACITY = 10;$/;"	m	class:Stack	file:	access:private
 SPARE_CAPACITY	.\Vector.cpp	/^    static const int SPARE_CAPACITY = 16;$/;"	m	class:Vector	file:	access:public
+Stack	.\ArrayStack.cpp	/^        Stack( Stack&& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, arr{ rhs.arr }$/;"	f	class:Stack	access:public	signature:( Stack&& rhs )
+Stack	.\ArrayStack.cpp	/^        Stack( const Stack& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }$/;"	f	class:Stack	access:public	signature:( const Stack& rhs )
+Stack	.\ArrayStack.cpp	/^        Stack( const std::initializer_list<Type>& init_list ) : theSize{ init_list.size() }$/;"	f	class:Stack	access:public	signature:( const std::initializer_list<Type>& init_list )
+Stack	.\ArrayStack.cpp	/^        explicit Stack( int initSize = 0 ) : theSize{ initSize }, theCapacity{ initSize + SPARE_CAPACITY }$/;"	f	class:Stack	access:public	signature:( int initSize = 0 )
+Stack	.\ArrayStack.cpp	/^class Stack {$/;"	c	file:
+Stack::SPARE_CAPACITY	.\ArrayStack.cpp	/^        static const int SPARE_CAPACITY = 10;$/;"	m	class:Stack	file:	access:private
+Stack::Stack	.\ArrayStack.cpp	/^        Stack( Stack&& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, arr{ rhs.arr }$/;"	f	class:Stack	access:public	signature:( Stack&& rhs )
+Stack::Stack	.\ArrayStack.cpp	/^        Stack( const Stack& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }$/;"	f	class:Stack	access:public	signature:( const Stack& rhs )
+Stack::Stack	.\ArrayStack.cpp	/^        Stack( const std::initializer_list<Type>& init_list ) : theSize{ init_list.size() }$/;"	f	class:Stack	access:public	signature:( const std::initializer_list<Type>& init_list )
+Stack::Stack	.\ArrayStack.cpp	/^        explicit Stack( int initSize = 0 ) : theSize{ initSize }, theCapacity{ initSize + SPARE_CAPACITY }$/;"	f	class:Stack	access:public	signature:( int initSize = 0 )
+Stack::arr	.\ArrayStack.cpp	/^        Type* arr;$/;"	m	class:Stack	file:	access:private
+Stack::operator =	.\ArrayStack.cpp	/^        Stack& operator = ( Stack&& rhs )$/;"	f	class:Stack	access:public	signature:( Stack&& rhs )
+Stack::operator =	.\ArrayStack.cpp	/^        Stack& operator = ( const Stack& rhs )$/;"	f	class:Stack	access:public	signature:( const Stack& rhs )
+Stack::operator []	.\ArrayStack.cpp	/^        Type operator [] ( int i ) const { return arr[i]; }$/;"	f	class:Stack	access:public	signature:( int i ) const
+Stack::size	.\ArrayStack.cpp	/^        int size() const { return theSize; }$/;"	f	class:Stack	access:public	signature:() const
+Stack::theCapacity	.\ArrayStack.cpp	/^        size_t theCapacity;$/;"	m	class:Stack	file:	access:private
+Stack::theSize	.\ArrayStack.cpp	/^        size_t theSize;$/;"	m	class:Stack	file:	access:private
+Stack::~Stack	.\ArrayStack.cpp	/^        ~Stack() { delete[] arr; }$/;"	f	class:Stack	access:public	signature:()
 Vector	.\Vector.cpp	/^    Vector( Vector&& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, objects{ rhs.objects }$/;"	f	class:Vector	access:public	signature:( Vector&& rhs )
 Vector	.\Vector.cpp	/^    Vector( const Vector& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, objects { nullptr }$/;"	f	class:Vector	access:public	signature:( const Vector& rhs )
 Vector	.\Vector.cpp	/^    explicit Vector( int initSize = 0 ) : theSize{ initSize }, theCapacity{ initSize + SPARE_CAPACITY }$/;"	f	class:Vector	access:public	signature:( int initSize = 0 )
@@ -105,6 +124,7 @@ Vector::size	.\Vector.cpp	/^    int size() const$/;"	f	class:Vector	access:publi
 Vector::theCapacity	.\Vector.cpp	/^    int theCapacity;$/;"	m	class:Vector	file:	access:private
 Vector::theSize	.\Vector.cpp	/^    int theSize;$/;"	m	class:Vector	file:	access:private
 Vector::~Vector	.\Vector.cpp	/^    ~Vector()$/;"	f	class:Vector	access:public	signature:()
+arr	.\ArrayStack.cpp	/^        Type* arr;$/;"	m	class:Stack	file:	access:private
 assertIsValid	.\List.cpp	/^        void assertIsValid() const$/;"	f	class:List::const_iterator	access:protected	signature:() const
 back	.\List.cpp	/^    Object& back()$/;"	f	class:List	access:public	signature:()
 back	.\List.cpp	/^    const Object& back() const$/;"	f	class:List	access:public	signature:() const
@@ -141,6 +161,7 @@ iterator	.\List.cpp	/^        iterator ( const List<Object>& lst, Node* p ) : co
 iterator	.\List.cpp	/^        iterator() {}$/;"	f	class:List::iterator	access:public	signature:()
 iterator	.\List.cpp	/^    class iterator : public const_iterator$/;"	c	class:List	file:	inherits:const_iterator	access:public
 iterator	.\Vector.cpp	/^    typedef Object* iterator;$/;"	t	class:Vector	file:	access:public
+main	.\ArrayStack.cpp	/^int main()$/;"	f	signature:()
 main	.\Greatest_common_divisor.cpp	/^int main()$/;"	f	signature:()
 main	.\List.cpp	/^int main()$/;"	f	signature:()
 main	.\Vector.cpp	/^int main()$/;"	f	signature:()
@@ -170,13 +191,17 @@ operator --	.\List.cpp	/^        const_iterator& operator -- ( int )$/;"	f	class
 operator --	.\List.cpp	/^        const_iterator& operator -- ()$/;"	f	class:List::const_iterator	access:public	signature:()
 operator --	.\List.cpp	/^        iterator& operator -- ( int )$/;"	f	class:List::iterator	access:public	signature:( int )
 operator --	.\List.cpp	/^        iterator& operator -- ()$/;"	f	class:List::iterator	access:public	signature:()
+operator <<	.\ArrayStack.cpp	/^std::ostream& operator << ( std::ostream& out, const Stack<T>& obj )$/;"	f	signature:( std::ostream& out, const Stack<T>& obj )
 operator <<	.\List.cpp	/^std::ostream& operator << ( std::ostream& out, const List<T>& obj )$/;"	f	signature:( std::ostream& out, const List<T>& obj )
 operator <<	.\Vector.cpp	/^std::ostream& operator << ( std::ostream& out, const Vector<T>& obj )$/;"	f	signature:( std::ostream& out, const Vector<T>& obj )
+operator =	.\ArrayStack.cpp	/^        Stack& operator = ( Stack&& rhs )$/;"	f	class:Stack	access:public	signature:( Stack&& rhs )
+operator =	.\ArrayStack.cpp	/^        Stack& operator = ( const Stack& rhs )$/;"	f	class:Stack	access:public	signature:( const Stack& rhs )
 operator =	.\List.cpp	/^    List& operator = ( List&& rhs )$/;"	f	class:List	access:public	signature:( List&& rhs )
 operator =	.\List.cpp	/^    List& operator = ( const List& rhs )$/;"	f	class:List	access:public	signature:( const List& rhs )
 operator =	.\Vector.cpp	/^    Vector& operator = ( Vector&& rhs )$/;"	f	class:Vector	access:public	signature:( Vector&& rhs )
 operator =	.\Vector.cpp	/^    Vector& operator = ( const Vector& rhs )$/;"	f	class:Vector	access:public	signature:( const Vector& rhs )
 operator ==	.\List.cpp	/^        bool operator == ( const const_iterator& rhs ) const$/;"	f	class:List::const_iterator	access:public	signature:( const const_iterator& rhs ) const
+operator []	.\ArrayStack.cpp	/^        Type operator [] ( int i ) const { return arr[i]; }$/;"	f	class:Stack	access:public	signature:( int i ) const
 operator []	.\Vector.cpp	/^    Object& operator [] ( int index )$/;"	f	class:Vector	access:public	signature:( int index )
 operator []	.\Vector.cpp	/^    const Object& operator [] ( int index ) const$/;"	f	class:Vector	access:public	signature:( int index ) const
 pop_back	.\List.cpp	/^    void pop_back()$/;"	f	class:List	access:public	signature:()
@@ -193,12 +218,16 @@ push_front	.\List.cpp	/^    void push_front( const Object& x )$/;"	f	class:List	
 reserve	.\Vector.cpp	/^    void reserve( int newCapacity )$/;"	f	class:Vector	access:public	signature:( int newCapacity )
 resize	.\Vector.cpp	/^    void resize( int newSize )$/;"	f	class:Vector	access:public	signature:( int newSize )
 retrieve	.\List.cpp	/^        Object& retrieve() const$/;"	f	class:List::const_iterator	access:protected	signature:() const
+size	.\ArrayStack.cpp	/^        int size() const { return theSize; }$/;"	f	class:Stack	access:public	signature:() const
 size	.\List.cpp	/^    int size() const$/;"	f	class:List	access:public	signature:() const
 size	.\Vector.cpp	/^    int size() const$/;"	f	class:Vector	access:public	signature:() const
 tail	.\List.cpp	/^    Node* tail;$/;"	m	class:List	file:	access:private
+theCapacity	.\ArrayStack.cpp	/^        size_t theCapacity;$/;"	m	class:Stack	file:	access:private
 theCapacity	.\Vector.cpp	/^    int theCapacity;$/;"	m	class:Vector	file:	access:private
 theList	.\List.cpp	/^        const List<Object> *theList;$/;"	m	class:List::const_iterator	file:	access:protected
+theSize	.\ArrayStack.cpp	/^        size_t theSize;$/;"	m	class:Stack	file:	access:private
 theSize	.\List.cpp	/^    int theSize;$/;"	m	class:List	file:	access:private
 theSize	.\Vector.cpp	/^    int theSize;$/;"	m	class:Vector	file:	access:private
 ~List	.\List.cpp	/^    ~List()$/;"	f	class:List	access:public	signature:()
+~Stack	.\ArrayStack.cpp	/^        ~Stack() { delete[] arr; }$/;"	f	class:Stack	access:public	signature:()
 ~Vector	.\Vector.cpp	/^    ~Vector()$/;"	f	class:Vector	access:public	signature:()
