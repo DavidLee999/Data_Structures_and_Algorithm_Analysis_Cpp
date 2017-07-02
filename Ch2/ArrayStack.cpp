@@ -15,12 +15,12 @@ class Stack {
         {
             Type* new_arr = new Type[newCapacity]{};
 
-            std::copy( arr[0], arr[theSize], new_arr );
+            std::copy( &arr[0], &arr[theSize], new_arr );
 
             std::swap( arr, new_arr );
 
             theCapacity = newCapacity;
-            
+
             delete[] new_arr;
         }
     public:
@@ -79,8 +79,11 @@ class Stack {
             arr[theSize++] = item;
         }
 
-        Type& pop_back()
+        Type pop_back()
         {
+            if( isEmpty() )
+                throw std::out_of_range( "The Stack is Empty!" );
+
             Type item = arr[--theSize];
 
             arr[theSize] = Type{};
@@ -95,31 +98,44 @@ class Stack {
         {
             return arr[theSize - 1];
         }
-        Type operator [] ( int i ) const { return arr[i]; }
+        // Type operator [] ( int i ) const { return arr[i]; }
 
         int size() const { return theSize; }
         int capacity() const { return theCapacity; }
+        bool isEmpty() const { return theSize == 0; }
 };
 
 
-template <typename T>
-std::ostream& operator << ( std::ostream& out, const Stack<T>& obj )
-{
-    for( int i = 0; i < obj.size(); ++i )
-        out << obj[i] << '\t';
+// template <typename T>
+// std::ostream& operator << ( std::ostream& out, const Stack<T>& obj )
+// {
+//     for( int i = 0; i < obj.size(); ++i )
+//         out << obj[i] << '\t';
 
-    return out;
-}
+//     return out;
+// }
 
 
 int main()
 {
     Stack<int> a {1,3,4,5};
-    
-    Stack<int> b;
-    b = std::move( a );
-    std::cout << b << '\n';
-    std::cout << b.size() << '\n';
+    std::cout << a.back();
+    // std::cout << a << '\n';
+    // std::cout << a.size() << '\t' << a.capacity() << '\n';
+
+    // int b {};
+    // while( std::cin >> b )
+    // {
+    //     if( b == 0 )
+    //         std::cout << a.pop_back() << '\n';
+    //     else if( b == 9 )
+    //     {
+    //         std::cout << a << '\n';
+    //         std::cout << a.size() << a.capacity() << '\n';
+    //     }
+    //     else
+    //         a.push_back(b);
+    // }
 
     return 0;
 }
