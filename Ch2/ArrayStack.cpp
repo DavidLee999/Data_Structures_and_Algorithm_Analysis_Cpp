@@ -8,8 +8,21 @@ class Stack {
     private:
         size_t theSize;
         size_t theCapacity;
-        static const int SPARE_CAPACITY = 10;
+        static const int SPARE_CAPACITY = 3;
         Type* arr;
+
+        void reserve( size_t newCapacity )
+        {
+            Type* new_arr = new Type[newCapacity]{};
+
+            std::copy( arr[0], arr[theSize], new_arr );
+
+            std::swap( arr, new_arr );
+
+            theCapacity = newCapacity;
+            
+            delete[] new_arr;
+        }
     public:
         explicit Stack( int initSize = 0 ) : theSize{ initSize }, theCapacity{ initSize + SPARE_CAPACITY }
         {
@@ -58,20 +71,45 @@ class Stack {
 
         ~Stack() { delete[] arr; }
 
-        // Type operator [] ( int i ) const { return arr[i]; }
+        void push_back( const Type& item )
+        {
+            if( theSize == theCapacity )
+                reserve( 2 * theCapacity );
+
+            arr[theSize++] = item;
+        }
+
+        Type& pop_back()
+        {
+            Type item = arr[--theSize];
+
+            arr[theSize] = Type{};
+
+            if( theSize > 0 && theSize == theCapacity / 4 )
+                reserve( theCapacity / 2 );
+
+            return item;
+        }
+
+        const Type& back() const
+        {
+            return arr[theSize - 1];
+        }
+        Type operator [] ( int i ) const { return arr[i]; }
 
         int size() const { return theSize; }
+        int capacity() const { return theCapacity; }
 };
 
 
-// template <typename T>
-// std::ostream& operator << ( std::ostream& out, const Stack<T>& obj )
-// {
-//     for( int i = 0; i < obj.size(); ++i )
-//         out << obj[i] << '\t';
+template <typename T>
+std::ostream& operator << ( std::ostream& out, const Stack<T>& obj )
+{
+    for( int i = 0; i < obj.size(); ++i )
+        out << obj[i] << '\t';
 
-//     return out;
-// }
+    return out;
+}
 
 
 int main()
@@ -80,8 +118,8 @@ int main()
     
     Stack<int> b;
     b = std::move( a );
-    // std::cout << b << '\n';
-    // std::cout << b.size() << '\n';
+    std::cout << b << '\n';
+    std::cout << b.size() << '\n';
 
     return 0;
 }
