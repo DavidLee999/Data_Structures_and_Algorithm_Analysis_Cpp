@@ -58,20 +58,20 @@ class Stack {
 
         ~Stack() { delete[] arr; }
 
-        Type operator [] ( int i ) const { return arr[i]; }
+        // Type operator [] ( int i ) const { return arr[i]; }
 
         int size() const { return theSize; }
 };
 
 
-template <typename T>
-std::ostream& operator << ( std::ostream& out, const Stack<T>& obj )
-{
-    for( int i = 0; i < obj.size(); ++i )
-        out << obj[i] << '\t';
+// template <typename T>
+// std::ostream& operator << ( std::ostream& out, const Stack<T>& obj )
+// {
+//     for( int i = 0; i < obj.size(); ++i )
+//         out << obj[i] << '\t';
 
-    return out;
-}
+//     return out;
+// }
 
 
 int main()
@@ -80,8 +80,8 @@ int main()
     
     Stack<int> b;
     b = std::move( a );
-    std::cout << b << '\n';
-    std::cout << b.size() << '\n';
+    // std::cout << b << '\n';
+    // std::cout << b.size() << '\n';
 
     return 0;
 }
