@@ -1,7 +1,5 @@
 #include <initializer_list>
 #include <algorithm>
-#include <ostream>
-#include <iostream>
 
 template <typename Type>
 class Stack {
@@ -98,44 +96,7 @@ class Stack {
         {
             return arr[theSize - 1];
         }
-        // Type operator [] ( int i ) const { return arr[i]; }
 
         int size() const { return theSize; }
-        int capacity() const { return theCapacity; }
         bool isEmpty() const { return theSize == 0; }
 };
-
-
-// template <typename T>
-// std::ostream& operator << ( std::ostream& out, const Stack<T>& obj )
-// {
-//     for( int i = 0; i < obj.size(); ++i )
-//         out << obj[i] << '\t';
-
-//     return out;
-// }
-
-
-int main()
-{
-    Stack<int> a {1,3,4,5};
-    std::cout << a.back();
-    // std::cout << a << '\n';
-    // std::cout << a.size() << '\t' << a.capacity() << '\n';
-
-    // int b {};
-    // while( std::cin >> b )
-    // {
-    //     if( b == 0 )
-    //         std::cout << a.pop_back() << '\n';
-    //     else if( b == 9 )
-    //     {
-    //         std::cout << a << '\n';
-    //         std::cout << a.size() << a.capacity() << '\n';
-    //     }
-    //     else
-    //         a.push_back(b);
-    // }
-
-    return 0;
-}

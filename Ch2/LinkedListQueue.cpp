@@ -1,4 +1,3 @@
-#include <iostream>
 #include <algorithm>
 
 template <typename Type>
@@ -67,6 +66,8 @@ class Queue {
             std::swap( theSize, rhs.theSize );
             std::swap( head, rhs.head );
             std::swap( tail, rhs.tail );
+
+            return *this;
         }
 
         ~Queue()
@@ -113,23 +114,7 @@ class Queue {
             return item;
         }
 
+
         bool isEmpty() const { return theSize == 0; }
         size_t size() const { return theSize; }
 };
-
-int main()
-{
-    Queue<int> a;
-
-    int b{};
-
-    while( std::cin >> b ) {
-        if( b == 0 )
-            std::cout << a.dequeue() << '\n';
-        else if( b == 9 )
-            std::cout << a.size() <<'\n';
-        else
-            a.enqueue(b);
-    }
-    return 0;
-}
