@@ -71,16 +71,61 @@ List::size	.\List.cpp	/^    int size() const$/;"	f	class:List	access:public	sign
 List::tail	.\List.cpp	/^    Node* tail;$/;"	m	class:List	file:	access:private
 List::theSize	.\List.cpp	/^    int theSize;$/;"	m	class:List	file:	access:private
 List::~List	.\List.cpp	/^    ~List()$/;"	f	class:List	access:public	signature:()
+Node	.\LinkedListQueue.cpp	/^        struct Node{$/;"	s	class:Queue	file:	access:private
 Node	.\List.cpp	/^        Node( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr ) : data { d }, prev{ p }, next{ n } {}$/;"	f	struct:List::Node	access:public	signature:( const Object& d = Object{}, Node* p = nullptr, Node* n = nullptr )
 Node	.\List.cpp	/^    struct Node$/;"	s	class:List	file:	access:private
-SPARE_CAPACITY	.\ArrayStack.cpp	/^        static const int SPARE_CAPACITY = 3;$/;"	m	class:Stack	file:	access:private
+Queue	.\LinkedListQueue.cpp	/^        Queue( Queue&& rhs ) : theSize{ rhs.theSize }, head{ rhs.head }, tail{ rhs.tail }$/;"	f	class:Queue	access:public	signature:( Queue&& rhs )
+Queue	.\LinkedListQueue.cpp	/^        Queue( const Queue& rhs )$/;"	f	class:Queue	access:public	signature:( const Queue& rhs )
+Queue	.\LinkedListQueue.cpp	/^        Queue()$/;"	f	class:Queue	access:public	signature:()
+Queue	.\LinkedListQueue.cpp	/^class Queue {$/;"	c	file:
+Queue	.\ResizingArrayQueue.cpp	/^		Queue( Queue&& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, head{ rhs.head }, last{ rhs.last }, arr{ rhs.arr }$/;"	f	class:Queue	access:public	signature:( Queue&& rhs )
+Queue	.\ResizingArrayQueue.cpp	/^		Queue( const Queue& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }$/;"	f	class:Queue	access:public	signature:( const Queue& rhs )
+Queue	.\ResizingArrayQueue.cpp	/^	    Queue() : theSize{ 0 }, theCapacity{ theSize + SPARE_CAPACITY }, head{ 0 }, last{ 0 }$/;"	f	class:Queue	access:public	signature:()
+Queue	.\ResizingArrayQueue.cpp	/^class Queue{$/;"	c	file:
+Queue::Node	.\LinkedListQueue.cpp	/^        struct Node{$/;"	s	class:Queue	file:	access:private
+Queue::Node::data	.\LinkedListQueue.cpp	/^            Type data;$/;"	m	struct:Queue::Node	file:	access:public
+Queue::Node::next	.\LinkedListQueue.cpp	/^            Node* next;$/;"	m	struct:Queue::Node	file:	access:public
+Queue::Queue	.\LinkedListQueue.cpp	/^        Queue( Queue&& rhs ) : theSize{ rhs.theSize }, head{ rhs.head }, tail{ rhs.tail }$/;"	f	class:Queue	access:public	signature:( Queue&& rhs )
+Queue::Queue	.\LinkedListQueue.cpp	/^        Queue( const Queue& rhs )$/;"	f	class:Queue	access:public	signature:( const Queue& rhs )
+Queue::Queue	.\LinkedListQueue.cpp	/^        Queue()$/;"	f	class:Queue	access:public	signature:()
+Queue::Queue	.\ResizingArrayQueue.cpp	/^		Queue( Queue&& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, head{ rhs.head }, last{ rhs.last }, arr{ rhs.arr }$/;"	f	class:Queue	access:public	signature:( Queue&& rhs )
+Queue::Queue	.\ResizingArrayQueue.cpp	/^		Queue( const Queue& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }$/;"	f	class:Queue	access:public	signature:( const Queue& rhs )
+Queue::Queue	.\ResizingArrayQueue.cpp	/^	    Queue() : theSize{ 0 }, theCapacity{ theSize + SPARE_CAPACITY }, head{ 0 }, last{ 0 }$/;"	f	class:Queue	access:public	signature:()
+Queue::SPARE_CAPACITY	.\ResizingArrayQueue.cpp	/^		static const int SPARE_CAPACITY = 2;$/;"	m	class:Queue	file:	access:private
+Queue::arr	.\ResizingArrayQueue.cpp	/^		Type* arr;$/;"	m	class:Queue	file:	access:private
+Queue::clear	.\LinkedListQueue.cpp	/^        void clear()$/;"	f	class:Queue	file:	access:private	signature:()
+Queue::dequeue	.\LinkedListQueue.cpp	/^        Type dequeue()$/;"	f	class:Queue	access:public	signature:()
+Queue::dequeue	.\ResizingArrayQueue.cpp	/^		Type dequeue()$/;"	f	class:Queue	access:public	signature:()
+Queue::enqueue	.\LinkedListQueue.cpp	/^        void enqueue( const Type& x )$/;"	f	class:Queue	access:public	signature:( const Type& x )
+Queue::enqueue	.\ResizingArrayQueue.cpp	/^		void enqueue( const Type& x )$/;"	f	class:Queue	access:public	signature:( const Type& x )
+Queue::head	.\LinkedListQueue.cpp	/^        Node* head;$/;"	m	class:Queue	file:	access:private
+Queue::head	.\ResizingArrayQueue.cpp	/^	    int head;$/;"	m	class:Queue	file:	access:private
+Queue::init	.\LinkedListQueue.cpp	/^        void init()$/;"	f	class:Queue	file:	access:private	signature:()
+Queue::isEmpty	.\LinkedListQueue.cpp	/^        bool isEmpty() const { return theSize == 0; }$/;"	f	class:Queue	access:public	signature:() const
+Queue::isEmpty	.\ResizingArrayQueue.cpp	/^		bool isEmpty() const { return theSize == 0; }$/;"	f	class:Queue	access:public	signature:() const
+Queue::last	.\ResizingArrayQueue.cpp	/^		int last;$/;"	m	class:Queue	file:	access:private
+Queue::operator =	.\LinkedListQueue.cpp	/^        Queue& operator = ( Queue&& rhs )$/;"	f	class:Queue	access:public	signature:( Queue&& rhs )
+Queue::operator =	.\LinkedListQueue.cpp	/^        Queue& operator = ( const Queue& rhs )$/;"	f	class:Queue	access:public	signature:( const Queue& rhs )
+Queue::operator =	.\ResizingArrayQueue.cpp	/^		Queue& operator = ( Queue&& rhs )$/;"	f	class:Queue	access:public	signature:( Queue&& rhs )
+Queue::operator =	.\ResizingArrayQueue.cpp	/^		Queue§ operator = ( const Queue& rhs )$/;"	f	class:Queue	access:public	signature:( const Queue& rhs )
+Queue::reserve	.\ResizingArrayQueue.cpp	/^            void reserve( int newCapacity )$/;"	f	class:Queue	file:	access:private	signature:( int newCapacity )
+Queue::size	.\LinkedListQueue.cpp	/^        size_t size() const { return theSize; }$/;"	f	class:Queue	access:public	signature:() const
+Queue::size	.\ResizingArrayQueue.cpp	/^		int size() const { return theSize; }$/;"	f	class:Queue	access:public	signature:() const
+Queue::tail	.\LinkedListQueue.cpp	/^        Node* tail;$/;"	m	class:Queue	file:	access:private
+Queue::theCapacity	.\ResizingArrayQueue.cpp	/^		int theCapacity;$/;"	m	class:Queue	file:	access:private
+Queue::theSize	.\LinkedListQueue.cpp	/^        size_t theSize;$/;"	m	class:Queue	file:	access:private
+Queue::theSize	.\ResizingArrayQueue.cpp	/^		int theSize;$/;"	m	class:Queue	file:	access:private
+Queue::~Queue	.\LinkedListQueue.cpp	/^        ~Queue()$/;"	f	class:Queue	access:public	signature:()
+Queue::~Queue	.\ResizingArrayQueue.cpp	/^		~Queue() { delete[] arr; }$/;"	f	class:Queue	access:public	signature:()
+SPARE_CAPACITY	.\ArrayStack.cpp	/^        static const int SPARE_CAPACITY = 2;$/;"	m	class:Stack	file:	access:private
+SPARE_CAPACITY	.\ResizingArrayQueue.cpp	/^		static const int SPARE_CAPACITY = 2;$/;"	m	class:Queue	file:	access:private
 SPARE_CAPACITY	.\Vector.cpp	/^    static const int SPARE_CAPACITY = 16;$/;"	m	class:Vector	file:	access:public
 Stack	.\ArrayStack.cpp	/^        Stack( Stack&& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, arr{ rhs.arr }$/;"	f	class:Stack	access:public	signature:( Stack&& rhs )
 Stack	.\ArrayStack.cpp	/^        Stack( const Stack& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }$/;"	f	class:Stack	access:public	signature:( const Stack& rhs )
 Stack	.\ArrayStack.cpp	/^        Stack( const std::initializer_list<Type>& init_list ) : theSize{ init_list.size() }$/;"	f	class:Stack	access:public	signature:( const std::initializer_list<Type>& init_list )
 Stack	.\ArrayStack.cpp	/^        explicit Stack( int initSize = 0 ) : theSize{ initSize }, theCapacity{ initSize + SPARE_CAPACITY }$/;"	f	class:Stack	access:public	signature:( int initSize = 0 )
 Stack	.\ArrayStack.cpp	/^class Stack {$/;"	c	file:
-Stack::SPARE_CAPACITY	.\ArrayStack.cpp	/^        static const int SPARE_CAPACITY = 3;$/;"	m	class:Stack	file:	access:private
+Stack::SPARE_CAPACITY	.\ArrayStack.cpp	/^        static const int SPARE_CAPACITY = 2;$/;"	m	class:Stack	file:	access:private
 Stack::Stack	.\ArrayStack.cpp	/^        Stack( Stack&& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }, arr{ rhs.arr }$/;"	f	class:Stack	access:public	signature:( Stack&& rhs )
 Stack::Stack	.\ArrayStack.cpp	/^        Stack( const Stack& rhs ) : theSize{ rhs.theSize }, theCapacity{ rhs.theCapacity }$/;"	f	class:Stack	access:public	signature:( const Stack& rhs )
 Stack::Stack	.\ArrayStack.cpp	/^        Stack( const std::initializer_list<Type>& init_list ) : theSize{ init_list.size() }$/;"	f	class:Stack	access:public	signature:( const std::initializer_list<Type>& init_list )
@@ -88,10 +133,10 @@ Stack::Stack	.\ArrayStack.cpp	/^        explicit Stack( int initSize = 0 ) : the
 Stack::arr	.\ArrayStack.cpp	/^        Type* arr;$/;"	m	class:Stack	file:	access:private
 Stack::back	.\ArrayStack.cpp	/^        const Type& back() const$/;"	f	class:Stack	access:public	signature:() const
 Stack::capacity	.\ArrayStack.cpp	/^        int capacity() const { return theCapacity; }$/;"	f	class:Stack	access:public	signature:() const
+Stack::isEmpty	.\ArrayStack.cpp	/^        bool isEmpty() const { return theSize == 0; }$/;"	f	class:Stack	access:public	signature:() const
 Stack::operator =	.\ArrayStack.cpp	/^        Stack& operator = ( Stack&& rhs )$/;"	f	class:Stack	access:public	signature:( Stack&& rhs )
 Stack::operator =	.\ArrayStack.cpp	/^        Stack& operator = ( const Stack& rhs )$/;"	f	class:Stack	access:public	signature:( const Stack& rhs )
-Stack::operator []	.\ArrayStack.cpp	/^        Type operator [] ( int i ) const { return arr[i]; }$/;"	f	class:Stack	access:public	signature:( int i ) const
-Stack::pop_back	.\ArrayStack.cpp	/^        Type& pop_back()$/;"	f	class:Stack	access:public	signature:()
+Stack::pop_back	.\ArrayStack.cpp	/^        Type pop_back()$/;"	f	class:Stack	access:public	signature:()
 Stack::push_back	.\ArrayStack.cpp	/^        void push_back( const Type& item )$/;"	f	class:Stack	access:public	signature:( const Type& item )
 Stack::reserve	.\ArrayStack.cpp	/^        void reserve( size_t newCapacity )$/;"	f	class:Stack	file:	access:private	signature:( size_t newCapacity )
 Stack::size	.\ArrayStack.cpp	/^        int size() const { return theSize; }$/;"	f	class:Stack	access:public	signature:() const
@@ -130,6 +175,7 @@ Vector::theCapacity	.\Vector.cpp	/^    int theCapacity;$/;"	m	class:Vector	file:
 Vector::theSize	.\Vector.cpp	/^    int theSize;$/;"	m	class:Vector	file:	access:private
 Vector::~Vector	.\Vector.cpp	/^    ~Vector()$/;"	f	class:Vector	access:public	signature:()
 arr	.\ArrayStack.cpp	/^        Type* arr;$/;"	m	class:Stack	file:	access:private
+arr	.\ResizingArrayQueue.cpp	/^		Type* arr;$/;"	m	class:Queue	file:	access:private
 assertIsValid	.\List.cpp	/^        void assertIsValid() const$/;"	f	class:List::const_iterator	access:protected	signature:() const
 back	.\ArrayStack.cpp	/^        const Type& back() const$/;"	f	class:Stack	access:public	signature:() const
 back	.\List.cpp	/^    Object& back()$/;"	f	class:List	access:public	signature:()
@@ -142,34 +188,48 @@ begin	.\Vector.cpp	/^    iterator begin()$/;"	f	class:Vector	access:public	signa
 binarySearch	.\binarySearch.cpp	/^int binarySearch( const vector<Comparable> & a, const Comparable & x)$/;"	f	signature:( const vector<Comparable> & a, const Comparable & x)
 capacity	.\ArrayStack.cpp	/^        int capacity() const { return theCapacity; }$/;"	f	class:Stack	access:public	signature:() const
 capacity	.\Vector.cpp	/^    int capacity() const$/;"	f	class:Vector	access:public	signature:() const
+clear	.\LinkedListQueue.cpp	/^        void clear()$/;"	f	class:Queue	file:	access:private	signature:()
 clear	.\List.cpp	/^    void clear()$/;"	f	class:List	access:public	signature:()
 const_iterator	.\List.cpp	/^        const_iterator( const List<Object>& lst, Node* p ) : theList{ &lst }, current{ p } {}$/;"	f	class:List::const_iterator	access:protected	signature:( const List<Object>& lst, Node* p )
 const_iterator	.\List.cpp	/^        const_iterator() : current{ nullptr } {}$/;"	f	class:List::const_iterator	access:public	signature:()
 const_iterator	.\List.cpp	/^    class const_iterator$/;"	c	class:List	file:	access:public
 const_iterator	.\Vector.cpp	/^    typedef const Object* const_iterator;$/;"	t	class:Vector	file:	access:public
 current	.\List.cpp	/^        Node* current;$/;"	m	class:List::const_iterator	file:	access:protected
+data	.\LinkedListQueue.cpp	/^            Type data;$/;"	m	struct:Queue::Node	file:	access:public
 data	.\List.cpp	/^        Object data;$/;"	m	struct:List::Node	file:	access:public
+dequeue	.\LinkedListQueue.cpp	/^        Type dequeue()$/;"	f	class:Queue	access:public	signature:()
+dequeue	.\ResizingArrayQueue.cpp	/^		Type dequeue()$/;"	f	class:Queue	access:public	signature:()
 empty	.\List.cpp	/^    bool empty() const$/;"	f	class:List	access:public	signature:() const
 empty	.\Vector.cpp	/^    bool empty() const$/;"	f	class:Vector	access:public	signature:() const
 end	.\List.cpp	/^    const_iterator end() const$/;"	f	class:List	access:public	signature:() const
 end	.\List.cpp	/^    iterator end()$/;"	f	class:List	access:public	signature:()
 end	.\Vector.cpp	/^    const_iterator end() const$/;"	f	class:Vector	access:public	signature:() const
 end	.\Vector.cpp	/^    iterator end()$/;"	f	class:Vector	access:public	signature:()
+enqueue	.\LinkedListQueue.cpp	/^        void enqueue( const Type& x )$/;"	f	class:Queue	access:public	signature:( const Type& x )
+enqueue	.\ResizingArrayQueue.cpp	/^		void enqueue( const Type& x )$/;"	f	class:Queue	access:public	signature:( const Type& x )
 erase	.\List.cpp	/^    iterator erase( iterator from, iterator to )$/;"	f	class:List	access:public	signature:( iterator from, iterator to )
 erase	.\List.cpp	/^    iterator erase( iterator itr )$/;"	f	class:List	access:public	signature:( iterator itr )
 front	.\List.cpp	/^    Object& front()$/;"	f	class:List	access:public	signature:()
 front	.\List.cpp	/^    const Object& front() const$/;"	f	class:List	access:public	signature:() const
 gcd	.\Greatest_common_divisor.cpp	/^long gcd (long m, long n)$/;"	f	signature:(long m, long n)
+head	.\LinkedListQueue.cpp	/^        Node* head;$/;"	m	class:Queue	file:	access:private
 head	.\List.cpp	/^    Node* head;$/;"	m	class:List	file:	access:private
+head	.\ResizingArrayQueue.cpp	/^	    int head;$/;"	m	class:Queue	file:	access:private
+init	.\LinkedListQueue.cpp	/^        void init()$/;"	f	class:Queue	file:	access:private	signature:()
 init	.\List.cpp	/^    void init()$/;"	f	class:List	file:	access:private	signature:()
 insert	.\List.cpp	/^    iterator insert( iterator itr, Object&& x )$/;"	f	class:List	access:public	signature:( iterator itr, Object&& x )
 insert	.\List.cpp	/^    iterator insert( iterator itr, const Object& x )$/;"	f	class:List	access:public	signature:( iterator itr, const Object& x )
+isEmpty	.\ArrayStack.cpp	/^        bool isEmpty() const { return theSize == 0; }$/;"	f	class:Stack	access:public	signature:() const
+isEmpty	.\LinkedListQueue.cpp	/^        bool isEmpty() const { return theSize == 0; }$/;"	f	class:Queue	access:public	signature:() const
+isEmpty	.\ResizingArrayQueue.cpp	/^		bool isEmpty() const { return theSize == 0; }$/;"	f	class:Queue	access:public	signature:() const
 iterator	.\List.cpp	/^        iterator ( const List<Object>& lst, Node* p ) : const_iterator{ lst, p } {}$/;"	f	class:List::iterator	access:protected	signature:( const List<Object>& lst, Node* p )
 iterator	.\List.cpp	/^        iterator() {}$/;"	f	class:List::iterator	access:public	signature:()
 iterator	.\List.cpp	/^    class iterator : public const_iterator$/;"	c	class:List	file:	inherits:const_iterator	access:public
 iterator	.\Vector.cpp	/^    typedef Object* iterator;$/;"	t	class:Vector	file:	access:public
+last	.\ResizingArrayQueue.cpp	/^		int last;$/;"	m	class:Queue	file:	access:private
 main	.\ArrayStack.cpp	/^int main()$/;"	f	signature:()
 main	.\Greatest_common_divisor.cpp	/^int main()$/;"	f	signature:()
+main	.\LinkedListQueue.cpp	/^int main()$/;"	f	signature:()
 main	.\List.cpp	/^int main()$/;"	f	signature:()
 main	.\Vector.cpp	/^int main()$/;"	f	signature:()
 main	.\binarySearch.cpp	/^int main()$/;"	f	signature:()
@@ -180,6 +240,7 @@ maxSubSum2	.\maxSubSum.cpp	/^int maxSubSum2( const vector<int> & a )$/;"	f	signa
 maxSubSum3	.\maxSubSum.cpp	/^int maxSubSum3( const vector<int> & a )$/;"	f	signature:( const vector<int> & a )
 maxSubSum4	.\maxSubSum.cpp	/^int maxSubSum4( const vector<int> & a )$/;"	f	signature:( const vector<int> & a )
 maxSumRec	.\maxSubSum.cpp	/^int maxSumRec( const vector<int> & a, int left, int right )$/;"	f	signature:( const vector<int> & a, int left, int right )
+next	.\LinkedListQueue.cpp	/^            Node* next;$/;"	m	struct:Queue::Node	file:	access:public
 next	.\List.cpp	/^        Node* next;$/;"	m	struct:List::Node	file:	access:public
 objects	.\Vector.cpp	/^    Object* objects;$/;"	m	class:Vector	file:	access:private
 operator !=	.\List.cpp	/^        bool operator != ( const const_iterator& rhs ) const$/;"	f	class:List::const_iterator	access:public	signature:( const const_iterator& rhs ) const
@@ -198,20 +259,22 @@ operator --	.\List.cpp	/^        const_iterator& operator -- ( int )$/;"	f	class
 operator --	.\List.cpp	/^        const_iterator& operator -- ()$/;"	f	class:List::const_iterator	access:public	signature:()
 operator --	.\List.cpp	/^        iterator& operator -- ( int )$/;"	f	class:List::iterator	access:public	signature:( int )
 operator --	.\List.cpp	/^        iterator& operator -- ()$/;"	f	class:List::iterator	access:public	signature:()
-operator <<	.\ArrayStack.cpp	/^std::ostream& operator << ( std::ostream& out, const Stack<T>& obj )$/;"	f	signature:( std::ostream& out, const Stack<T>& obj )
 operator <<	.\List.cpp	/^std::ostream& operator << ( std::ostream& out, const List<T>& obj )$/;"	f	signature:( std::ostream& out, const List<T>& obj )
 operator <<	.\Vector.cpp	/^std::ostream& operator << ( std::ostream& out, const Vector<T>& obj )$/;"	f	signature:( std::ostream& out, const Vector<T>& obj )
 operator =	.\ArrayStack.cpp	/^        Stack& operator = ( Stack&& rhs )$/;"	f	class:Stack	access:public	signature:( Stack&& rhs )
 operator =	.\ArrayStack.cpp	/^        Stack& operator = ( const Stack& rhs )$/;"	f	class:Stack	access:public	signature:( const Stack& rhs )
+operator =	.\LinkedListQueue.cpp	/^        Queue& operator = ( Queue&& rhs )$/;"	f	class:Queue	access:public	signature:( Queue&& rhs )
+operator =	.\LinkedListQueue.cpp	/^        Queue& operator = ( const Queue& rhs )$/;"	f	class:Queue	access:public	signature:( const Queue& rhs )
 operator =	.\List.cpp	/^    List& operator = ( List&& rhs )$/;"	f	class:List	access:public	signature:( List&& rhs )
 operator =	.\List.cpp	/^    List& operator = ( const List& rhs )$/;"	f	class:List	access:public	signature:( const List& rhs )
+operator =	.\ResizingArrayQueue.cpp	/^		Queue& operator = ( Queue&& rhs )$/;"	f	class:Queue	access:public	signature:( Queue&& rhs )
+operator =	.\ResizingArrayQueue.cpp	/^		Queue§ operator = ( const Queue& rhs )$/;"	f	class:Queue	access:public	signature:( const Queue& rhs )
 operator =	.\Vector.cpp	/^    Vector& operator = ( Vector&& rhs )$/;"	f	class:Vector	access:public	signature:( Vector&& rhs )
 operator =	.\Vector.cpp	/^    Vector& operator = ( const Vector& rhs )$/;"	f	class:Vector	access:public	signature:( const Vector& rhs )
 operator ==	.\List.cpp	/^        bool operator == ( const const_iterator& rhs ) const$/;"	f	class:List::const_iterator	access:public	signature:( const const_iterator& rhs ) const
-operator []	.\ArrayStack.cpp	/^        Type operator [] ( int i ) const { return arr[i]; }$/;"	f	class:Stack	access:public	signature:( int i ) const
 operator []	.\Vector.cpp	/^    Object& operator [] ( int index )$/;"	f	class:Vector	access:public	signature:( int index )
 operator []	.\Vector.cpp	/^    const Object& operator [] ( int index ) const$/;"	f	class:Vector	access:public	signature:( int index ) const
-pop_back	.\ArrayStack.cpp	/^        Type& pop_back()$/;"	f	class:Stack	access:public	signature:()
+pop_back	.\ArrayStack.cpp	/^        Type pop_back()$/;"	f	class:Stack	access:public	signature:()
 pop_back	.\List.cpp	/^    void pop_back()$/;"	f	class:List	access:public	signature:()
 pop_back	.\Vector.cpp	/^    void pop_back()$/;"	f	class:Vector	access:public	signature:()
 pop_front	.\List.cpp	/^    void pop_front()$/;"	f	class:List	access:public	signature:()
@@ -225,19 +288,28 @@ push_back	.\Vector.cpp	/^    void push_back(const Object& x)$/;"	f	class:Vector	
 push_front	.\List.cpp	/^    void push_front( Object&& x )$/;"	f	class:List	access:public	signature:( Object&& x )
 push_front	.\List.cpp	/^    void push_front( const Object& x )$/;"	f	class:List	access:public	signature:( const Object& x )
 reserve	.\ArrayStack.cpp	/^        void reserve( size_t newCapacity )$/;"	f	class:Stack	file:	access:private	signature:( size_t newCapacity )
+reserve	.\ResizingArrayQueue.cpp	/^            void reserve( int newCapacity )$/;"	f	class:Queue	file:	access:private	signature:( int newCapacity )
 reserve	.\Vector.cpp	/^    void reserve( int newCapacity )$/;"	f	class:Vector	access:public	signature:( int newCapacity )
 resize	.\Vector.cpp	/^    void resize( int newSize )$/;"	f	class:Vector	access:public	signature:( int newSize )
 retrieve	.\List.cpp	/^        Object& retrieve() const$/;"	f	class:List::const_iterator	access:protected	signature:() const
 size	.\ArrayStack.cpp	/^        int size() const { return theSize; }$/;"	f	class:Stack	access:public	signature:() const
+size	.\LinkedListQueue.cpp	/^        size_t size() const { return theSize; }$/;"	f	class:Queue	access:public	signature:() const
 size	.\List.cpp	/^    int size() const$/;"	f	class:List	access:public	signature:() const
+size	.\ResizingArrayQueue.cpp	/^		int size() const { return theSize; }$/;"	f	class:Queue	access:public	signature:() const
 size	.\Vector.cpp	/^    int size() const$/;"	f	class:Vector	access:public	signature:() const
+tail	.\LinkedListQueue.cpp	/^        Node* tail;$/;"	m	class:Queue	file:	access:private
 tail	.\List.cpp	/^    Node* tail;$/;"	m	class:List	file:	access:private
 theCapacity	.\ArrayStack.cpp	/^        size_t theCapacity;$/;"	m	class:Stack	file:	access:private
+theCapacity	.\ResizingArrayQueue.cpp	/^		int theCapacity;$/;"	m	class:Queue	file:	access:private
 theCapacity	.\Vector.cpp	/^    int theCapacity;$/;"	m	class:Vector	file:	access:private
 theList	.\List.cpp	/^        const List<Object> *theList;$/;"	m	class:List::const_iterator	file:	access:protected
 theSize	.\ArrayStack.cpp	/^        size_t theSize;$/;"	m	class:Stack	file:	access:private
+theSize	.\LinkedListQueue.cpp	/^        size_t theSize;$/;"	m	class:Queue	file:	access:private
 theSize	.\List.cpp	/^    int theSize;$/;"	m	class:List	file:	access:private
+theSize	.\ResizingArrayQueue.cpp	/^		int theSize;$/;"	m	class:Queue	file:	access:private
 theSize	.\Vector.cpp	/^    int theSize;$/;"	m	class:Vector	file:	access:private
 ~List	.\List.cpp	/^    ~List()$/;"	f	class:List	access:public	signature:()
+~Queue	.\LinkedListQueue.cpp	/^        ~Queue()$/;"	f	class:Queue	access:public	signature:()
+~Queue	.\ResizingArrayQueue.cpp	/^		~Queue() { delete[] arr; }$/;"	f	class:Queue	access:public	signature:()
 ~Stack	.\ArrayStack.cpp	/^        ~Stack() { delete[] arr; }$/;"	f	class:Stack	access:public	signature:()
 ~Vector	.\Vector.cpp	/^    ~Vector()$/;"	f	class:Vector	access:public	signature:()
