@@ -8,7 +8,7 @@ class Stack {
     private:
         size_t theSize;
         size_t theCapacity;
-        static const int SPARE_CAPACITY = 3;
+        static const int SPARE_CAPACITY = 2;
         Type* arr;
 
         void reserve( size_t newCapacity )
