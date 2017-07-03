@@ -8,6 +8,19 @@ class Queue{
 		static const int SPARE_CAPACITY = 2;
 		Type* arr;
 		
+            void reserve( int newCapacity )
+	    {
+	        Type* new_arr = new Type[newCapacity]{};
+		
+		for( int i = 0; i < theSize; ++i )
+		    new_arr[i] = arr[(head + i) % theCapacity];
+		    
+		std::swap( arr, new_arr );
+		theCapacity = newCapacity;
+		
+		delete[] new_arr;
+	    }
+	    
 	public:
 	    Queue() : theSize{ 0 }, theCapacity{ theSize + SPARE_CAPACITY }, head{ 0 }, last{ 0 }
 		{
@@ -18,7 +31,7 @@ class Queue{
 		{
 		    arr = new Type[theCapacity]{};
 			for( int i = 0; i < rhs.theSize; ++i )
-				arr[0] = rhs.arr[(rhs.head + i) % rhs.theCapacity]
+				arr[i] = rhs.arr[(rhs.head + i) % rhs.theCapacity]
 			
 			head = 0;
 			last = rhs.theSize;
