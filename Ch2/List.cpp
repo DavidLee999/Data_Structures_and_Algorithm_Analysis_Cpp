@@ -30,11 +30,11 @@ class List
                     current = current->next;
                     return *this;
                 }
-                const_iterator& operator ++ ( int )
+                const_iterator operator ++ ( int )
                 {
                     const_iterator old = *this;
                     ++( *this );
-                    return *old;
+                    return old;
                 }
 
                 const_iterator& operator -- ()
@@ -42,7 +42,7 @@ class List
                     current = current->prev;
                     return *this;
                 }
-                const_iterator& operator -- ( int )
+                const_iterator operator -- ( int )
                 {
                     const_iterator old = *this;
                     --( *this );
@@ -119,7 +119,7 @@ class List
 
                     return *this;
                 }
-                iterator& operator ++ ( int )
+                iterator operator ++ ( int )
                 {
                     iterator old = *this;
                     ++(*this);
@@ -133,7 +133,7 @@ class List
 
                     return *this;
                 }
-                iterator& operator -- ( int )
+                iterator operator -- ( int )
                 {
                     iterator old = *this;
                     --(*this);
@@ -364,11 +364,13 @@ int main()
     std::cout << a.back() << '\n';
 
     a.insert( a.end()-1, 10 );
-    a.erase( a.begin()+1 );
+    a.erase( a.begin()++ );
     std::cout << a << std::endl;
 
-    a.clear();
+    a.end() = a.end() - 1;
+    std::cout << *(a.end() - 2) << '\t' << *(a.end()) << '\n';
 
+    a.clear();
     std::cout << a << std::endl;
     return 0;
 }
