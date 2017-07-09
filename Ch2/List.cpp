@@ -46,7 +46,7 @@ class List
                 {
                     const_iterator old = *this;
                     --( *this );
-                    return *old;
+                    return old;
                 }
 
                 const_iterator& operator + ( const int i )
