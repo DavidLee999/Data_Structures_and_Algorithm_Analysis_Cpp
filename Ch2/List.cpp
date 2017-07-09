@@ -364,12 +364,13 @@ int main()
     std::cout << a.back() << '\n';
 
     a.insert( a.end()-1, 10 );
-    a.erase( a.begin()++ );
+    a.erase( ++a.begin() );
     std::cout << a << std::endl;
 
     a.end() = a.end() - 1;
     std::cout << *(a.end() - 2) << '\t' << *(a.end()) << '\n';
 
+    std::cout << *(a.begin()) << std::endl;
     a.clear();
     std::cout << a << std::endl;
     return 0;
