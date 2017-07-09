@@ -215,13 +215,15 @@ class List
 
         iterator begin()
         {
-            iterator itr{ *this, head };
-            return ++itr;
+            // iterator itr{ *this, head };
+            // return ++itr;
+            return { *this, head->next };
         }
         const_iterator begin() const
         {
-            const_iterator itr{ *this, head };
-            return ++itr;
+            // const_iterator itr{ *this, head };
+            // return ++itr;
+            return { *this, head->next };
         }
 
         iterator end()
