@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <iostream>
 
 template <typename Type>
 class Queue {
@@ -89,7 +90,11 @@ class Queue {
             oldtail->next = tail;
 
             if( isEmpty() )
+            {
+                delete oldtail;
+                delete head;
                 head = tail;
+            }
 
             theSize++;
         }
@@ -118,3 +123,13 @@ class Queue {
         bool isEmpty() const { return theSize == 0; }
         size_t size() const { return theSize; }
 };
+
+int main()
+{
+    Queue<int> a{};
+
+    a.enqueue(1);
+
+    std::cout << a.dequeue();
+    return 0;
+}
