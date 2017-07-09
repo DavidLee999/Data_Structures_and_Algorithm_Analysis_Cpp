@@ -283,7 +283,7 @@ class List
         {
             itr.assertIsValid();
             if( itr.theList != this )
-                std::invalid_argument{ "The iterator does not belong to this List!" };
+                throw std::invalid_argument{ "The iterator does not belong to this List!" };
 
             Node* p = itr.current;
             theSize++;
@@ -294,8 +294,8 @@ class List
         iterator erase( iterator itr )
         {
             itr.assertIsValid();
-            if( itr.theList != this )
-                std::invalid_argument{ "The iterator does not belong to this List!" };
+            if( itr.theList != this || itr.current == tail )
+                throw std::invalid_argument{ "The iterator does not belong to this List!" };
 
             Node* p = itr.current;
             iterator retVal{ *this, p->next };
@@ -311,10 +311,10 @@ class List
         {
             from.assertIsValid();
             if( from.theList != this )
-                std::invalid_argument{ "The iterator does not belong to this List!" };
+                throw std::invalid_argument{ "The iterator does not belong to this List!" };
             to.assertIsValid();
             if( to.theList != this )
-                std::invalid_argument{ "The iterator does not belong to this List!" };
+                throw std::invalid_argument{ "The iterator does not belong to this List!" };
 
             for( iterator itr = from; itr != to; )
                 itr = erase( itr );
@@ -365,8 +365,8 @@ int main()
     std::cout << a.front() << '\n';
     std::cout << a.back() << '\n';
 
-    a.insert( a.end()-1, 10 );
-    a.erase( ++a.begin() );
+    a.erase( a.end() - 1 );
+    a.insert( a.begin() , 10 );
     std::cout << a << std::endl;
 
     a.end() = a.end() - 1;
