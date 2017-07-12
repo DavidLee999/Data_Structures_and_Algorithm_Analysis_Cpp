@@ -1,9 +1,10 @@
 #include <vector>
 #include <functional>
 #include <iostream>
+#include <ostream>
 
 template <typename Comparable>
-void insertionSort( std::vector<Comparable>& a )
+void InsertionSort( std::vector<Comparable>& a )
 {
     for( int p = 1; p < a.size(); ++p )
     {
@@ -17,33 +18,45 @@ void insertionSort( std::vector<Comparable>& a )
     }
 }
 
-template <typename Iterator>
-void InsertionSort( const Iterator& begin, const Iterator& end)
-{
-    insertionSort( begin, end, std::less<decltype( *begin )>{} );
-}
-
-template <typename Iterator,  typename Comparator>
-void InsertionSort( const Iterator& begin, const Iterator& end, Comparator lessThan )
+template <typename RandomIterator, typename Comparator>
+void InsertionSort( const RandomIterator & begin, const RandomIterator & end, Comparator lessThan )
 {
     if( begin == end )
         return;
 
-    for( Iterator p = begin + 1; p != end; ++p )
+    RandomIterator j;
+
+    for( RandomIterator p = begin + 1; p != end; ++p )
     {
         auto temp = std::move( *p );
-
-        Iterator j;
         for( j = p; j != begin && lessThan( temp, *(j - 1) ); --j )
             *j = std::move( *(j - 1) );
-
         *j = std::move( temp );
     }
 }
 
+template <typename RandomIterator>
+void  InsertionSort( const RandomIterator & begin, const RandomIterator & end)
+{
+    InsertionSort( begin, end, std::less<decltype(*begin )>{ } );
+}
+
+template <typename T>
+std::ostream& operator << ( std::ostream& out, const std::vector<T>& obj )
+{
+    typename std::vector<T>::const_iterator it;
+    for( it = obj.begin(); it != obj.end(); ++it )
+        out << *it << " ";
+
+    return out;
+}
+
 int main()
 {
-    std::vector<int> a { 4, 6, 1, 0, 3, 2, 6, 32, 12 };
+    std::vector<char> a { 'l','a','q','e','o','q','v','i' };
+
+    InsertionSort( a.begin(), a.end() );
+   // InsertionSort( a );
 
     std::cout << a;
     return 0;
