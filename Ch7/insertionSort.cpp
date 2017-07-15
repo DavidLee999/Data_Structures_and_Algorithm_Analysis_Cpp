@@ -28,11 +28,10 @@ void InsertionSort( const RandomIterator & begin, const RandomIterator & end, Co
 
     for( RandomIterator p = begin + 1; p != end; ++p )
     {
-        // auto temp = std::move( *p );
-        for( j = p; j != begin && lessThan( *j, *(j - 1) ); --j )
-            // *j = std::move( *(j - 1) );
-            std::swap( *j, *(j-1) );
-        // *j = std::move( temp );
+        auto temp = std::move( *p );
+        for( j = p; j != begin && lessThan( temp, *(j - 1) ); --j )
+            *j = std::move( *(j - 1) );
+        *j = std::move( temp );
     }
 }
 
