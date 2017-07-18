@@ -120,7 +120,7 @@ Collection<Type>::Collection( const initializer_list<Type> & ini_list ) : length
 {
 	capacity = 2*length;
 		
-	array = new Type[capacity] {};
+	array = new Type[capacity];
 		
 	/* int counter { 0 };
 	typename initializer_list<Type>::const_iterator ini_iter = ini_list.begin();
@@ -132,7 +132,7 @@ Collection<Type>::Collection( const initializer_list<Type> & ini_list ) : length
 template <typename Type>
 Collection<Type>::Collection ( const Collection &rhs ):length{ rhs.size() }, capacity { rhs.getCapacity() } //copy constructor
 {	
-	array = new Type[capacity] {};
+	array = new Type[capacity];
 		
 		/* for ( int i = 0; i < length; ++i)
 			array[i] = rhs[i]; */
