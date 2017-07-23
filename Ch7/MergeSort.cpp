@@ -4,21 +4,21 @@
 template <typename Comparable>
 void merge( std::vector<Comparable>& a, std::vector<Comparable>& tmpArray, int leftPos, int rightPos, int rightEnd)
 {
-    for( int i = leftPos; i <= rightEnd; ++i )
-        tmpArray[i] = a[i];
-
     int i = leftPos, j = rightPos, k = leftPos;
     while( k <= rightEnd )
     {
         if( i > rightPos - 1 )
-            a[k++] = std::move( tmpArray[j++] );
+            tmpArray[k++] = std::move( a[j++] );
         else if( j > rightEnd )
-            a[k++] = std::move( tmpArray[i++] );
-        else if( tmpArray[i] <= tmpArray[j] )
-            a[k++] = std::move( tmpArray[i++] );
+            tmpArray[k++] = std::move( a[i++] );
+        else if( a[i] <= a[j] )
+            tmpArray[k++] = std::move( a[i++] );
         else
-            a[k++] = std::move( tmpArray[j++] );
+            tmpArray[k++] = std::move( a[j++] );
     }
+    
+    for( int p = leftPos; p <= rightEnd; ++p )
+        a[p] = std::move( tmpArray[p] );
 }
 
 template <typename Comparable>
