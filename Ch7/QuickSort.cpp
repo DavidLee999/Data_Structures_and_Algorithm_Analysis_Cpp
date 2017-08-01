@@ -132,7 +132,7 @@ void quickselect( std::vector<Comparable>& a, int left, int right, int k )
         insertionSort( a, left, right );
 }
 template <typename Comparable>
-Comparable& quickselect( std::vector<Comparable>& a, int k )
+Comparable& quickselect( const std::vector<Comparable>& a, int k )
 {
     if( k < 1 || k > a.size() )
     {
@@ -140,8 +140,9 @@ Comparable& quickselect( std::vector<Comparable>& a, int k )
         exit(0);
     }
 
-    quickselect( a, 0, a.size() - 1, k - 1 );
-    return a[k - 1];
+    std::vector<Comparable> aux = a;
+    quickselect( aux, 0, a.size() - 1, k - 1 );
+    return aux[k - 1];
 }
 
 int main()
