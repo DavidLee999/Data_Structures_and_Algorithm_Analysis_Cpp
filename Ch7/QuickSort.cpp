@@ -152,7 +152,7 @@ int main()
     while( std::cin >> s )
         a.push_back( s );
 
-    std::cout << quickselect( a, 4 ) << '\n';
+    std::cout << quickselect( a, 20 ) << '\n';
     quicksort( a );
 
     for( size_t i = 0; i < a.size(); ++i )
