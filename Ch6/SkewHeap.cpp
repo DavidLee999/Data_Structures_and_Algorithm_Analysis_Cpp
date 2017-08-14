@@ -1,31 +1,30 @@
-#include <exception>
 #include <iostream>
+#include <exception>
 using namespace std;
 
 template <typename Comparable>
-class LeftistHeap
-{
+class SkewHeap {
     public:
-        LeftistHeap():root {nullptr} {}
-        LeftistHeap(const LeftistHeap& rhs):root {nullptr}
+        SkewHeap():root{nullptr} {}
+        SkewHeap(const SkewHeap& rhs):root{nullptr}
         { root = clone(rhs.root); }
-        LeftistHeap(LeftistHeap&& rhs):root {rhs.root}
+        SkewHeap(SkewHeap&& rhs):root{rhs.root}
         { rhs.root = nullptr; }
 
-        ~LeftistHeap()
+        ~SkewHeap()
         { makeEmpty(); }
 
-        LeftistHeap& operator= (const LeftistHeap& rhs)
+        SkewHeap& operator= (const SkewHeap& rhs)
         {
-            LeftistHeap copy = rhs;
+            SkewHeap copy = rhs;
             std::swap(copy, *this);
 
             return *this;
         }
-        LeftistHeap& operator= (LeftistHeap&& rhs)
+        SkewHeap& operator= (SkewHeap&& rhs)
         {
             std::swap(root, rhs.root);
-            return *this;
+            return *rhs;
         }
 
         bool isEmpty() const
@@ -40,23 +39,21 @@ class LeftistHeap
 
         void insert(const Comparable& x)
         {
-            root = merge(new LeftistNode{x}, root);
+            root = merge(new SkewNode{x}, root);
         }
-
         void insert(Comparable&& x)
         {
-            root = merge(new LeftistNode{x}, root);
+            root = merge(new SkewNode{x}, root);
         }
-
         void deleteMin()
         {
             if (isEmpty())
                 throw underflow_error("The priority queue is empty!");
 
-            LeftistNode* oldRoot = root;
+            SkewNode* oldroot = root;
             root = merge(root->left, root->right);
 
-            delete oldRoot;
+            delete oldroot;
         }
         void deleteMin(Comparable& minItem)
         {
@@ -68,7 +65,7 @@ class LeftistHeap
             reclaimMemory(root);
             root = nullptr;
         }
-        void merge(LeftistHeap& rhs)
+        void merge(SkewHeap& rhs)
         {
             if (this == &rhs)
                 return;
@@ -78,24 +75,19 @@ class LeftistHeap
         }
 
     private:
-        struct LeftistNode
-        {
+        struct SkewNode {
             Comparable element;
-            LeftistNode* left;
-            LeftistNode* right;
-            int npl;
+            SkewNode* left;
+            SkewNode* right;
 
-            LeftistNode(const Comparable& e, LeftistNode* lt = nullptr, LeftistNode* rt = nullptr, int np = 0)
-                :element {e}, left {lt}, right {rt}, npl {np} {}
-
-            LeftistNode(const Comparable&& e, LeftistNode* lt = nullptr, LeftistNode* rt = nullptr, int np = 0)
-                :element {std::move(e)}, left {lt}, right {rt}, npl {np} {}
+            SkewNode(const Comparable& e, SkewNode* lt = nullptr, SkewNode* rt = nullptr):element{e}, left{lt}, right{rt} {}
+            SkewNode(const Comparable&& e, SkewNode* lt = nullptr, SkewNode* rt = nullptr):element{e}, left{lt}, right{rt} {}
 
         };
 
-        LeftistNode* root;
+        SkewNode* root;
 
-        LeftistNode* merge(LeftistNode* h1, LeftistNode* h2)
+        SkewNode* merge(SkewNode* h1, SkewNode* h2)
         {
             if (h1 == nullptr)
                 return h2;
@@ -107,49 +99,47 @@ class LeftistHeap
                 return merge1(h2, h1);
         }
 
-        LeftistNode* merge1(LeftistNode* h1, LeftistNode* h2)
+        SkewNode* merge1(SkewNode* h1, SkewNode* h2)
         {
             if (h1->left == nullptr)
                 h1->left = h2;
             else
             {
                 h1->right = merge(h1->right, h2);
-                if (h1->left->npl < h1->right->npl)
-                    swapChildren(h1);
-                h1->npl = h1->right->npl + 1;
+                swapChildren(h1);
             }
+
             return h1;
         }
-
-        void swapChildren(LeftistNode* t)
+        void swapChildren(SkewNode* r)
         {
-            LeftistNode* tmp = t->left;
-            t->left = t->right;
-            t->right = tmp;
+            SkewNode* tmp = r->left;
+            r->left = r->right;
+            r->right = tmp;
         }
 
-        void reclaimMemory(LeftistNode* t)
+        SkewNode* clone(SkewNode* r) const
         {
-            if (t != nullptr)
-            {
-                reclaimMemory(t->left);
-                reclaimMemory(t->right);
-                delete t;
-            }
-        }
-
-        LeftistNode* clone(LeftistNode *t) const
-        {
-            if (t == nullptr)
+            if (r == nullptr)
                 return nullptr;
             else
-                return new LeftistNode{t->element, clone(t->left), clone(t->right), t->npl};
+                return new SkewNode {r->element, clone(r->left), clone(r->right)};
+        }
+        void reclaimMemory(SkewNode* r)
+        {
+            if (r != nullptr)
+            {
+                reclaimMemory(r->left);
+                reclaimMemory(r->right);
+                delete r;
+            }
         }
 };
 
+
 int main()
 {
-    LeftistHeap<char> a {};
+    SkewHeap<char> a {};
     char item;
     while (cin >> item) {
         if (item == '-')
@@ -164,7 +154,7 @@ int main()
             a.insert(item);
     }
 
-    LeftistHeap<char> b = a;
+    SkewHeap<char> b = a;
 
     b.deleteMin();
     b.deleteMin();
