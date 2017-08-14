@@ -20,15 +20,71 @@ BinaryHeap::insert	.\BinaryHeap.cpp	/^        void insert(const Comparable& x)$/
 BinaryHeap::isEmpty	.\BinaryHeap.cpp	/^        bool isEmpty() const$/;"	f	class:BinaryHeap	access:public	signature:() const
 BinaryHeap::makeEmpty	.\BinaryHeap.cpp	/^        void makeEmpty()$/;"	f	class:BinaryHeap	access:public	signature:()
 BinaryHeap::percolateDown	.\BinaryHeap.cpp	/^        void percolateDown(int hole)$/;"	f	class:BinaryHeap	file:	access:private	signature:(int hole)
+LeftistHeap	.\LeftistHeap.cpp	/^        LeftistHeap():root {nullptr} {}$/;"	f	class:LeftistHeap	access:public	signature:()
+LeftistHeap	.\LeftistHeap.cpp	/^        LeftistHeap(const LeftistHeap& rhs):root {nullptr}$/;"	f	class:LeftistHeap	access:public	signature:(const LeftistHeap& rhs)
+LeftistHeap	.\LeftistHeap.cpp	/^        LeftistHeap(const LeftistHeap&& rhs):root {rhs.root}$/;"	f	class:LeftistHeap	access:public	signature:(const LeftistHeap&& rhs)
+LeftistHeap	.\LeftistHeap.cpp	/^class LeftistHeap$/;"	c	file:
+LeftistHeap::LeftistHeap	.\LeftistHeap.cpp	/^        LeftistHeap():root {nullptr} {}$/;"	f	class:LeftistHeap	access:public	signature:()
+LeftistHeap::LeftistHeap	.\LeftistHeap.cpp	/^        LeftistHeap(const LeftistHeap& rhs):root {nullptr}$/;"	f	class:LeftistHeap	access:public	signature:(const LeftistHeap& rhs)
+LeftistHeap::LeftistHeap	.\LeftistHeap.cpp	/^        LeftistHeap(const LeftistHeap&& rhs):root {rhs.root}$/;"	f	class:LeftistHeap	access:public	signature:(const LeftistHeap&& rhs)
+LeftistHeap::LeftistNode	.\LeftistHeap.cpp	/^        struct LeftistNode$/;"	s	class:LeftistHeap	file:	access:private
+LeftistHeap::LeftistNode::LeftistNode	.\LeftistHeap.cpp	/^            LeftistNode(const Comparable& e, LeftistNode* lt = nullptr, LeftistNode* rt = nullptr, int np = 0)$/;"	f	struct:LeftistHeap::LeftistNode	access:public	signature:(const Comparable& e, LeftistNode* lt = nullptr, LeftistNode* rt = nullptr, int np = 0)
+LeftistHeap::LeftistNode::LeftistNode	.\LeftistHeap.cpp	/^            LeftistNode(const Comparable&& e, LeftistNode* lt = nullptr, LeftistNode* rt = nullptr, int np = 0)$/;"	f	struct:LeftistHeap::LeftistNode	access:public	signature:(const Comparable&& e, LeftistNode* lt = nullptr, LeftistNode* rt = nullptr, int np = 0)
+LeftistHeap::LeftistNode::element	.\LeftistHeap.cpp	/^            Comparable element;$/;"	m	struct:LeftistHeap::LeftistNode	file:	access:public
+LeftistHeap::LeftistNode::left	.\LeftistHeap.cpp	/^            LeftistNode* left;$/;"	m	struct:LeftistHeap::LeftistNode	file:	access:public
+LeftistHeap::LeftistNode::npl	.\LeftistHeap.cpp	/^            int npl;$/;"	m	struct:LeftistHeap::LeftistNode	file:	access:public
+LeftistHeap::LeftistNode::right	.\LeftistHeap.cpp	/^            LeftistNode* right;$/;"	m	struct:LeftistHeap::LeftistNode	file:	access:public
+LeftistHeap::clone	.\LeftistHeap.cpp	/^        LeftistNode* clone(LeftistNode *t) const$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode *t) const
+LeftistHeap::deleteMin	.\LeftistHeap.cpp	/^        void deleteMin()$/;"	f	class:LeftistHeap	access:public	signature:()
+LeftistHeap::deleteMin	.\LeftistHeap.cpp	/^        void deleteMin(Comparable& minItem)$/;"	f	class:LeftistHeap	access:public	signature:(Comparable& minItem)
+LeftistHeap::findMin	.\LeftistHeap.cpp	/^        const Comparable& findMin() const$/;"	f	class:LeftistHeap	access:public	signature:() const
+LeftistHeap::insert	.\LeftistHeap.cpp	/^        void insert(Comparable&& x)$/;"	f	class:LeftistHeap	access:public	signature:(Comparable&& x)
+LeftistHeap::insert	.\LeftistHeap.cpp	/^        void insert(const Comparable& x)$/;"	f	class:LeftistHeap	access:public	signature:(const Comparable& x)
+LeftistHeap::isEmpty	.\LeftistHeap.cpp	/^        bool isEmpty() const$/;"	f	class:LeftistHeap	access:public	signature:() const
+LeftistHeap::makeEmpty	.\LeftistHeap.cpp	/^        void makeEmpty()$/;"	f	class:LeftistHeap	access:public	signature:()
+LeftistHeap::merge	.\LeftistHeap.cpp	/^        LeftistNode* merge(LeftistNode* h1, LeftistNode* h2)$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode* h1, LeftistNode* h2)
+LeftistHeap::merge	.\LeftistHeap.cpp	/^        void merge(LeftistHeap& rhs)$/;"	f	class:LeftistHeap	access:public	signature:(LeftistHeap& rhs)
+LeftistHeap::merge1	.\LeftistHeap.cpp	/^        LeftistNode* merge1(LeftistNode* h1, LeftistNode* h2)$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode* h1, LeftistNode* h2)
+LeftistHeap::operator =	.\LeftistHeap.cpp	/^        LeftistHeap& operator= (LeftistHeap&& rhs)$/;"	f	class:LeftistHeap	access:public	signature:(LeftistHeap&& rhs)
+LeftistHeap::operator =	.\LeftistHeap.cpp	/^        LeftistHeap& operator= (const LeftistHeap& rhs)$/;"	f	class:LeftistHeap	access:public	signature:(const LeftistHeap& rhs)
+LeftistHeap::reclaimMemory	.\LeftistHeap.cpp	/^        void reclaimMemory(LeftistNode* t)$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode* t)
+LeftistHeap::root	.\LeftistHeap.cpp	/^        LeftistNode* root;$/;"	m	class:LeftistHeap	file:	access:private
+LeftistHeap::swapChildren	.\LeftistHeap.cpp	/^        void swapChildren(LeftistNode* t)$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode* t)
+LeftistHeap::~LeftistHeap	.\LeftistHeap.cpp	/^        ~LeftistHeap()$/;"	f	class:LeftistHeap	access:public	signature:()
+LeftistNode	.\LeftistHeap.cpp	/^            LeftistNode(const Comparable& e, LeftistNode* lt = nullptr, LeftistNode* rt = nullptr, int np = 0)$/;"	f	struct:LeftistHeap::LeftistNode	access:public	signature:(const Comparable& e, LeftistNode* lt = nullptr, LeftistNode* rt = nullptr, int np = 0)
+LeftistNode	.\LeftistHeap.cpp	/^            LeftistNode(const Comparable&& e, LeftistNode* lt = nullptr, LeftistNode* rt = nullptr, int np = 0)$/;"	f	struct:LeftistHeap::LeftistNode	access:public	signature:(const Comparable&& e, LeftistNode* lt = nullptr, LeftistNode* rt = nullptr, int np = 0)
+LeftistNode	.\LeftistHeap.cpp	/^        struct LeftistNode$/;"	s	class:LeftistHeap	file:	access:private
 array	.\BinaryHeap.cpp	/^        vector<Comparable> array;$/;"	m	class:BinaryHeap	file:	access:private
 buildHeap	.\BinaryHeap.cpp	/^        void buildHeap()$/;"	f	class:BinaryHeap	file:	access:private	signature:()
+clone	.\LeftistHeap.cpp	/^        LeftistNode* clone(LeftistNode *t) const$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode *t) const
 currentSize	.\BinaryHeap.cpp	/^        int currentSize;$/;"	m	class:BinaryHeap	file:	access:private
 deleteMin	.\BinaryHeap.cpp	/^        void deleteMin()$/;"	f	class:BinaryHeap	access:public	signature:()
 deleteMin	.\BinaryHeap.cpp	/^        void deleteMin(Comparable& minItem)$/;"	f	class:BinaryHeap	access:public	signature:(Comparable& minItem)
+deleteMin	.\LeftistHeap.cpp	/^        void deleteMin()$/;"	f	class:LeftistHeap	access:public	signature:()
+deleteMin	.\LeftistHeap.cpp	/^        void deleteMin(Comparable& minItem)$/;"	f	class:LeftistHeap	access:public	signature:(Comparable& minItem)
+element	.\LeftistHeap.cpp	/^            Comparable element;$/;"	m	struct:LeftistHeap::LeftistNode	file:	access:public
 findMin	.\BinaryHeap.cpp	/^        const Comparable& findMin() const$/;"	f	class:BinaryHeap	access:public	signature:() const
+findMin	.\LeftistHeap.cpp	/^        const Comparable& findMin() const$/;"	f	class:LeftistHeap	access:public	signature:() const
 insert	.\BinaryHeap.cpp	/^        void insert(Comparable&& x)$/;"	f	class:BinaryHeap	access:public	signature:(Comparable&& x)
 insert	.\BinaryHeap.cpp	/^        void insert(const Comparable& x)$/;"	f	class:BinaryHeap	access:public	signature:(const Comparable& x)
+insert	.\LeftistHeap.cpp	/^        void insert(Comparable&& x)$/;"	f	class:LeftistHeap	access:public	signature:(Comparable&& x)
+insert	.\LeftistHeap.cpp	/^        void insert(const Comparable& x)$/;"	f	class:LeftistHeap	access:public	signature:(const Comparable& x)
 isEmpty	.\BinaryHeap.cpp	/^        bool isEmpty() const$/;"	f	class:BinaryHeap	access:public	signature:() const
+isEmpty	.\LeftistHeap.cpp	/^        bool isEmpty() const$/;"	f	class:LeftistHeap	access:public	signature:() const
+left	.\LeftistHeap.cpp	/^            LeftistNode* left;$/;"	m	struct:LeftistHeap::LeftistNode	file:	access:public
 main	.\BinaryHeap.cpp	/^int main()$/;"	f	signature:()
+main	.\LeftistHeap.cpp	/^int main()$/;"	f	signature:()
 makeEmpty	.\BinaryHeap.cpp	/^        void makeEmpty()$/;"	f	class:BinaryHeap	access:public	signature:()
+makeEmpty	.\LeftistHeap.cpp	/^        void makeEmpty()$/;"	f	class:LeftistHeap	access:public	signature:()
+merge	.\LeftistHeap.cpp	/^        LeftistNode* merge(LeftistNode* h1, LeftistNode* h2)$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode* h1, LeftistNode* h2)
+merge	.\LeftistHeap.cpp	/^        void merge(LeftistHeap& rhs)$/;"	f	class:LeftistHeap	access:public	signature:(LeftistHeap& rhs)
+merge1	.\LeftistHeap.cpp	/^        LeftistNode* merge1(LeftistNode* h1, LeftistNode* h2)$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode* h1, LeftistNode* h2)
+npl	.\LeftistHeap.cpp	/^            int npl;$/;"	m	struct:LeftistHeap::LeftistNode	file:	access:public
+operator =	.\LeftistHeap.cpp	/^        LeftistHeap& operator= (LeftistHeap&& rhs)$/;"	f	class:LeftistHeap	access:public	signature:(LeftistHeap&& rhs)
+operator =	.\LeftistHeap.cpp	/^        LeftistHeap& operator= (const LeftistHeap& rhs)$/;"	f	class:LeftistHeap	access:public	signature:(const LeftistHeap& rhs)
 percolateDown	.\BinaryHeap.cpp	/^        void percolateDown(int hole)$/;"	f	class:BinaryHeap	file:	access:private	signature:(int hole)
+reclaimMemory	.\LeftistHeap.cpp	/^        void reclaimMemory(LeftistNode* t)$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode* t)
+right	.\LeftistHeap.cpp	/^            LeftistNode* right;$/;"	m	struct:LeftistHeap::LeftistNode	file:	access:public
+root	.\LeftistHeap.cpp	/^        LeftistNode* root;$/;"	m	class:LeftistHeap	file:	access:private
+swapChildren	.\LeftistHeap.cpp	/^        void swapChildren(LeftistNode* t)$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode* t)
+~LeftistHeap	.\LeftistHeap.cpp	/^        ~LeftistHeap()$/;"	f	class:LeftistHeap	access:public	signature:()
