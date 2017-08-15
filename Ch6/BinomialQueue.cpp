@@ -7,25 +7,106 @@ template <typename Comparable>
 class BinomialQueue
 {
     public:
-        BinomialQueue();
-        BinomialQueue(const Comparable& item);
-        BinomialQueue(const BinomialQueue& rhs);
-        BinomialQueue(BinomialQueue&& rhs);
+        BinomialQueue() : theTrees(DEFAULT_TREES)
+        {
+            for (auto& root : theTrees)
+                root = nullptr;
+            currentSize = 0;
+        }
 
-        ~BinomialQueue();
+        BinomialQueue(const Comparable& item) : theTrees(1), currentSize {1}
+        {
+            theTrees[0] = new BinomialNode {item, nullptr, nullptr};
+        }
 
-        BinomialQueue& operator= (const BinomialQueue& rhs);
-        BinomialQueue& operator= (BinomialQueue&& rhs);
+        BinomialQueue(const BinomialQueue& rhs) : theTrees (rhs.theTrees.size()), currentSize {rhs.currentSize}
+        {
+            for (int i = 0; i < rhs.theTrees.size(); ++i)
+                theTrees[i] = clone(rhs.theTrees[i]);
+        }
 
-        bool isEmpty() const;
-        const Comparable& findMin() const;
+        BinomialQueue(BinomialQueue&& rhs) : theTrees {std::move(rhs.theTrees)}, currentSize {rhs.currentSize} {}
 
-        void insert(const Comparable& x);
-        void insert(Comparable&& x);
-        void deleteMin();
-        void deleteMin(Comparable& minItem);
+        ~BinomialQueue()
+        { makeEmpty(); }
 
-        void makeEmpty();
+        BinomialQueue& operator= (const BinomialQueue& rhs)
+        {
+            BinomialQueue copy = rhs;
+            std::swap(*this, copy);
+
+            return *this;
+        }
+
+        BinomialQueue& operator= (BinomialQueue&& rhs)
+        {
+            std::swap(currentSize, rhs.currentSize);
+            std::swap(theTrees, rhs.theTrees);
+
+            return *this;
+        }
+
+        bool isEmpty() const
+        { return currentSize == 0; }
+        const Comparable& findMin() const
+        {
+            if (isEmpty())
+                throw underflow_error("The Binomial Queue is empty!");
+
+            return theTrees[findMinIndex()]->element;
+        }
+
+        void insert(const Comparable& x)
+        {
+            BinomialQueue oneItem {x};
+            merge(oneItem);
+        }
+        void insert(Comparable&& x)
+        {
+            BinomialQueue oneItem {std::move(x)};
+            merge(oneItem);
+        }
+        void deleteMin()
+        {
+            Comparable x;
+            deleteMin(x);
+        }
+
+        void deleteMin(Comparable& minItem)
+        {
+            if (isEmpty())
+                throw underflow_error("The Binomial Queue is empty!");
+
+            int minIndex = findMinIndex();
+            minItem = theTrees[minIndex]->element;
+
+            BinomialNode* oldRoot = theTrees[minIndex];
+            BinomialNode* deletedTree = oldRoot->leftChild;
+            delete oldRoot;
+
+            BinomialQueue deletedQueue;
+            deletedQueue.theTrees.resize(minIndex + 1);
+            deletedQueue.currentSize = (1 << minIndex) - 1;
+            for (int j = minIndex - 1; j >= 0; --j)
+            {
+                deletedQueue.theTrees[j] = deletedTree;
+                deletedTree = deletedTree->nextSibling;
+                deletedQueue.theTrees[j]->nextSibling = nullptr;
+            }
+
+            theTrees[minIndex] = nullptr;
+            currentSize -= deletedQueue.currentSize + 1;
+
+            merge(deletedQueue);
+        }
+
+        void makeEmpty()
+        {
+            currentSize = 0;
+
+            for (auto& root : theTrees)
+                makeEmpty(root);
+        }
         void merge(BinomialQueue& rhs)
         {
             if (this == &rhs)
@@ -38,7 +119,7 @@ class BinomialQueue
                 int oldNumTrees = theTrees.size();
                 int newNumTrees = max(theTrees.size(), rhs.theTrees.size()) + 1;
                 theTrees.resize(newNumTrees);
-                for (int i = oldNewTrees; i < newNumTrees; ++i)
+                for (int i = oldNumTrees; i < newNumTrees; ++i)
                     theTrees[i] = nullptr;
             }
 
@@ -101,14 +182,36 @@ class BinomialQueue
 
         };
 
-        const static int DEFUALT_TREES = 1;
+        const static int DEFAULT_TREES = 1;
 
         vector<BinomialNode*> theTrees;
         int currentSize;
 
-        int findMinIndex() const;
-        int capacity() const;
-        Binomial* clone(BinomialNode* t) const;
+        int findMinIndex() const
+        {
+            int i, minIndex;
+            for (i = 0; theTrees[i] == nullptr; ++i)
+                ;
+
+            for (minIndex = i; i < theTrees.size(); ++i)
+                if (theTrees[i] != nullptr && theTrees[i]->element < theTrees[minIndex]->element)
+                    minIndex = i;
+
+            return minIndex;
+        }
+
+        int capacity() const
+        {
+            return (1 << theTrees.size()) - 1;
+        }
+
+        BinomialNode* clone(BinomialNode* t) const
+        {
+            if (t == nullptr)
+                return nullptr;
+            else
+                return new BinomialNode{t->element, clone(t->leftChild), clone(t->nextSibling)};
+        }
 
         BinomialNode* combineTrees(BinomialNode* t1, BinomialNode* t2)
         {
@@ -120,5 +223,21 @@ class BinomialQueue
 
             return t1;
         }
-        void makeEmpty(BinomialNode*& t);
+
+        void makeEmpty(BinomialNode*& t)
+        {
+            if (t != nullptr)
+            {
+                makeEmpty(t->leftChild);
+                makeEmpty(t->nextSibling);
+
+                delete t;
+                t = nullptr;
+            }
+        }
 };
+
+int main()
+{
+    return 0;
+}
