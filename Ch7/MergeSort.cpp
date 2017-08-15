@@ -16,7 +16,7 @@ void merge( std::vector<Comparable>& a, std::vector<Comparable>& tmpArray, int l
         else
             tmpArray[k++] = std::move( a[j++] );
     }
-    
+
     for( int p = leftPos; p <= rightEnd; ++p )
         a[p] = std::move( tmpArray[p] );
 }
