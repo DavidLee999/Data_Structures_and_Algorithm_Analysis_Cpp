@@ -23,10 +23,10 @@ BinaryHeap::percolateDown	.\BinaryHeap.cpp	/^        void percolateDown(int hole
 BinomialNode	.\BinomialQueue.cpp	/^            BinomialNode(const Comparable& e, BinomialNode* lt, BinomialNode* rt) : element {e}, leftChild (lt), nextSibling {rt} {}$/;"	f	struct:BinomialQueue::BinomialNode	access:public	signature:(const Comparable& e, BinomialNode* lt, BinomialNode* rt)
 BinomialNode	.\BinomialQueue.cpp	/^            BinomialNode(const Comparable&& e, BinomialNode* lt, BinomialNode* rt) : element {e}, leftChild (lt), nextSibling {rt} {}$/;"	f	struct:BinomialQueue::BinomialNode	access:public	signature:(const Comparable&& e, BinomialNode* lt, BinomialNode* rt)
 BinomialNode	.\BinomialQueue.cpp	/^        struct BinomialNode$/;"	s	class:BinomialQueue	file:	access:private
-BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue();$/;"	p	class:BinomialQueue	file:	access:public	signature:()
-BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(BinomialQueue&& rhs);$/;"	p	class:BinomialQueue	file:	access:public	signature:(BinomialQueue&& rhs)
-BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(const BinomialQueue& rhs);$/;"	p	class:BinomialQueue	file:	access:public	signature:(const BinomialQueue& rhs)
-BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(const Comparable& item);$/;"	p	class:BinomialQueue	file:	access:public	signature:(const Comparable& item)
+BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue() : theTrees(DEFAULT_TREES)$/;"	f	class:BinomialQueue	access:public	signature:()
+BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(BinomialQueue&& rhs) : theTrees {std::move(rhs.theTrees)}, currentSize {rhs.currentSize} {}$/;"	f	class:BinomialQueue	access:public	signature:(BinomialQueue&& rhs)
+BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(const BinomialQueue& rhs) : theTrees (rhs.theTrees.size()), currentSize {rhs.currentSize}$/;"	f	class:BinomialQueue	access:public	signature:(const BinomialQueue& rhs)
+BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(const Comparable& item) : theTrees(1), currentSize {1}$/;"	f	class:BinomialQueue	access:public	signature:(const Comparable& item)
 BinomialQueue	.\BinomialQueue.cpp	/^class BinomialQueue$/;"	c	file:
 BinomialQueue::BinomialNode	.\BinomialQueue.cpp	/^        struct BinomialNode$/;"	s	class:BinomialQueue	file:	access:private
 BinomialQueue::BinomialNode::BinomialNode	.\BinomialQueue.cpp	/^            BinomialNode(const Comparable& e, BinomialNode* lt, BinomialNode* rt) : element {e}, leftChild (lt), nextSibling {rt} {}$/;"	f	struct:BinomialQueue::BinomialNode	access:public	signature:(const Comparable& e, BinomialNode* lt, BinomialNode* rt)
@@ -36,30 +36,30 @@ BinomialQueue::BinomialNode::leftChild	.\BinomialQueue.cpp	/^            Binomia
 BinomialQueue::BinomialNode::leftChild	.\BinomialQueue.cpp	/^            BinomialNode(const Comparable&& e, BinomialNode* lt, BinomialNode* rt) : element {e}, leftChild (lt), nextSibling {rt} {}$/;"	p	struct:BinomialQueue::BinomialNode	file:	access:public	signature:(lt)
 BinomialQueue::BinomialNode::leftChild	.\BinomialQueue.cpp	/^            BinomialNode* leftChild;$/;"	m	struct:BinomialQueue::BinomialNode	file:	access:public
 BinomialQueue::BinomialNode::nextSibling	.\BinomialQueue.cpp	/^            BinomialNode* nextSibling;$/;"	m	struct:BinomialQueue::BinomialNode	file:	access:public
-BinomialQueue::BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue();$/;"	p	class:BinomialQueue	file:	access:public	signature:()
-BinomialQueue::BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(BinomialQueue&& rhs);$/;"	p	class:BinomialQueue	file:	access:public	signature:(BinomialQueue&& rhs)
-BinomialQueue::BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(const BinomialQueue& rhs);$/;"	p	class:BinomialQueue	file:	access:public	signature:(const BinomialQueue& rhs)
-BinomialQueue::BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(const Comparable& item);$/;"	p	class:BinomialQueue	file:	access:public	signature:(const Comparable& item)
-BinomialQueue::DEFUALT_TREES	.\BinomialQueue.cpp	/^        const static int DEFUALT_TREES = 1;$/;"	m	class:BinomialQueue	file:	access:private
-BinomialQueue::capacity	.\BinomialQueue.cpp	/^        int capacity() const;$/;"	p	class:BinomialQueue	file:	access:private	signature:() const
-BinomialQueue::clone	.\BinomialQueue.cpp	/^        Binomial* clone(BinomialNode* t) const;$/;"	p	class:BinomialQueue	file:	access:private	signature:(BinomialNode* t) const
+BinomialQueue::BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue() : theTrees(DEFAULT_TREES)$/;"	f	class:BinomialQueue	access:public	signature:()
+BinomialQueue::BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(BinomialQueue&& rhs) : theTrees {std::move(rhs.theTrees)}, currentSize {rhs.currentSize} {}$/;"	f	class:BinomialQueue	access:public	signature:(BinomialQueue&& rhs)
+BinomialQueue::BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(const BinomialQueue& rhs) : theTrees (rhs.theTrees.size()), currentSize {rhs.currentSize}$/;"	f	class:BinomialQueue	access:public	signature:(const BinomialQueue& rhs)
+BinomialQueue::BinomialQueue	.\BinomialQueue.cpp	/^        BinomialQueue(const Comparable& item) : theTrees(1), currentSize {1}$/;"	f	class:BinomialQueue	access:public	signature:(const Comparable& item)
+BinomialQueue::DEFAULT_TREES	.\BinomialQueue.cpp	/^        const static int DEFAULT_TREES = 1;$/;"	m	class:BinomialQueue	file:	access:private
+BinomialQueue::capacity	.\BinomialQueue.cpp	/^        int capacity() const$/;"	f	class:BinomialQueue	file:	access:private	signature:() const
+BinomialQueue::clone	.\BinomialQueue.cpp	/^        BinomialNode* clone(BinomialNode* t) const$/;"	f	class:BinomialQueue	file:	access:private	signature:(BinomialNode* t) const
 BinomialQueue::combineTrees	.\BinomialQueue.cpp	/^        BinomialNode* combineTrees(BinomialNode* t1, BinomialNode* t2)$/;"	f	class:BinomialQueue	file:	access:private	signature:(BinomialNode* t1, BinomialNode* t2)
 BinomialQueue::currentSize	.\BinomialQueue.cpp	/^        int currentSize;$/;"	m	class:BinomialQueue	file:	access:private
-BinomialQueue::deleteMin	.\BinomialQueue.cpp	/^        void deleteMin();$/;"	p	class:BinomialQueue	file:	access:public	signature:()
-BinomialQueue::deleteMin	.\BinomialQueue.cpp	/^        void deleteMin(Comparable& minItem);$/;"	p	class:BinomialQueue	file:	access:public	signature:(Comparable& minItem)
-BinomialQueue::findMin	.\BinomialQueue.cpp	/^        const Comparable& findMin() const;$/;"	p	class:BinomialQueue	file:	access:public	signature:() const
-BinomialQueue::findMinIndex	.\BinomialQueue.cpp	/^        int findMinIndex() const;$/;"	p	class:BinomialQueue	file:	access:private	signature:() const
-BinomialQueue::insert	.\BinomialQueue.cpp	/^        void insert(Comparable&& x);$/;"	p	class:BinomialQueue	file:	access:public	signature:(Comparable&& x)
-BinomialQueue::insert	.\BinomialQueue.cpp	/^        void insert(const Comparable& x);$/;"	p	class:BinomialQueue	file:	access:public	signature:(const Comparable& x)
-BinomialQueue::isEmpty	.\BinomialQueue.cpp	/^        bool isEmpty() const;$/;"	p	class:BinomialQueue	file:	access:public	signature:() const
-BinomialQueue::makeEmpty	.\BinomialQueue.cpp	/^        void makeEmpty();$/;"	p	class:BinomialQueue	file:	access:public	signature:()
-BinomialQueue::makeEmpty	.\BinomialQueue.cpp	/^        void makeEmpty(BinomialNode*& t);$/;"	p	class:BinomialQueue	file:	access:private	signature:(BinomialNode*& t)
+BinomialQueue::deleteMin	.\BinomialQueue.cpp	/^        void deleteMin()$/;"	f	class:BinomialQueue	access:public	signature:()
+BinomialQueue::deleteMin	.\BinomialQueue.cpp	/^        void deleteMin(Comparable& minItem)$/;"	f	class:BinomialQueue	access:public	signature:(Comparable& minItem)
+BinomialQueue::findMin	.\BinomialQueue.cpp	/^        const Comparable& findMin() const$/;"	f	class:BinomialQueue	access:public	signature:() const
+BinomialQueue::findMinIndex	.\BinomialQueue.cpp	/^        int findMinIndex() const$/;"	f	class:BinomialQueue	file:	access:private	signature:() const
+BinomialQueue::insert	.\BinomialQueue.cpp	/^        void insert(Comparable&& x)$/;"	f	class:BinomialQueue	access:public	signature:(Comparable&& x)
+BinomialQueue::insert	.\BinomialQueue.cpp	/^        void insert(const Comparable& x)$/;"	f	class:BinomialQueue	access:public	signature:(const Comparable& x)
+BinomialQueue::isEmpty	.\BinomialQueue.cpp	/^        bool isEmpty() const$/;"	f	class:BinomialQueue	access:public	signature:() const
+BinomialQueue::makeEmpty	.\BinomialQueue.cpp	/^        void makeEmpty()$/;"	f	class:BinomialQueue	access:public	signature:()
+BinomialQueue::makeEmpty	.\BinomialQueue.cpp	/^        void makeEmpty(BinomialNode*& t)$/;"	f	class:BinomialQueue	file:	access:private	signature:(BinomialNode*& t)
 BinomialQueue::merge	.\BinomialQueue.cpp	/^        void merge(BinomialQueue& rhs)$/;"	f	class:BinomialQueue	access:public	signature:(BinomialQueue& rhs)
-BinomialQueue::operator =	.\BinomialQueue.cpp	/^        BinomialQueue& operator= (BinomialQueue&& rhs);$/;"	p	class:BinomialQueue	file:	access:public	signature:(BinomialQueue&& rhs)
-BinomialQueue::operator =	.\BinomialQueue.cpp	/^        BinomialQueue& operator= (const BinomialQueue& rhs);$/;"	p	class:BinomialQueue	file:	access:public	signature:(const BinomialQueue& rhs)
+BinomialQueue::operator =	.\BinomialQueue.cpp	/^        BinomialQueue& operator= (BinomialQueue&& rhs)$/;"	f	class:BinomialQueue	access:public	signature:(BinomialQueue&& rhs)
+BinomialQueue::operator =	.\BinomialQueue.cpp	/^        BinomialQueue& operator= (const BinomialQueue& rhs)$/;"	f	class:BinomialQueue	access:public	signature:(const BinomialQueue& rhs)
 BinomialQueue::theTrees	.\BinomialQueue.cpp	/^        vector<BinomialNode*> theTrees;$/;"	m	class:BinomialQueue	file:	access:private
-BinomialQueue::~BinomialQueue	.\BinomialQueue.cpp	/^        ~BinomialQueue();$/;"	p	class:BinomialQueue	file:	access:public	signature:()
-DEFUALT_TREES	.\BinomialQueue.cpp	/^        const static int DEFUALT_TREES = 1;$/;"	m	class:BinomialQueue	file:	access:private
+BinomialQueue::~BinomialQueue	.\BinomialQueue.cpp	/^        ~BinomialQueue()$/;"	f	class:BinomialQueue	access:public	signature:()
+DEFAULT_TREES	.\BinomialQueue.cpp	/^        const static int DEFAULT_TREES = 1;$/;"	m	class:BinomialQueue	file:	access:private
 LeftistHeap	.\LeftistHeap.cpp	/^        LeftistHeap():root {nullptr} {}$/;"	f	class:LeftistHeap	access:public	signature:()
 LeftistHeap	.\LeftistHeap.cpp	/^        LeftistHeap(LeftistHeap&& rhs):root {rhs.root}$/;"	f	class:LeftistHeap	access:public	signature:(LeftistHeap&& rhs)
 LeftistHeap	.\LeftistHeap.cpp	/^        LeftistHeap(const LeftistHeap& rhs):root {nullptr}$/;"	f	class:LeftistHeap	access:public	signature:(const LeftistHeap& rhs)
@@ -129,8 +129,8 @@ SkewNode	.\SkewHeap.cpp	/^            SkewNode(const Comparable&& e, SkewNode* l
 SkewNode	.\SkewHeap.cpp	/^        struct SkewNode {$/;"	s	class:SkewHeap	file:	access:private
 array	.\BinaryHeap.cpp	/^        vector<Comparable> array;$/;"	m	class:BinaryHeap	file:	access:private
 buildHeap	.\BinaryHeap.cpp	/^        void buildHeap()$/;"	f	class:BinaryHeap	file:	access:private	signature:()
-capacity	.\BinomialQueue.cpp	/^        int capacity() const;$/;"	p	class:BinomialQueue	file:	access:private	signature:() const
-clone	.\BinomialQueue.cpp	/^        Binomial* clone(BinomialNode* t) const;$/;"	p	class:BinomialQueue	file:	access:private	signature:(BinomialNode* t) const
+capacity	.\BinomialQueue.cpp	/^        int capacity() const$/;"	f	class:BinomialQueue	file:	access:private	signature:() const
+clone	.\BinomialQueue.cpp	/^        BinomialNode* clone(BinomialNode* t) const$/;"	f	class:BinomialQueue	file:	access:private	signature:(BinomialNode* t) const
 clone	.\LeftistHeap.cpp	/^        LeftistNode* clone(LeftistNode *t) const$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode *t) const
 clone	.\SkewHeap.cpp	/^        SkewNode* clone(SkewNode* r) const$/;"	f	class:SkewHeap	file:	access:private	signature:(SkewNode* r) const
 combineTrees	.\BinomialQueue.cpp	/^        BinomialNode* combineTrees(BinomialNode* t1, BinomialNode* t2)$/;"	f	class:BinomialQueue	file:	access:private	signature:(BinomialNode* t1, BinomialNode* t2)
@@ -138,8 +138,8 @@ currentSize	.\BinaryHeap.cpp	/^        int currentSize;$/;"	m	class:BinaryHeap	f
 currentSize	.\BinomialQueue.cpp	/^        int currentSize;$/;"	m	class:BinomialQueue	file:	access:private
 deleteMin	.\BinaryHeap.cpp	/^        void deleteMin()$/;"	f	class:BinaryHeap	access:public	signature:()
 deleteMin	.\BinaryHeap.cpp	/^        void deleteMin(Comparable& minItem)$/;"	f	class:BinaryHeap	access:public	signature:(Comparable& minItem)
-deleteMin	.\BinomialQueue.cpp	/^        void deleteMin();$/;"	p	class:BinomialQueue	file:	access:public	signature:()
-deleteMin	.\BinomialQueue.cpp	/^        void deleteMin(Comparable& minItem);$/;"	p	class:BinomialQueue	file:	access:public	signature:(Comparable& minItem)
+deleteMin	.\BinomialQueue.cpp	/^        void deleteMin()$/;"	f	class:BinomialQueue	access:public	signature:()
+deleteMin	.\BinomialQueue.cpp	/^        void deleteMin(Comparable& minItem)$/;"	f	class:BinomialQueue	access:public	signature:(Comparable& minItem)
 deleteMin	.\LeftistHeap.cpp	/^        void deleteMin()$/;"	f	class:LeftistHeap	access:public	signature:()
 deleteMin	.\LeftistHeap.cpp	/^        void deleteMin(Comparable& minItem)$/;"	f	class:LeftistHeap	access:public	signature:(Comparable& minItem)
 deleteMin	.\SkewHeap.cpp	/^        void deleteMin()$/;"	f	class:SkewHeap	access:public	signature:()
@@ -148,20 +148,20 @@ element	.\BinomialQueue.cpp	/^            Comparable element;$/;"	m	struct:Binom
 element	.\LeftistHeap.cpp	/^            Comparable element;$/;"	m	struct:LeftistHeap::LeftistNode	file:	access:public
 element	.\SkewHeap.cpp	/^            Comparable element;$/;"	m	struct:SkewHeap::SkewNode	file:	access:public
 findMin	.\BinaryHeap.cpp	/^        const Comparable& findMin() const$/;"	f	class:BinaryHeap	access:public	signature:() const
-findMin	.\BinomialQueue.cpp	/^        const Comparable& findMin() const;$/;"	p	class:BinomialQueue	file:	access:public	signature:() const
+findMin	.\BinomialQueue.cpp	/^        const Comparable& findMin() const$/;"	f	class:BinomialQueue	access:public	signature:() const
 findMin	.\LeftistHeap.cpp	/^        const Comparable& findMin() const$/;"	f	class:LeftistHeap	access:public	signature:() const
 findMin	.\SkewHeap.cpp	/^        const Comparable& findMin() const$/;"	f	class:SkewHeap	access:public	signature:() const
-findMinIndex	.\BinomialQueue.cpp	/^        int findMinIndex() const;$/;"	p	class:BinomialQueue	file:	access:private	signature:() const
+findMinIndex	.\BinomialQueue.cpp	/^        int findMinIndex() const$/;"	f	class:BinomialQueue	file:	access:private	signature:() const
 insert	.\BinaryHeap.cpp	/^        void insert(Comparable&& x)$/;"	f	class:BinaryHeap	access:public	signature:(Comparable&& x)
 insert	.\BinaryHeap.cpp	/^        void insert(const Comparable& x)$/;"	f	class:BinaryHeap	access:public	signature:(const Comparable& x)
-insert	.\BinomialQueue.cpp	/^        void insert(Comparable&& x);$/;"	p	class:BinomialQueue	file:	access:public	signature:(Comparable&& x)
-insert	.\BinomialQueue.cpp	/^        void insert(const Comparable& x);$/;"	p	class:BinomialQueue	file:	access:public	signature:(const Comparable& x)
+insert	.\BinomialQueue.cpp	/^        void insert(Comparable&& x)$/;"	f	class:BinomialQueue	access:public	signature:(Comparable&& x)
+insert	.\BinomialQueue.cpp	/^        void insert(const Comparable& x)$/;"	f	class:BinomialQueue	access:public	signature:(const Comparable& x)
 insert	.\LeftistHeap.cpp	/^        void insert(Comparable&& x)$/;"	f	class:LeftistHeap	access:public	signature:(Comparable&& x)
 insert	.\LeftistHeap.cpp	/^        void insert(const Comparable& x)$/;"	f	class:LeftistHeap	access:public	signature:(const Comparable& x)
 insert	.\SkewHeap.cpp	/^        void insert(Comparable&& x)$/;"	f	class:SkewHeap	access:public	signature:(Comparable&& x)
 insert	.\SkewHeap.cpp	/^        void insert(const Comparable& x)$/;"	f	class:SkewHeap	access:public	signature:(const Comparable& x)
 isEmpty	.\BinaryHeap.cpp	/^        bool isEmpty() const$/;"	f	class:BinaryHeap	access:public	signature:() const
-isEmpty	.\BinomialQueue.cpp	/^        bool isEmpty() const;$/;"	p	class:BinomialQueue	file:	access:public	signature:() const
+isEmpty	.\BinomialQueue.cpp	/^        bool isEmpty() const$/;"	f	class:BinomialQueue	access:public	signature:() const
 isEmpty	.\LeftistHeap.cpp	/^        bool isEmpty() const$/;"	f	class:LeftistHeap	access:public	signature:() const
 isEmpty	.\SkewHeap.cpp	/^        bool isEmpty() const$/;"	f	class:SkewHeap	access:public	signature:() const
 left	.\LeftistHeap.cpp	/^            LeftistNode* left;$/;"	m	struct:LeftistHeap::LeftistNode	file:	access:public
@@ -170,11 +170,12 @@ leftChild	.\BinomialQueue.cpp	/^            BinomialNode(const Comparable& e, Bi
 leftChild	.\BinomialQueue.cpp	/^            BinomialNode(const Comparable&& e, BinomialNode* lt, BinomialNode* rt) : element {e}, leftChild (lt), nextSibling {rt} {}$/;"	p	struct:BinomialQueue::BinomialNode	file:	access:public	signature:(lt)
 leftChild	.\BinomialQueue.cpp	/^            BinomialNode* leftChild;$/;"	m	struct:BinomialQueue::BinomialNode	file:	access:public
 main	.\BinaryHeap.cpp	/^int main()$/;"	f	signature:()
+main	.\BinomialQueue.cpp	/^int main()$/;"	f	signature:()
 main	.\LeftistHeap.cpp	/^int main()$/;"	f	signature:()
 main	.\SkewHeap.cpp	/^int main()$/;"	f	signature:()
 makeEmpty	.\BinaryHeap.cpp	/^        void makeEmpty()$/;"	f	class:BinaryHeap	access:public	signature:()
-makeEmpty	.\BinomialQueue.cpp	/^        void makeEmpty();$/;"	p	class:BinomialQueue	file:	access:public	signature:()
-makeEmpty	.\BinomialQueue.cpp	/^        void makeEmpty(BinomialNode*& t);$/;"	p	class:BinomialQueue	file:	access:private	signature:(BinomialNode*& t)
+makeEmpty	.\BinomialQueue.cpp	/^        void makeEmpty()$/;"	f	class:BinomialQueue	access:public	signature:()
+makeEmpty	.\BinomialQueue.cpp	/^        void makeEmpty(BinomialNode*& t)$/;"	f	class:BinomialQueue	file:	access:private	signature:(BinomialNode*& t)
 makeEmpty	.\LeftistHeap.cpp	/^        void makeEmpty()$/;"	f	class:LeftistHeap	access:public	signature:()
 makeEmpty	.\SkewHeap.cpp	/^        void makeEmpty()$/;"	f	class:SkewHeap	access:public	signature:()
 merge	.\BinomialQueue.cpp	/^        void merge(BinomialQueue& rhs)$/;"	f	class:BinomialQueue	access:public	signature:(BinomialQueue& rhs)
@@ -186,8 +187,8 @@ merge1	.\LeftistHeap.cpp	/^        LeftistNode* merge1(LeftistNode* h1, LeftistN
 merge1	.\SkewHeap.cpp	/^        SkewNode* merge1(SkewNode* h1, SkewNode* h2)$/;"	f	class:SkewHeap	file:	access:private	signature:(SkewNode* h1, SkewNode* h2)
 nextSibling	.\BinomialQueue.cpp	/^            BinomialNode* nextSibling;$/;"	m	struct:BinomialQueue::BinomialNode	file:	access:public
 npl	.\LeftistHeap.cpp	/^            int npl;$/;"	m	struct:LeftistHeap::LeftistNode	file:	access:public
-operator =	.\BinomialQueue.cpp	/^        BinomialQueue& operator= (BinomialQueue&& rhs);$/;"	p	class:BinomialQueue	file:	access:public	signature:(BinomialQueue&& rhs)
-operator =	.\BinomialQueue.cpp	/^        BinomialQueue& operator= (const BinomialQueue& rhs);$/;"	p	class:BinomialQueue	file:	access:public	signature:(const BinomialQueue& rhs)
+operator =	.\BinomialQueue.cpp	/^        BinomialQueue& operator= (BinomialQueue&& rhs)$/;"	f	class:BinomialQueue	access:public	signature:(BinomialQueue&& rhs)
+operator =	.\BinomialQueue.cpp	/^        BinomialQueue& operator= (const BinomialQueue& rhs)$/;"	f	class:BinomialQueue	access:public	signature:(const BinomialQueue& rhs)
 operator =	.\LeftistHeap.cpp	/^        LeftistHeap& operator= (LeftistHeap&& rhs)$/;"	f	class:LeftistHeap	access:public	signature:(LeftistHeap&& rhs)
 operator =	.\LeftistHeap.cpp	/^        LeftistHeap& operator= (const LeftistHeap& rhs)$/;"	f	class:LeftistHeap	access:public	signature:(const LeftistHeap& rhs)
 operator =	.\SkewHeap.cpp	/^        SkewHeap& operator= (SkewHeap&& rhs)$/;"	f	class:SkewHeap	access:public	signature:(SkewHeap&& rhs)
@@ -202,6 +203,6 @@ root	.\SkewHeap.cpp	/^        SkewNode* root;$/;"	m	class:SkewHeap	file:	access:
 swapChildren	.\LeftistHeap.cpp	/^        void swapChildren(LeftistNode* t)$/;"	f	class:LeftistHeap	file:	access:private	signature:(LeftistNode* t)
 swapChildren	.\SkewHeap.cpp	/^        void swapChildren(SkewNode* r)$/;"	f	class:SkewHeap	file:	access:private	signature:(SkewNode* r)
 theTrees	.\BinomialQueue.cpp	/^        vector<BinomialNode*> theTrees;$/;"	m	class:BinomialQueue	file:	access:private
-~BinomialQueue	.\BinomialQueue.cpp	/^        ~BinomialQueue();$/;"	p	class:BinomialQueue	file:	access:public	signature:()
+~BinomialQueue	.\BinomialQueue.cpp	/^        ~BinomialQueue()$/;"	f	class:BinomialQueue	access:public	signature:()
 ~LeftistHeap	.\LeftistHeap.cpp	/^        ~LeftistHeap()$/;"	f	class:LeftistHeap	access:public	signature:()
 ~SkewHeap	.\SkewHeap.cpp	/^        ~SkewHeap()$/;"	f	class:SkewHeap	access:public	signature:()

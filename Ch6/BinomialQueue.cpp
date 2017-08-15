@@ -84,6 +84,7 @@ class BinomialQueue
             BinomialNode* deletedTree = oldRoot->leftChild;
             delete oldRoot;
 
+            // forming H''
             BinomialQueue deletedQueue;
             deletedQueue.theTrees.resize(minIndex + 1);
             deletedQueue.currentSize = (1 << minIndex) - 1;
@@ -94,6 +95,7 @@ class BinomialQueue
                 deletedQueue.theTrees[j]->nextSibling = nullptr;
             }
 
+            // forming H'
             theTrees[minIndex] = nullptr;
             currentSize -= deletedQueue.currentSize + 1;
 
@@ -107,6 +109,7 @@ class BinomialQueue
             for (auto& root : theTrees)
                 makeEmpty(root);
         }
+
         void merge(BinomialQueue& rhs)
         {
             if (this == &rhs)
@@ -134,30 +137,30 @@ class BinomialQueue
                 whichCase += carry == nullptr ? 0 : 4;
 
                 switch(whichCase) {
-                    case 0:
-                    case 1:
+                    case 0: // none
+                    case 1: // only this
                         break;
-                    case 2:
+                    case 2: // only rhs
                         theTrees[i] = t2;
                         rhs.theTrees[i] = nullptr;
                         break;
-                    case 4:
+                    case 4: // only carry
                         theTrees[i] = carry;
                         carry = nullptr;
                         break;
-                    case 3:
+                    case 3: // this and rhs. combine them to form a new tree the this position empty
                         carry = combineTrees(t1, t2);
                         theTrees[i] = rhs.theTrees[i] = nullptr;
                         break;
-                    case 5:
+                    case 5: // this and carry. combine them to form a new tree the this position empty
                         carry = combineTrees(t1, carry);
                         theTrees[i] = nullptr;
                         break;
-                    case 6:
+                    case 6: // rhs and carry. combine them to form a new tree the this position empty
                         carry = combineTrees(t2, carry);
                         rhs.theTrees[i] = nullptr;
                         break;
-                    case 7:
+                    case 7: // all three. place carry in this position. combine this and rhs to form a new tree the this position empty
                         theTrees[i] = carry;
                         carry = combineTrees(t1, t2);
                         rhs.theTrees[i] = nullptr;
@@ -190,7 +193,7 @@ class BinomialQueue
         int findMinIndex() const
         {
             int i, minIndex;
-            for (i = 0; theTrees[i] == nullptr; ++i)
+            for (i = 0; theTrees[i] == nullptr; ++i) // skip
                 ;
 
             for (minIndex = i; i < theTrees.size(); ++i)
@@ -202,7 +205,7 @@ class BinomialQueue
 
         int capacity() const
         {
-            return (1 << theTrees.size()) - 1;
+            return (1 << theTrees.size()) - 1; // 2^size() - 1
         }
 
         BinomialNode* clone(BinomialNode* t) const
@@ -239,5 +242,39 @@ class BinomialQueue
 
 int main()
 {
-    return 0;
+    BinomialQueue<char> a {};
+    char item;
+    while (cin >> item) {
+        if (item == '-')
+        {
+            char tmp;
+            a.deleteMin(tmp);
+            cout << tmp << '\n';
+        }
+        else if (item == '?')
+            cout << a.isEmpty() << '\n';
+        else
+            a.insert(item);
+    }
+
+    BinomialQueue<char> b = a;
+
+    b.deleteMin();
+    b.deleteMin();
+    b.insert('a');
+
+    while (!b.isEmpty()) {
+        char tmp;
+        b.deleteMin(tmp);
+        cout << tmp << " ";
+    }
+    cout << endl;
+
+    a.merge(b);
+
+    while (!a.isEmpty()) {
+        char tmp;
+        a.deleteMin(tmp);
+        cout << tmp << " ";
+    }
 }
