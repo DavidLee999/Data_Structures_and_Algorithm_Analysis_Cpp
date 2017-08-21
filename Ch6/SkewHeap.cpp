@@ -6,8 +6,10 @@ template <typename Comparable>
 class SkewHeap {
     public:
         SkewHeap():root{nullptr} {}
+        
         SkewHeap(const SkewHeap& rhs):root{nullptr}
         { root = clone(rhs.root); }
+        
         SkewHeap(SkewHeap&& rhs):root{rhs.root}
         { rhs.root = nullptr; }
 
@@ -21,6 +23,7 @@ class SkewHeap {
 
             return *this;
         }
+        
         SkewHeap& operator= (SkewHeap&& rhs)
         {
             std::swap(root, rhs.root);
@@ -29,6 +32,7 @@ class SkewHeap {
 
         bool isEmpty() const
         { return root == nullptr; }
+        
         const Comparable& findMin() const
         {
             if (isEmpty())
@@ -41,10 +45,12 @@ class SkewHeap {
         {
             root = merge(new SkewNode{x}, root);
         }
+        
         void insert(Comparable&& x)
         {
             root = merge(new SkewNode{x}, root);
         }
+        
         void deleteMin()
         {
             if (isEmpty())
@@ -55,16 +61,19 @@ class SkewHeap {
 
             delete oldroot;
         }
+        
         void deleteMin(Comparable& minItem)
         {
             minItem = findMin();
             deleteMin();
         }
+        
         void makeEmpty()
         {
             reclaimMemory(root);
             root = nullptr;
         }
+        
         void merge(SkewHeap& rhs)
         {
             if (this == &rhs)
@@ -111,6 +120,7 @@ class SkewHeap {
 
             return h1;
         }
+        
         void swapChildren(SkewNode* r)
         {
             SkewNode* tmp = r->left;
@@ -125,6 +135,7 @@ class SkewHeap {
             else
                 return new SkewNode {r->element, clone(r->left), clone(r->right)};
         }
+        
         void reclaimMemory(SkewNode* r)
         {
             if (r != nullptr)
