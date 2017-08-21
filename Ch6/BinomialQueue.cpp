@@ -48,6 +48,7 @@ class BinomialQueue
 
         bool isEmpty() const
         { return currentSize == 0; }
+    
         const Comparable& findMin() const
         {
             if (isEmpty())
@@ -61,11 +62,13 @@ class BinomialQueue
             BinomialQueue oneItem {x};
             merge(oneItem);
         }
+    
         void insert(Comparable&& x)
         {
             BinomialQueue oneItem {std::move(x)};
             merge(oneItem);
         }
+    
         void deleteMin()
         {
             Comparable x;
