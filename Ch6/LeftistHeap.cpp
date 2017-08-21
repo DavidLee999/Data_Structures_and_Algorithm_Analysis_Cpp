@@ -7,8 +7,10 @@ class LeftistHeap
 {
     public:
         LeftistHeap():root {nullptr} {}
+    
         LeftistHeap(const LeftistHeap& rhs):root {nullptr}
         { root = clone(rhs.root); }
+    
         LeftistHeap(LeftistHeap&& rhs):root {rhs.root}
         { rhs.root = nullptr; }
 
@@ -22,6 +24,7 @@ class LeftistHeap
 
             return *this;
         }
+    
         LeftistHeap& operator= (LeftistHeap&& rhs)
         {
             std::swap(root, rhs.root);
@@ -30,6 +33,7 @@ class LeftistHeap
 
         bool isEmpty() const
         { return root == nullptr; }
+    
         const Comparable& findMin() const
         {
             if (isEmpty())
@@ -58,16 +62,19 @@ class LeftistHeap
 
             delete oldRoot;
         }
+    
         void deleteMin(Comparable& minItem)
         {
             minItem = findMin();
             deleteMin();
         }
+    
         void makeEmpty()
         {
             reclaimMemory(root);
             root = nullptr;
         }
+    
         void merge(LeftistHeap& rhs)
         {
             if (this == &rhs)
