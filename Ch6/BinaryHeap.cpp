@@ -9,6 +9,7 @@ class BinaryHeap
     public:
         explicit BinaryHeap(int capacity = 100):array(capacity + 1), currentSize {0}
         {}
+    
         explicit BinaryHeap(const vector<Comparable>& items):array(items.size() + 10), currentSize{items.size()}
         {
             for (int i = 0; i < items.size(); ++i)
@@ -19,6 +20,7 @@ class BinaryHeap
 
         bool isEmpty() const
         { return currentSize == 0; }
+    
         const Comparable& findMin() const
         {
             if (isEmpty())
@@ -70,6 +72,7 @@ class BinaryHeap
             array[1] = std::move(array[currentSize--]);
             percolateDown(1);
         }
+    
         void makeEmpty()
         { currentSize = 0; }
 
@@ -82,6 +85,7 @@ class BinaryHeap
             for (int i = currentSize / 2; i > 0; --i)
                 percolateDown(i);
         }
+    
         void percolateDown(int hole)
         {
             int child;
