@@ -50,17 +50,27 @@ class BinarySearchTree
             return findMax(root)->element;
         }
 
-        bool constains(const Comparble& x) const
+        bool contains(const Comparable& x) const
         {
-            return constains(x, root);
+            return contains(x, root);
         }
 
         bool isEmpty() const
         { return root == nullptr; }
 
-        void printTree(ostream& out = cout) const;
+        void printTree(ostream& out = cout) const
+        {
+            if (isEmpty())
+                out << "Empty binary tree.\n";
+            else
+                printTree(root, out);
+        }
 
-        void makeEmpty();
+        void makeEmpty()
+        {
+            makeEmpty(root);
+        }
+
         void insert(const Comparable& x)
         {
             insert(x, root);
@@ -124,7 +134,7 @@ class BinarySearchTree
             if (x < t->element)
                 remove(x, t->left);
             else if (t->element < x)
-                remove(x. t->right);
+                remove(x, t->right);
             else if (t->left != nullptr && t->right != nullptr)
             {
                 t->element = findMin(t->right)->element;
@@ -154,7 +164,7 @@ class BinarySearchTree
         {
             if (t == nullptr)
                 return nullptr;
-            if (t.left == nullptr)
+            if (t->left == nullptr)
                 return t;
             
             return findMin(t->left);
@@ -169,7 +179,7 @@ class BinarySearchTree
             return t;
         }
 
-        bool constains(const Comparable& x, BinaryNode* t) const
+        bool contains(const Comparable& x, BinaryNode* t) const
         {
             if (t == nullptr)
                 return false;
@@ -181,7 +191,15 @@ class BinarySearchTree
                 return true;
         }
 
-        void printTree(BinaryNode* t, ostream& out) const;
+        void printTree(BinaryNode* t, ostream& out) const
+        {
+            if (t != nullptr)
+            {
+                printTree(t->left, out);
+                out << t->element << " ";
+                printTree(t->right, out);
+            }
+        }
 
         BinaryNode* clone(BinaryNode* t) const
         {
@@ -194,5 +212,16 @@ class BinarySearchTree
 };
 int main()
 {
+    BinarySearchTree<char> t {};
+    char p;
+
+    while (cin >> p) {
+        t.insert(p);
+    }
+
+    t.printTree(cout);
+
+    cout << endl;
+
     return 0;
 }
