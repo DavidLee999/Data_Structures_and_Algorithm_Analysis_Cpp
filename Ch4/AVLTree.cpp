@@ -61,7 +61,13 @@ class AvlTree
             return root == nullptr;
         }
 
-        void printTree() const;
+        void printTree(ostream& out = std::cout) const
+        {
+            if(isEmpty())
+                out << "Empty Tree" << endl;
+            else
+                printTree(root, out);
+        }
 
 
         void makeEmpty()
@@ -79,7 +85,10 @@ class AvlTree
             insert(std::move(x), root);
         }
 
-        void remove(const Comparable& x);
+        void remove(const Comparable& x)
+        {
+            remove(x, root);
+        }
 
     private:
         struct AvlNode
@@ -89,9 +98,9 @@ class AvlTree
             AvlNode* right;
             int height;
 
-            AvlNode(const element& e, AvlNode* lt, AvlNode* rt, int h = 0)
+            AvlNode(const Comparable& e, AvlNode* lt, AvlNode* rt, int h = 0)
                 : element{ e }, left{ lt }, right{ rt }, height{ h } {};
-            AvlNode(element&& e, AvlNode* lt, AvlNode* rt, int h = 0)
+            AvlNode(Comparable&& e, AvlNode* lt, AvlNode* rt, int h = 0)
                 : element{ std::move(e) }, left{ lt }, right{ rt }, height{ h } {};
         };
         
@@ -124,21 +133,37 @@ class AvlTree
                 return contains(x, t->left);
             else if (t->element < x)
                 return contains(x, t->right);
-            else if
+            else
                 return true;
         }
 
-        void printTree(AvlNode *t) const;
+        void printTree(AvlNode *t, ostream& out) const
+        {
+            if (t != nullptr)
+            {
+                printTree(t->left, out);
+                out << t->element << " ";
+                printTree(t->right, out);
+            }
+        }
+
         AvlNode* clone(AvlNode *t) const
         {
             if (t == nullptr)
                 return nullptr;
             else
-                return new AvlNode{ t->element, clone(t->left), clone(t->right), t->hight };
+                return new AvlNode{ t->element, clone(t->left), clone(t->right), t->height };
         }
 
-        int height(AvlNode* t) const;
-        int max(int lhs, int rhs) const;
+        int height(AvlNode* t) const
+        {
+            return t == nullptr ? -1 : t->height;
+        }
+
+        int max(int lhs, int rhs) const
+        {
+            return lhs > rhs ? lhs : rhs;
+        }
 
         void makeEmpty(AvlNode* &t)
         {
@@ -162,6 +187,7 @@ class AvlTree
 
             balance(t);
         }
+
         void insert(Comparable&& x, AvlNode* &t)
         {
             if (t == nullptr)
@@ -174,13 +200,36 @@ class AvlTree
             balance(t);
         }
 
-        void remove(const Comparable& x, AvlNode* &t);
+        void remove(const Comparable& x, AvlNode* &t)
+        {
+            if (t == nullptr)
+                return;
+            
+            if ( x < t->element)
+                remove(x, t->left);
+            else if (t->element < x)
+                remove(x, t->right);
+            else if (t->left != nullptr && t->right != nullptr)
+            {
+                t->element = findMin(t->right)->element;
+                remove(t->element, t->right);
+            }
+            else
+            {
+                AvlNode* oldNode = t;
+                t = (t->left != nullptr) ? t->left : t->right;
+                delete oldNode;
+            }
+
+            balance(t);
+        }
+
         void balance(AvlNode* &t)
         {
             if (t == nullptr)
                 return;
 
-            if (height(t-left) - height(t->right) > ALLOWED_IMBALANCE)
+            if (height(t->left) - height(t->right) > ALLOWED_IMBALANCE)
                 // case 1
                 if (height(t->left->left) >= height(t->left->right))
                     rotateWithLeftChild(t);
@@ -214,7 +263,7 @@ class AvlTree
         // case 4
         void rotateWithRightChild(AvlNode* &k1)
         {
-            AvlNode* k2 = k1->righ;
+            AvlNode* k2 = k1->right;
             k1->right = k2->left;
             k2->left = k1;
 
@@ -234,8 +283,24 @@ class AvlTree
         // case 3
         void doubleWithRightChild(AvlNode* &k1)
         {
-            roateWithLeftChild(k1->right);
-            ratateWithRightChild(k1);
+            rotateWithLeftChild(k1->right);
+            rotateWithRightChild(k1);
         }
 
 };
+
+int main()
+{
+    AvlTree<char> a;
+    char p;
+    while (cin >> p)
+        a.insert(p);
+    a.printTree();
+    cout << endl;
+
+    AvlTree<char> b = a;
+    b.remove(a.findMax());
+    b.remove(a.findMin());
+    cout << b.contains('a') << '\n';
+    b.printTree();
+}
