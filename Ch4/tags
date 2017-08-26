@@ -4,6 +4,54 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+ALLOWED_IMBALANCE	.\AVLTree.cpp	/^        static const int ALLOWED_IMBALANCE = 1;$/;"	m	class:AvlTree	file:	access:private
+AvlNode	.\AVLTree.cpp	/^            AvlNode(Comparable&& e, AvlNode* lt, AvlNode* rt, int h = 0)$/;"	f	struct:AvlTree::AvlNode	access:public	signature:(Comparable&& e, AvlNode* lt, AvlNode* rt, int h = 0)
+AvlNode	.\AVLTree.cpp	/^            AvlNode(const Comparable& e, AvlNode* lt, AvlNode* rt, int h = 0)$/;"	f	struct:AvlTree::AvlNode	access:public	signature:(const Comparable& e, AvlNode* lt, AvlNode* rt, int h = 0)
+AvlNode	.\AVLTree.cpp	/^        struct AvlNode$/;"	s	class:AvlTree	file:	access:private
+AvlTree	.\AVLTree.cpp	/^        AvlTree() : root{ nullptr } {};$/;"	f	class:AvlTree	access:public	signature:()
+AvlTree	.\AVLTree.cpp	/^        AvlTree(AvlTree&& rhs) : root{ rhs.root }$/;"	f	class:AvlTree	access:public	signature:(AvlTree&& rhs)
+AvlTree	.\AVLTree.cpp	/^        AvlTree(const AvlTree& rhs) : root{ nullptr }$/;"	f	class:AvlTree	access:public	signature:(const AvlTree& rhs)
+AvlTree	.\AVLTree.cpp	/^class AvlTree$/;"	c	file:
+AvlTree::ALLOWED_IMBALANCE	.\AVLTree.cpp	/^        static const int ALLOWED_IMBALANCE = 1;$/;"	m	class:AvlTree	file:	access:private
+AvlTree::AvlNode	.\AVLTree.cpp	/^        struct AvlNode$/;"	s	class:AvlTree	file:	access:private
+AvlTree::AvlNode::AvlNode	.\AVLTree.cpp	/^            AvlNode(Comparable&& e, AvlNode* lt, AvlNode* rt, int h = 0)$/;"	f	struct:AvlTree::AvlNode	access:public	signature:(Comparable&& e, AvlNode* lt, AvlNode* rt, int h = 0)
+AvlTree::AvlNode::AvlNode	.\AVLTree.cpp	/^            AvlNode(const Comparable& e, AvlNode* lt, AvlNode* rt, int h = 0)$/;"	f	struct:AvlTree::AvlNode	access:public	signature:(const Comparable& e, AvlNode* lt, AvlNode* rt, int h = 0)
+AvlTree::AvlNode::element	.\AVLTree.cpp	/^            Comparable element;$/;"	m	struct:AvlTree::AvlNode	file:	access:public
+AvlTree::AvlNode::height	.\AVLTree.cpp	/^            int height;$/;"	m	struct:AvlTree::AvlNode	file:	access:public
+AvlTree::AvlNode::left	.\AVLTree.cpp	/^            AvlNode* left;$/;"	m	struct:AvlTree::AvlNode	file:	access:public
+AvlTree::AvlNode::right	.\AVLTree.cpp	/^            AvlNode* right;$/;"	m	struct:AvlTree::AvlNode	file:	access:public
+AvlTree::AvlTree	.\AVLTree.cpp	/^        AvlTree() : root{ nullptr } {};$/;"	f	class:AvlTree	access:public	signature:()
+AvlTree::AvlTree	.\AVLTree.cpp	/^        AvlTree(AvlTree&& rhs) : root{ rhs.root }$/;"	f	class:AvlTree	access:public	signature:(AvlTree&& rhs)
+AvlTree::AvlTree	.\AVLTree.cpp	/^        AvlTree(const AvlTree& rhs) : root{ nullptr }$/;"	f	class:AvlTree	access:public	signature:(const AvlTree& rhs)
+AvlTree::balance	.\AVLTree.cpp	/^        void balance(AvlNode* &t)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &t)
+AvlTree::clone	.\AVLTree.cpp	/^        AvlNode* clone(AvlNode *t) const$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode *t) const
+AvlTree::contains	.\AVLTree.cpp	/^        bool contains(const Comparable& x) const$/;"	f	class:AvlTree	access:public	signature:(const Comparable& x) const
+AvlTree::contains	.\AVLTree.cpp	/^        bool contains(const Comparable& x, AvlNode *t) const$/;"	f	class:AvlTree	file:	access:private	signature:(const Comparable& x, AvlNode *t) const
+AvlTree::doubleWithLeftChild	.\AVLTree.cpp	/^        void doubleWithLeftChild(AvlNode* &k3)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &k3)
+AvlTree::doubleWithRightChild	.\AVLTree.cpp	/^        void doubleWithRightChild(AvlNode* &k1)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &k1)
+AvlTree::findMax	.\AVLTree.cpp	/^        AvlNode* findMax(AvlNode *t) const$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode *t) const
+AvlTree::findMax	.\AVLTree.cpp	/^        const Comparable& findMax() const$/;"	f	class:AvlTree	access:public	signature:() const
+AvlTree::findMin	.\AVLTree.cpp	/^        AvlNode* findMin(AvlNode *t) const$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode *t) const
+AvlTree::findMin	.\AVLTree.cpp	/^        const Comparable& findMin() const$/;"	f	class:AvlTree	access:public	signature:() const
+AvlTree::height	.\AVLTree.cpp	/^        int height(AvlNode* t) const$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* t) const
+AvlTree::insert	.\AVLTree.cpp	/^        void insert(Comparable&& x)$/;"	f	class:AvlTree	access:public	signature:(Comparable&& x)
+AvlTree::insert	.\AVLTree.cpp	/^        void insert(Comparable&& x, AvlNode* &t)$/;"	f	class:AvlTree	file:	access:private	signature:(Comparable&& x, AvlNode* &t)
+AvlTree::insert	.\AVLTree.cpp	/^        void insert(const Comparable& x)$/;"	f	class:AvlTree	access:public	signature:(const Comparable& x)
+AvlTree::insert	.\AVLTree.cpp	/^        void insert(const Comparable& x, AvlNode* &t)$/;"	f	class:AvlTree	file:	access:private	signature:(const Comparable& x, AvlNode* &t)
+AvlTree::isEmpty	.\AVLTree.cpp	/^        bool isEmpty() const$/;"	f	class:AvlTree	access:public	signature:() const
+AvlTree::makeEmpty	.\AVLTree.cpp	/^        void makeEmpty()$/;"	f	class:AvlTree	access:public	signature:()
+AvlTree::makeEmpty	.\AVLTree.cpp	/^        void makeEmpty(AvlNode* &t)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &t)
+AvlTree::max	.\AVLTree.cpp	/^        int max(int lhs, int rhs) const$/;"	f	class:AvlTree	file:	access:private	signature:(int lhs, int rhs) const
+AvlTree::operator =	.\AVLTree.cpp	/^        AvlTree& operator= (AvlTree&& rhs)$/;"	f	class:AvlTree	access:public	signature:(AvlTree&& rhs)
+AvlTree::operator =	.\AVLTree.cpp	/^        AvlTree& operator= (const AvlTree& rhs)$/;"	f	class:AvlTree	access:public	signature:(const AvlTree& rhs)
+AvlTree::printTree	.\AVLTree.cpp	/^        void printTree(AvlNode *t, ostream& out) const$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode *t, ostream& out) const
+AvlTree::printTree	.\AVLTree.cpp	/^        void printTree(ostream& out = std::cout) const$/;"	f	class:AvlTree	access:public	signature:(ostream& out = std::cout) const
+AvlTree::remove	.\AVLTree.cpp	/^        void remove(const Comparable& x)$/;"	f	class:AvlTree	access:public	signature:(const Comparable& x)
+AvlTree::remove	.\AVLTree.cpp	/^        void remove(const Comparable& x, AvlNode* &t)$/;"	f	class:AvlTree	file:	access:private	signature:(const Comparable& x, AvlNode* &t)
+AvlTree::root	.\AVLTree.cpp	/^        AvlNode* root;$/;"	m	class:AvlTree	file:	access:private
+AvlTree::rotateWithLeftChild	.\AVLTree.cpp	/^        void rotateWithLeftChild(AvlNode* &k2)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &k2)
+AvlTree::rotateWithRightChild	.\AVLTree.cpp	/^        void rotateWithRightChild(AvlNode* &k1)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &k1)
+AvlTree::~AvlTree	.\AVLTree.cpp	/^        ~AvlTree() { makeEmpty(); }$/;"	f	class:AvlTree	access:public	signature:()
 BinaryNode	.\BinarySearchTree.cpp	/^            BinaryNode(Comparable&& e, BinaryNode* lt, BinaryNode* rt)$/;"	f	struct:BinarySearchTree::BinaryNode	access:public	signature:(Comparable&& e, BinaryNode* lt, BinaryNode* rt)
 BinaryNode	.\BinarySearchTree.cpp	/^            BinaryNode(const Comparable& e, BinaryNode* lt, BinaryNode* rt)$/;"	f	struct:BinarySearchTree::BinaryNode	access:public	signature:(const Comparable& e, BinaryNode* lt, BinaryNode* rt)
 BinaryNode	.\BinarySearchTree.cpp	/^        struct BinaryNode$/;"	s	class:BinarySearchTree	file:	access:private
@@ -21,8 +69,8 @@ BinarySearchTree::BinarySearchTree	.\BinarySearchTree.cpp	/^        BinarySearch
 BinarySearchTree::BinarySearchTree	.\BinarySearchTree.cpp	/^        BinarySearchTree(BinarySearchTree&& rhs) : root{ rhs.root }$/;"	f	class:BinarySearchTree	access:public	signature:(BinarySearchTree&& rhs)
 BinarySearchTree::BinarySearchTree	.\BinarySearchTree.cpp	/^        BinarySearchTree(const BinarySearchTree& rhs) : root{ nullptr }$/;"	f	class:BinarySearchTree	access:public	signature:(const BinarySearchTree& rhs)
 BinarySearchTree::clone	.\BinarySearchTree.cpp	/^        BinaryNode* clone(BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(BinaryNode* t) const
-BinarySearchTree::constains	.\BinarySearchTree.cpp	/^        bool constains(const Comparable& x) const$/;"	f	class:BinarySearchTree	access:public	signature:(const Comparable& x) const
-BinarySearchTree::constains	.\BinarySearchTree.cpp	/^        bool constains(const Comparable& x, BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(const Comparable& x, BinaryNode* t) const
+BinarySearchTree::contains	.\BinarySearchTree.cpp	/^        bool contains(const Comparable& x) const$/;"	f	class:BinarySearchTree	access:public	signature:(const Comparable& x) const
+BinarySearchTree::contains	.\BinarySearchTree.cpp	/^        bool contains(const Comparable& x, BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(const Comparable& x, BinaryNode* t) const
 BinarySearchTree::findMax	.\BinarySearchTree.cpp	/^        BinaryNode* findMax(BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(BinaryNode* t) const
 BinarySearchTree::findMax	.\BinarySearchTree.cpp	/^        const Comparable& findMax() const$/;"	f	class:BinarySearchTree	access:public	signature:() const
 BinarySearchTree::findMin	.\BinarySearchTree.cpp	/^        BinaryNode* findMin(BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(BinaryNode* t) const
@@ -42,29 +90,63 @@ BinarySearchTree::remove	.\BinarySearchTree.cpp	/^        void remove(const Comp
 BinarySearchTree::remove	.\BinarySearchTree.cpp	/^        void remove(const Comparable& x, BinaryNode* &t)$/;"	f	class:BinarySearchTree	file:	access:private	signature:(const Comparable& x, BinaryNode* &t)
 BinarySearchTree::root	.\BinarySearchTree.cpp	/^        BinaryNode* root;$/;"	m	class:BinarySearchTree	file:	access:private
 BinarySearchTree::~BinarySearchTree	.\BinarySearchTree.cpp	/^        ~BinarySearchTree()$/;"	f	class:BinarySearchTree	access:public	signature:()
+balance	.\AVLTree.cpp	/^        void balance(AvlNode* &t)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &t)
+clone	.\AVLTree.cpp	/^        AvlNode* clone(AvlNode *t) const$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode *t) const
 clone	.\BinarySearchTree.cpp	/^        BinaryNode* clone(BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(BinaryNode* t) const
-constains	.\BinarySearchTree.cpp	/^        bool constains(const Comparable& x) const$/;"	f	class:BinarySearchTree	access:public	signature:(const Comparable& x) const
-constains	.\BinarySearchTree.cpp	/^        bool constains(const Comparable& x, BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(const Comparable& x, BinaryNode* t) const
+contains	.\AVLTree.cpp	/^        bool contains(const Comparable& x) const$/;"	f	class:AvlTree	access:public	signature:(const Comparable& x) const
+contains	.\AVLTree.cpp	/^        bool contains(const Comparable& x, AvlNode *t) const$/;"	f	class:AvlTree	file:	access:private	signature:(const Comparable& x, AvlNode *t) const
+contains	.\BinarySearchTree.cpp	/^        bool contains(const Comparable& x) const$/;"	f	class:BinarySearchTree	access:public	signature:(const Comparable& x) const
+contains	.\BinarySearchTree.cpp	/^        bool contains(const Comparable& x, BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(const Comparable& x, BinaryNode* t) const
+doubleWithLeftChild	.\AVLTree.cpp	/^        void doubleWithLeftChild(AvlNode* &k3)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &k3)
+doubleWithRightChild	.\AVLTree.cpp	/^        void doubleWithRightChild(AvlNode* &k1)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &k1)
+element	.\AVLTree.cpp	/^            Comparable element;$/;"	m	struct:AvlTree::AvlNode	file:	access:public
 element	.\BinarySearchTree.cpp	/^            Comparable element;$/;"	m	struct:BinarySearchTree::BinaryNode	file:	access:public
+findMax	.\AVLTree.cpp	/^        AvlNode* findMax(AvlNode *t) const$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode *t) const
+findMax	.\AVLTree.cpp	/^        const Comparable& findMax() const$/;"	f	class:AvlTree	access:public	signature:() const
 findMax	.\BinarySearchTree.cpp	/^        BinaryNode* findMax(BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(BinaryNode* t) const
 findMax	.\BinarySearchTree.cpp	/^        const Comparable& findMax() const$/;"	f	class:BinarySearchTree	access:public	signature:() const
+findMin	.\AVLTree.cpp	/^        AvlNode* findMin(AvlNode *t) const$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode *t) const
+findMin	.\AVLTree.cpp	/^        const Comparable& findMin() const$/;"	f	class:AvlTree	access:public	signature:() const
 findMin	.\BinarySearchTree.cpp	/^        BinaryNode* findMin(BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(BinaryNode* t) const
 findMin	.\BinarySearchTree.cpp	/^        const Comparable& findMin() const$/;"	f	class:BinarySearchTree	access:public	signature:() const
+height	.\AVLTree.cpp	/^            int height;$/;"	m	struct:AvlTree::AvlNode	file:	access:public
+height	.\AVLTree.cpp	/^        int height(AvlNode* t) const$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* t) const
+insert	.\AVLTree.cpp	/^        void insert(Comparable&& x)$/;"	f	class:AvlTree	access:public	signature:(Comparable&& x)
+insert	.\AVLTree.cpp	/^        void insert(Comparable&& x, AvlNode* &t)$/;"	f	class:AvlTree	file:	access:private	signature:(Comparable&& x, AvlNode* &t)
+insert	.\AVLTree.cpp	/^        void insert(const Comparable& x)$/;"	f	class:AvlTree	access:public	signature:(const Comparable& x)
+insert	.\AVLTree.cpp	/^        void insert(const Comparable& x, AvlNode* &t)$/;"	f	class:AvlTree	file:	access:private	signature:(const Comparable& x, AvlNode* &t)
 insert	.\BinarySearchTree.cpp	/^        void insert(Comparable&& x)$/;"	f	class:BinarySearchTree	access:public	signature:(Comparable&& x)
 insert	.\BinarySearchTree.cpp	/^        void insert(Comparable&& x, BinaryNode* &t)$/;"	f	class:BinarySearchTree	file:	access:private	signature:(Comparable&& x, BinaryNode* &t)
 insert	.\BinarySearchTree.cpp	/^        void insert(const Comparable& x)$/;"	f	class:BinarySearchTree	access:public	signature:(const Comparable& x)
 insert	.\BinarySearchTree.cpp	/^        void insert(const Comparable& x, BinaryNode* &t)$/;"	f	class:BinarySearchTree	file:	access:private	signature:(const Comparable& x, BinaryNode* &t)
+isEmpty	.\AVLTree.cpp	/^        bool isEmpty() const$/;"	f	class:AvlTree	access:public	signature:() const
 isEmpty	.\BinarySearchTree.cpp	/^        bool isEmpty() const$/;"	f	class:BinarySearchTree	access:public	signature:() const
+left	.\AVLTree.cpp	/^            AvlNode* left;$/;"	m	struct:AvlTree::AvlNode	file:	access:public
 left	.\BinarySearchTree.cpp	/^            BinaryNode* left;$/;"	m	struct:BinarySearchTree::BinaryNode	file:	access:public
+main	.\AVLTree.cpp	/^int main()$/;"	f	signature:()
 main	.\BinarySearchTree.cpp	/^int main()$/;"	f	signature:()
+makeEmpty	.\AVLTree.cpp	/^        void makeEmpty()$/;"	f	class:AvlTree	access:public	signature:()
+makeEmpty	.\AVLTree.cpp	/^        void makeEmpty(AvlNode* &t)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &t)
 makeEmpty	.\BinarySearchTree.cpp	/^        void makeEmpty()$/;"	f	class:BinarySearchTree	access:public	signature:()
 makeEmpty	.\BinarySearchTree.cpp	/^        void makeEmpty(BinaryNode* &t)$/;"	f	class:BinarySearchTree	file:	access:private	signature:(BinaryNode* &t)
+max	.\AVLTree.cpp	/^        int max(int lhs, int rhs) const$/;"	f	class:AvlTree	file:	access:private	signature:(int lhs, int rhs) const
+operator =	.\AVLTree.cpp	/^        AvlTree& operator= (AvlTree&& rhs)$/;"	f	class:AvlTree	access:public	signature:(AvlTree&& rhs)
+operator =	.\AVLTree.cpp	/^        AvlTree& operator= (const AvlTree& rhs)$/;"	f	class:AvlTree	access:public	signature:(const AvlTree& rhs)
 operator =	.\BinarySearchTree.cpp	/^        BinarySearchTree& operator= (BinarySearchTree&& rhs)$/;"	f	class:BinarySearchTree	access:public	signature:(BinarySearchTree&& rhs)
 operator =	.\BinarySearchTree.cpp	/^        BinarySearchTree& operator= (const BinarySearchTree& rhs)$/;"	f	class:BinarySearchTree	access:public	signature:(const BinarySearchTree& rhs)
+printTree	.\AVLTree.cpp	/^        void printTree(AvlNode *t, ostream& out) const$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode *t, ostream& out) const
+printTree	.\AVLTree.cpp	/^        void printTree(ostream& out = std::cout) const$/;"	f	class:AvlTree	access:public	signature:(ostream& out = std::cout) const
 printTree	.\BinarySearchTree.cpp	/^        void printTree(BinaryNode* t, ostream& out) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(BinaryNode* t, ostream& out) const
 printTree	.\BinarySearchTree.cpp	/^        void printTree(ostream& out = cout) const$/;"	f	class:BinarySearchTree	access:public	signature:(ostream& out = cout) const
+remove	.\AVLTree.cpp	/^        void remove(const Comparable& x)$/;"	f	class:AvlTree	access:public	signature:(const Comparable& x)
+remove	.\AVLTree.cpp	/^        void remove(const Comparable& x, AvlNode* &t)$/;"	f	class:AvlTree	file:	access:private	signature:(const Comparable& x, AvlNode* &t)
 remove	.\BinarySearchTree.cpp	/^        void remove(const Comparable& x)$/;"	f	class:BinarySearchTree	access:public	signature:(const Comparable& x)
 remove	.\BinarySearchTree.cpp	/^        void remove(const Comparable& x, BinaryNode* &t)$/;"	f	class:BinarySearchTree	file:	access:private	signature:(const Comparable& x, BinaryNode* &t)
+right	.\AVLTree.cpp	/^            AvlNode* right;$/;"	m	struct:AvlTree::AvlNode	file:	access:public
 right	.\BinarySearchTree.cpp	/^            BinaryNode* right;$/;"	m	struct:BinarySearchTree::BinaryNode	file:	access:public
+root	.\AVLTree.cpp	/^        AvlNode* root;$/;"	m	class:AvlTree	file:	access:private
 root	.\BinarySearchTree.cpp	/^        BinaryNode* root;$/;"	m	class:BinarySearchTree	file:	access:private
+rotateWithLeftChild	.\AVLTree.cpp	/^        void rotateWithLeftChild(AvlNode* &k2)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &k2)
+rotateWithRightChild	.\AVLTree.cpp	/^        void rotateWithRightChild(AvlNode* &k1)$/;"	f	class:AvlTree	file:	access:private	signature:(AvlNode* &k1)
+~AvlTree	.\AVLTree.cpp	/^        ~AvlTree() { makeEmpty(); }$/;"	f	class:AvlTree	access:public	signature:()
 ~BinarySearchTree	.\BinarySearchTree.cpp	/^        ~BinarySearchTree()$/;"	f	class:BinarySearchTree	access:public	signature:()

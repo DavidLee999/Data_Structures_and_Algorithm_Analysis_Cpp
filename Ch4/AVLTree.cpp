@@ -193,9 +193,9 @@ class AvlTree
             if (t == nullptr)
                 t = new AvlNode(std::move(x), nullptr, nullptr);
             else if (x < t->element)
-                insert(x, t->left);
+                insert(std::move(x), t->left);
             else if (t->element < x)
-                insert(x, t->right);
+                insert(std::move(x), t->right);
 
             balance(t);
         }
@@ -244,7 +244,7 @@ class AvlTree
                 else
                     doubleWithRightChild(t);
 
-            t->height = max(height(t->left), height(t->right)) + 1;
+            t->height = max(height(t->left), height(t->right)) + 1; // update the height everytime
         }
 
         // case 1
@@ -254,6 +254,7 @@ class AvlTree
             k2->left = k1->right;
             k1->right = k2;
 
+            // update the height of involved nodes
             k2->height = max(height(k2->left), height(k2->right)) + 1;
             k1->height = max(height(k1->left), k2->height) + 1;
 
@@ -267,6 +268,7 @@ class AvlTree
             k1->right = k2->left;
             k2->left = k1;
 
+            // update the height of involved nodes
             k1->height = max(height(k1->left), height(k1->right)) + 1;
             k2->height = max(height(k2->right), k1->height) + 1;
 
