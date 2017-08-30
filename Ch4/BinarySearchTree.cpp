@@ -247,7 +247,12 @@ int main()
 
     a.remove(Employee{"Thomi", 5000});
 
-    cout << a.contains(Employee{"John", 3000});
+    cout << a.contains(Employee{"John", 3000}) << endl;
+    
+    Employee b = a.findMin();
+    Employee c = a.findMax();
+
+    cout << b.getName() << " " << c.getName(); 
     return 0;
 }
 
