@@ -157,17 +157,32 @@ int nextPrime(int n)
 
 int main()
 {
-    HashTable<string> a;
-    string b {"Snow"};
-    a.insert(b);
-    a.insert("mike"); 
-    a.insert("john");
-    a.insert("lisa"); 
-    a.insert("thomi"); 
+    HashTable<int> h1;
+    HashTable<int> h2;
 
-    a.remove("lisa");
-    a.remove("lee");
+    const int NUMS = 4000;
+    const int GAP  =   37;
+    int i;
 
-    cout << a.contains("john");
+    cout << "Checking... (no more output means success)" << endl;
+
+    for( i = GAP; i != 0; i = ( i + GAP ) % NUMS )
+        h1.insert( i );
+    
+    h2 = h1;
+    
+    for( i = 1; i < NUMS; i += 2 )
+        h2.remove( i );
+
+    for( i = 2; i < NUMS; i += 2 )
+        if( !h2.contains( i ) )
+            cout << "Contains fails " << i << endl;
+
+    for( i = 1; i < NUMS; i += 2 )
+    {
+        if( h2.contains( i ) )
+            cout << "OOPS!!! " <<  i << endl;
+    }
+
     return 0;
 }
