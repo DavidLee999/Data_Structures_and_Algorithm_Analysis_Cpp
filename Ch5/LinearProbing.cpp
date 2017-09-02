@@ -125,9 +125,6 @@ class HashTable
         }
 };
 
-
-:cd E:\OneDrive\ÎÄµµ\Data_Structures_and_Algorithm_Analysis_Cpp\Ch5
-:if exists('*inputsave')|call inputsave()|endif|tab drop E:\OneDrive\ÎÄµµ\Data_Structures_and_Algorithm_Analysis_Cpp\Ch5\QuadraticProbing.cpp|if exists('*inputrestore')|call inputrestore()|endif
 bool isPrime(int n)
 {
     if (n == 2 || n == 3)

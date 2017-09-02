@@ -93,11 +93,11 @@ class HashTable
             int offset =  myhash2(x);
             int currentPos = myhash(x);
 
-            if (array[currentPos].info != EMPTY && array[currentPos].element != x)
+            while (array[currentPos].info != EMPTY && array[currentPos].element != x)
             {
                 currentPos += offset;
 
-                if (currentPos > array.size())
+                if (currentPos >= array.size())
                     currentPos -= array.size();
             }
 
@@ -115,7 +115,7 @@ class HashTable
             size_t hashVal = myhash(x);
             int R = prevPrime(array.size());
             size_t hashVal2 = R - hashVal % R;
-            return hashVal2 % array.size();
+            return hashVal2; //% array.size();
         }
 
         void rehash()
