@@ -90,7 +90,7 @@ class HashTable
 
         int findPos(const HashedObj& x) const
         {
-            int offset = myhash2(x);
+            int offset =  myhash2(x);
             int currentPos = myhash(x);
 
             if (array[currentPos].info != EMPTY && array[currentPos].element != x)
@@ -114,7 +114,7 @@ class HashTable
         {
             size_t hashVal = myhash(x);
             int R = prevPrime(array.size());
-            size_t hashVal2 = R - hashVal % R;
+            size_t hashVal2 = 7 - hashVal % 7;
             return hashVal2 % array.size();
         }
 
@@ -151,8 +151,9 @@ bool isPrime(int n)
 
 int prevPrime(int n)
 {
+    --n;
     if (n % 2 == 0)
-        ++n;
+        --n;
 
     while (!isPrime(n))
     {
@@ -164,6 +165,7 @@ int prevPrime(int n)
 
     return n;
 }
+
 int nextPrime(int n)
 {
     if (n % 2 == 0)
@@ -175,22 +177,34 @@ int nextPrime(int n)
     return n;
 }
 
+
 int main()
 {
-    HashTable<string> a;
-    a.insert("Mike");
-    a.insert("John");
-    a.insert("David");
-    a.insert("Thomi");
-    a.insert("Felix");
-    a.insert("Lee");
-    a.insert("Lisa");
-    a.insert("Vivian");
-    a.insert("Kopen");
-    a.insert("Sonw");
+HashTable<int> h1;
+    HashTable<int> h2;
 
-    a.remove("Thomi");
+    const int NUMS = 4000;
+    const int GAP  =   37;
+    int i;
 
-    cout << a.contains("John");
-    return 0;
+   cout << "Checking... (no more output means success)" << endl;
+
+    for( i = GAP; i != 0; i = ( i + GAP ) % NUMS )
+        h1.insert( i );
+
+    h2 = h1; 
+    for( i = 1; i < NUMS; i += 2 )
+        h2.remove( i );
+
+    for( i = 2; i < NUMS; i += 2 )
+        if( !h2.contains( i ) )
+            cout << "Contains fails " << i << endl;
+
+    for( i = 1; i < NUMS; i += 2 )
+    {
+        if( h2.contains( i ) )
+            cout << "OOPS!!! " <<  i << endl;
+    }
+
+    return 0;   
 }
