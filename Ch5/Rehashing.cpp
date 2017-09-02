@@ -5,19 +5,19 @@
 using namespace std;
 
 int nextPrime(int);
-
+int prevPrime(int);
 
 template <typename HashedObj>
 class HashTable
 {
     public:
-        explicit HashTable(int size = 101) : array( nextPrime(size) )
+        explicit HashTable(int size = 101) : array (nextPrime(size))
         { makeEmpty(); }
 
+
         bool contains(const HashedObj& x) const
-        {
-            return isActive(findPos(x));
-        }
+        { return isActive(findPos(x)); }
+
 
         void makeEmpty()
         {
@@ -29,7 +29,7 @@ class HashTable
         bool insert(const HashedObj& x)
         {
             int currentPos = findPos(x);
-            if (isActive(currentPos))
+            if(isActive(currentPos))
                 return false;
 
             array[currentPos].element = x;
@@ -44,7 +44,7 @@ class HashTable
         bool insert(HashedObj&& x)
         {
             int currentPos = findPos(std::move(x));
-            if (isActive(currentPos))
+            if(isActive(currentPos))
                 return false;
 
             array[currentPos].element = std::move(x);
@@ -59,49 +59,49 @@ class HashTable
         bool remove(const HashedObj& x)
         {
             int currentPos = findPos(x);
-            if (!isActive(currentPos))
+            if(!isActive(currentPos))
                 return false;
 
-            array[currentPos] = DELETE;
-            
+            array[currentPos].info = DELETE;
+
             return true;
         }
 
         enum EntryType { ACTIVE, EMPTY, DELETE };
+
     private:
         struct HashEntry
         {
             HashedObj element;
             EntryType info;
 
-            HashEntry(const HashedObj& e = HashedObj{}, EntryType i = EMPTY)
+            HashEntry(const HashedObj& e = HashedObj {}, EntryType i = EMPTY)
                 : element { e }, info { i } {};
-            HashEntry(HashedObj& e, EntryType i = EMPTY)
-                : element { std::move(e) }, info { i } {};
+
+            HashEntry(HashedObj&& e, EntryType i = EMPTY)
+                : element { e }, info { i } {};
         };
-        
+
         vector<HashEntry> array;
         int currentSize;
 
         bool isActive(int currentPos) const
-        {
-            return array[currentPos].info == ACTIVE;
-        }
+        { return array[currentPos].info == ACTIVE; }
 
         int findPos(const HashedObj& x) const
         {
-            int offset = 1;
-            size_t currentPos = myhash(x);
+            int offset = myhash2(x);
+            int currentPos = myhash(x);
 
-            while (array[currentPos].info != EMPTY && array[currentPos].element != x) {
+            if (array[currentPos].info != EMPTY && array[currentPos].element != x)
+            {
                 currentPos += offset;
 
-                if (currentPos >= array.size())
+                if (currentPos > array.size())
                     currentPos -= array.size();
             }
 
             return currentPos;
-
         }
 
         size_t myhash(const HashedObj& x) const
@@ -110,10 +110,18 @@ class HashTable
             return hf(x) % array.size();
         }
 
+        size_t myhash2(const HashedObj& x) const
+        {
+            size_t hashVal = myhash(x);
+            int R = prevPrime(array.size());
+            size_t hashVal2 = R - hashVal % R;
+            return hashVal2 % array.size();
+        }
+
         void rehash()
         {
             vector<HashEntry> oldArray = array;
-            array.resize(nextPrime(2 * oldArray.size()));
+            array.resize( nextPrime(2 * oldArray.size()));
 
             for (auto& entry : array)
                 entry.info = EMPTY;
@@ -126,8 +134,6 @@ class HashTable
 };
 
 
-:cd E:\OneDrive\ÎÄµµ\Data_Structures_and_Algorithm_Analysis_Cpp\Ch5
-:if exists('*inputsave')|call inputsave()|endif|tab drop E:\OneDrive\ÎÄµµ\Data_Structures_and_Algorithm_Analysis_Cpp\Ch5\QuadraticProbing.cpp|if exists('*inputrestore')|call inputrestore()|endif
 bool isPrime(int n)
 {
     if (n == 2 || n == 3)
@@ -143,6 +149,21 @@ bool isPrime(int n)
     return true;
 }
 
+int prevPrime(int n)
+{
+    if (n % 2 == 0)
+        ++n;
+
+    while (!isPrime(n))
+    {
+        if (n > 2)
+            n -= 2;
+        else
+            n = 3;
+    }
+
+    return n;
+}
 int nextPrime(int n)
 {
     if (n % 2 == 0)
@@ -156,32 +177,20 @@ int nextPrime(int n)
 
 int main()
 {
-    HashTable<int> h1;
-    HashTable<int> h2;
+    HashTable<string> a;
+    a.insert("Mike");
+    a.insert("John");
+    a.insert("David");
+    a.insert("Thomi");
+    a.insert("Felix");
+    a.insert("Lee");
+    a.insert("Lisa");
+    a.insert("Vivian");
+    a.insert("Kopen");
+    a.insert("Sonw");
 
-    const int NUMS = 4000;
-    const int GAP  =   37;
-    int i;
+    a.remove("Thomi");
 
-    cout << "Checking... (no more output means success)" << endl;
-
-    for( i = GAP; i != 0; i = ( i + GAP ) % NUMS )
-        h1.insert( i );
-    
-    h2 = h1;
-    
-    for( i = 1; i < NUMS; i += 2 )
-        h2.remove( i );
-
-    for( i = 2; i < NUMS; i += 2 )
-        if( !h2.contains( i ) )
-            cout << "Contains fails " << i << endl;
-
-    for( i = 1; i < NUMS; i += 2 )
-    {
-        if( h2.contains( i ) )
-            cout << "OOPS!!! " <<  i << endl;
-    }
-
+    cout << a.contains("John");
     return 0;
 }

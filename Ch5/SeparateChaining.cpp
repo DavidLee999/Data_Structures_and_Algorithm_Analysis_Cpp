@@ -160,15 +160,15 @@ size_t hash(const Employee& e)
 
 int main()
 {
-    HashTable<Employee> a;
-    a.insert(Employee{"Mike", 2000});
-    a.insert(Employee{"John", 3000});
-    a.insert(Employee{"David", 4000});
-    a.insert(Employee{"Thomi", 5000});
-    a.insert(Employee{"Felix", 6000});
+    HashTable<string> a;
+    a.insert("Mike");
+    a.insert("John");
+    a.insert("David");
+    a.insert("Thomi");
+    a.insert("Felix");
 
-    a.remove(Employee{"Thomi", 5000});
+    a.remove("Thomi");
 
-    cout << a.contains(Employee{"John", 3000});
+    cout << a.contains("John");
     return 0;
 }
