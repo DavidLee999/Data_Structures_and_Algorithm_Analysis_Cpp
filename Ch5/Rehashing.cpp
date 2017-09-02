@@ -114,7 +114,7 @@ class HashTable
         {
             size_t hashVal = myhash(x);
             int R = prevPrime(array.size());
-            size_t hashVal2 = 7 - hashVal % 7;
+            size_t hashVal2 = R - hashVal % R;
             return hashVal2 % array.size();
         }
 
