@@ -1,4 +1,5 @@
 #include <exception>
+#include <cmath>
 #include <algorithm>
 #include <string>
 #include <iostream>
@@ -216,7 +217,7 @@ class BinarySearchTree
         int rank(BinaryNode* t, const Comparable& x) const
         {
             if (t == nullptr)
-                return NULL;
+                return NAN;
             if (x < t->element)
                 return rank(t->left, x);
             else if (x > t->element)
