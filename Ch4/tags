@@ -127,6 +127,8 @@ BinarySearchTree::remove	.\BinarySearchTreeX.cpp	/^        void remove(const Com
 BinarySearchTree::remove	.\BinarySearchTreeX.cpp	/^        void remove(const Comparable& x, BinaryNode* &t)$/;"	f	class:BinarySearchTree	file:	access:private	signature:(const Comparable& x, BinaryNode* &t)
 BinarySearchTree::root	.\BinarySearchTree.cpp	/^        BinaryNode* root;$/;"	m	class:BinarySearchTree	file:	access:private
 BinarySearchTree::root	.\BinarySearchTreeX.cpp	/^        BinaryNode* root;$/;"	m	class:BinarySearchTree	file:	access:private
+BinarySearchTree::size	.\BinarySearchTreeX.cpp	/^        size_t size() const$/;"	f	class:BinarySearchTree	access:public	signature:() const
+BinarySearchTree::size	.\BinarySearchTreeX.cpp	/^        size_t size(BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(BinaryNode* t) const
 BinarySearchTree::~BinarySearchTree	.\BinarySearchTree.cpp	/^        ~BinarySearchTree()$/;"	f	class:BinarySearchTree	access:public	signature:()
 BinarySearchTree::~BinarySearchTree	.\BinarySearchTreeX.cpp	/^        ~BinarySearchTree()$/;"	f	class:BinarySearchTree	access:public	signature:()
 CaseInsensitiveCompare	.\Set_Map.cpp	/^class CaseInsensitiveCompare$/;"	c	file:
@@ -243,6 +245,8 @@ rotateWithRightChild	.\AVLTree.cpp	/^        void rotateWithRightChild(AvlNode* 
 salary	.\BinarySearchTree.cpp	/^        double salary;$/;"	m	class:Employee	file:	access:private
 salary	.\BinarySearchTreeX.cpp	/^        double salary;$/;"	m	class:Employee	file:	access:private
 size	.\BinarySearchTreeX.cpp	/^            size_t size;$/;"	m	struct:BinarySearchTree::BinaryNode	file:	access:public
+size	.\BinarySearchTreeX.cpp	/^        size_t size() const$/;"	f	class:BinarySearchTree	access:public	signature:() const
+size	.\BinarySearchTreeX.cpp	/^        size_t size(BinaryNode* t) const$/;"	f	class:BinarySearchTree	file:	access:private	signature:(BinaryNode* t) const
 ~AvlTree	.\AVLTree.cpp	/^        ~AvlTree() { makeEmpty(); }$/;"	f	class:AvlTree	access:public	signature:()
 ~BinarySearchTree	.\BinarySearchTree.cpp	/^        ~BinarySearchTree()$/;"	f	class:BinarySearchTree	access:public	signature:()
 ~BinarySearchTree	.\BinarySearchTreeX.cpp	/^        ~BinarySearchTree()$/;"	f	class:BinarySearchTree	access:public	signature:()

@@ -70,6 +70,47 @@ class BinarySearchTree
                 printTree(root, out);
         }
 
+        Comparable floor(const Comparable& item) const
+        {
+            if (isEmpty())
+                throw underflow_error("The binary tree is empty!");
+
+            BinaryNode* x = floor(root, item);
+            if (x == nullptr)
+                return NULL;
+            else
+                return x->element;
+        }
+        
+        Comparable ceiling(const Comparable& item) const
+        {
+            if (isEmpty())
+                throw underflow_error("The binary tree is empty!");
+
+            BinaryNode* x = ceiling(root, item);
+            if (x == nullptr)
+                return NULL;
+            else
+                return x->element;
+        }
+
+        Comparable select(int k) const
+        {
+            if (k < 0 || k > size(root))
+                throw out_of_range("The index k is out of range!");
+
+            BinaryNode* x = select(root, k);
+            if (x == nullptr)
+                return NULL;
+            else
+                return x->element;
+        }
+
+        int rank(const Comparable& item) const
+        {
+            return rank(root, item);
+        }
+
         void makeEmpty()
         {
             makeEmpty(root);
@@ -172,6 +213,69 @@ class BinarySearchTree
             t = nullptr;
         }
 
+        int rank(BinaryNode* t, const Comparable& x) const
+        {
+            if (t == nullptr)
+                return NULL;
+            if (x < t->element)
+                return rank(t->left, x);
+            else if (x > t->element)
+                return size(t->left) + rank(t->right, x) + 1;
+            else
+                return size(t->left);
+        }
+
+        BinaryNode* select(BinaryNode* t, int k) const
+        {
+            if (t == nullptr)
+                return nullptr;
+
+            int x = size(t->left);
+            if (x < k)
+                return select(t->right, k - x - 1);
+            else if (k < x)
+                return select(t->left, k);
+            else
+                return t;
+        }
+
+        BinaryNode* floor(BinaryNode* t, const Comparable& x) const
+        {
+            if (t == nullptr)
+                return nullptr;
+
+            if (x < t->element)
+                return floor(t->left, x);
+            else if (t->element < x)
+            {
+                BinaryNode* tmp = floor(t->right, x);
+                if (tmp == nullptr)
+                    return t;
+                else
+                    return tmp;
+            }
+            else
+                return t;
+        }
+
+        BinaryNode* ceiling(BinaryNode* t, const Comparable& x) const
+        {
+            if (t == nullptr)
+                return nullptr;
+
+            if (x < t->element)
+            {
+                BinaryNode* tmp = ceiling(t->left, x);
+                if (tmp == nullptr)
+                    return t;
+                else
+                    return tmp;
+            }
+            else if (t->element < x)
+                return ceiling(t->right, x);
+            else
+                return t;
+        }
 
         size_t size(BinaryNode* t) const
         {
@@ -261,9 +365,9 @@ int main()
 
     a.insert(2);
     a.insert(3);
-    a.insert(4);
-    a.insert(5);
     a.insert(6);
+    a.insert(8);
+    a.insert(11);
     
     a.remove(6);
 
@@ -273,7 +377,14 @@ int main()
     int c = a.findMax();
 
     cout << b  << " " << c << endl;
-    cout << a.size();
+    a.printTree();
+    cout << endl;
+    cout << a.size() << endl;
+
+    cout << a.floor(7) << endl;
+    cout << a.ceiling(9) << endl;
+    cout << a.select(2) << endl;
+    cout << a.rank(5) << endl;
     return 0;
 }
 
