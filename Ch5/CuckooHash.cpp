@@ -220,17 +220,20 @@ class CuckooHashTable
             }
         }
 
+        // expands the table but keeps the same hash functions
         void expand()
         {
             rehash(static_cast<int>(array.size() / MAX_LOAD));
         }
 
+        // rehash the table but with the same table size and use the different hash functions
         void rehash()
         {
             hashFunctions.generateNewFunctions();
             rehash(array.size());
         }
 
+        // rehash the table but with different table size and use the same hash functions 
         void rehash(int newSize)
         {
             vector<HashEntry> oldArray = array;
@@ -242,7 +245,7 @@ class CuckooHashTable
             currentSize = 0;
             for (auto& entry : oldArray)
                 if (entry.isActive)
-                    insert(std::move(entry.element));
+                    insert(std::move(entry.element));// recursive procedure with the insert routine
         }
 
 
