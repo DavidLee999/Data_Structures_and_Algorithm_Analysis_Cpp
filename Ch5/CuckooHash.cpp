@@ -181,11 +181,13 @@ class CuckooHashTable
             AnyType x = xx;
 
             while (true) {
-                int lastPos = -1;
-                int pos;
+                int lastPos = -1; // position of the be-replaced item
+                int pos; // position of the inserted item
 
+                // max number of attempts, otherwise rehash the table
                 for (int count = 0; count < COUNT_LIMIT; ++count)
                 {
+                    // find a valid spot, insert it
                     for (int i = 0; i < numHashFunctions; ++i)
                     {
                         pos = myhash(x, i);
@@ -198,21 +200,22 @@ class CuckooHashTable
                         }
                     }
 
+                    // none of the spots are available, evict a random one
                     int i = 0;
                     do {
                         pos = myhash(x, r.nextInt(numHashFunctions));
-                    } while (pos == lastPos && i++ < 5);
+                    } while (pos == lastPos && i++ < 5); // no circle and the max jump times is 5
 
-                    lastPos = pos;
-                    std::swap(x, array[pos].element);
+                    lastPos = pos; // record the position where the item be inserted
+                    std::swap(x, array[pos].element); // exchange
                 }
 
-                if (++rehashes > ALLOWED_REHASHES)
+                if (++rehashes > ALLOWED_REHASHES) // already maxium rehashed time, expand the table
                 {
                     expand();
                     rehashes = 0;
                 }
-                else
+                else // otherwise, rehash the table
                     rehash();
             }
         }
