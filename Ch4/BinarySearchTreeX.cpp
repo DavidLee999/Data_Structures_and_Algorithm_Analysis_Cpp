@@ -63,6 +63,14 @@ class BinarySearchTree
         size_t size() const
         { return size(root); }
 
+        int size(const Comparable& lo, const Comparable& hi) const
+        {
+            if (contains(hi))
+                return rank(hi) - rank(lo) + 1;
+            else
+                return rank(hi) - rank(lo);
+        }
+
         void printTree(ostream& out = cout) const
         {
             if (isEmpty())
@@ -386,6 +394,7 @@ int main()
     cout << a.ceiling(9) << endl;
     cout << a.select(2) << endl;
     cout << a.rank(5) << endl;
+    cout << a.size(2,8) << endl;
     return 0;
 }
 
