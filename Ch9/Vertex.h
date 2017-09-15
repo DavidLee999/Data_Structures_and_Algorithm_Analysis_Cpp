@@ -19,7 +19,7 @@ struct Vertex
     {
     }
 
-    void add(shared_ptr<Vertex> ptr)
+    void add(const shared_ptr<Vertex>& ptr)
     {
         if (find(adj.begin(), adj.end(), ptr) == adj.end())
         {
