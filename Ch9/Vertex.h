@@ -4,6 +4,7 @@
 #include <iostream>
 #include <List>
 #include <algorithm>
+#include <memory>
 using namespace std;
 
 // template <typename Name>
@@ -11,26 +12,28 @@ struct Vertex
 {
     int name;
     int indegree;
-    list<Vertex> adj;
+    list< shared_ptr<Vertex> > adj;
 
-    Vertex () {}
+    // Vertex () {}
     
     Vertex(const int& n) : name { n }, indegree { 0 }, adj { }
     {
     }
 
-    void add(Vertex& t)
+    void add(shared_ptr<Vertex> ptr)
     {
-        if (find(adj.begin(), adj.end(), t) == adj.end())
+        // shared_ptr<Vertex> ptr (t);
+        if (find(adj.begin(), adj.end(), ptr) == adj.end())
         {
-            adj.push_back(t);
+            adj.push_back(ptr);
             // ++indegree;
         }
     }
 
-    bool isLinked(const Vertex& t) const
+    bool isLinked(const shared_ptr<Vertex>& ptr) const
     {
-        auto it = find(adj.begin(), adj.end(), t);
+        // shared_ptr<Vertex> ptr (t);
+        auto it = find(adj.begin(), adj.end(), ptr);
         if ( it != adj.end())
             return true;
         else
@@ -39,9 +42,9 @@ struct Vertex
 
 };
 
-bool operator== (const Vertex& p, const Vertex& q)
+bool operator== (const shared_ptr<Vertex>& p, const shared_ptr<Vertex>& q)
 {
-    return q.name == p.name;
+    return p->name == q->name;
 }
 
 #endif
