@@ -14,7 +14,6 @@ struct Vertex
     int indegree;
     list< shared_ptr<Vertex> > adj;
 
-    // Vertex () {}
     
     Vertex(const int& n) : name { n }, indegree { 0 }, adj { }
     {
@@ -22,17 +21,14 @@ struct Vertex
 
     void add(shared_ptr<Vertex> ptr)
     {
-        // shared_ptr<Vertex> ptr (t);
         if (find(adj.begin(), adj.end(), ptr) == adj.end())
         {
             adj.push_back(ptr);
-            // ++indegree;
         }
     }
 
     bool isLinked(const shared_ptr<Vertex>& ptr) const
     {
-        // shared_ptr<Vertex> ptr (t);
         auto it = find(adj.begin(), adj.end(), ptr);
         if ( it != adj.end())
             return true;
