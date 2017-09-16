@@ -23,8 +23,10 @@ void shortestPath(const vector<shared_ptr<Vertex> >& points, const shared_ptr<Ve
 
     dist.find(item->name)->second = 0;
     
-    auto ptr = find(points.begin(), points.end(), item);
-    q.push(*ptr);
+    // auto ptr = find(points.begin(), points.end(), item);
+    // q.push(*ptr);
+    //
+    q.push(item);
 
     while (!q.empty()) {
         shared_ptr<Vertex>& v = q.front();
@@ -97,11 +99,12 @@ int main()
     cout << "input start point: ";
     cin >> start;
 
-    shared_ptr<Vertex> item (new Vertex { start });
+    auto it = find(points.begin(), points.end(), Vertex { start });
+    // shared_ptr<Vertex> item (new Vertex { start });
     unordered_map<int, int> dist;
     unordered_map<int, int> path;
 
-    shortestPath(points, item, dist, path);
+    shortestPath(points, *it, dist, path);
 
     cout << "Distances: " << '\n';
     for (auto it = dist.begin(); it != dist.end(); ++it)

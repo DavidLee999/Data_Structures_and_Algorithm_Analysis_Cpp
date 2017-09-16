@@ -38,9 +38,24 @@ struct Vertex
 
 };
 
-bool operator== (const shared_ptr<Vertex>& p, const shared_ptr<Vertex>& q)
+inline bool operator== (const shared_ptr<Vertex>& p, const shared_ptr<Vertex>& q)
 {
     return p->name == q->name;
+}
+
+inline bool operator== (const shared_ptr<Vertex>& p, const Vertex& q)
+{
+    return p->name == q.name;
+}
+
+inline bool operator== (const Vertex& q, const shared_ptr<Vertex>& p)
+{
+    return p->name == q.name;
+}
+
+inline bool operator== (const Vertex& p, const Vertex& q)
+{
+    return p.name == q.name;
 }
 
 #endif
