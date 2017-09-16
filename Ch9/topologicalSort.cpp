@@ -7,6 +7,7 @@
 using namespace std;
 
 #include "Vertex.h"
+#include "Vertex.cpp"
 
 void topSort(const vector<shared_ptr<Vertex> >& points)
 {
@@ -44,42 +45,43 @@ int main()
         shared_ptr<Vertex> p1 { new Vertex { from } };
         shared_ptr<Vertex> p2 { new Vertex { to } };
 
-        auto it1 = find(points.begin(), points.end(), p1);
-        auto it2 = find(points.begin(), points.end(), p2);
+        readEdges(points, p1, p2);
+        // auto it1 = find(points.begin(), points.end(), p1);
+        // auto it2 = find(points.begin(), points.end(), p2);
 
-        if (it1 == points.end() && it2 == points.end())
-        {
-            ++(p2->indegree);
-            p1->add(p2);
+        // if (it1 == points.end() && it2 == points.end())
+        // {
+            // ++(p2->indegree);
+            // p1->add(p2);
 
-            points.push_back(p1);
-            points.push_back(p2);
-        }
+            // points.push_back(p1);
+            // points.push_back(p2);
+        // }
 
-        else if (it1 != points.end() && it2 == points.end())
-        {
-            ++(p2->indegree);
-            (*it1)->add(p2);
+        // else if (it1 != points.end() && it2 == points.end())
+        // {
+            // ++(p2->indegree);
+            // (*it1)->add(p2);
 
-            points.push_back(p2);
-        }
+            // points.push_back(p2);
+        // }
 
-        else if (it1 == points.end() && it2 != points.end())
-        {
-            ++((*it2)->indegree);
-            p1->add(*it2);
+        // else if (it1 == points.end() && it2 != points.end())
+        // {
+            // ++((*it2)->indegree);
+            // p1->add(*it2);
 
-            points.push_back(p1);
-        }
+            // points.push_back(p1);
+        // }
 
-        else if (it1 != points.end() && it2 != points.end())
-        {
-            if ((*it1)->isLinked(*it2) == false)
-            {
-                ++((*it2)->indegree);
-                (*it1)->add(*it2);
-            }
-        }
+        // else if (it1 != points.end() && it2 != points.end())
+        // {
+            // if ((*it1)->isLinked(*it2) == false)
+            // {
+                // ++((*it2)->indegree);
+                // (*it1)->add(*it2);
+            // }
+        // }
 
     }
 
