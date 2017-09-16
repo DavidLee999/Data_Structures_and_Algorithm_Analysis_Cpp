@@ -1,7 +1,7 @@
 #include <iostream>
 // #include <list>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <queue>
 #include <algorithm>
 #include <memory>
@@ -10,7 +10,7 @@ using namespace std;
 #include "Vertex.h"
 #include "Vertex.cpp"
 
-void shortestPath(const vector<shared_ptr<Vertex> >& points, const shared_ptr<Vertex>& item, map<int, int>& dist, map<int, int>& path)
+void shortestPath(const vector<shared_ptr<Vertex> >& points, const shared_ptr<Vertex>& item, unordered_map<int, int>& dist, unordered_map<int, int>& path)
 {
     const int MAX = 100;
 
@@ -98,8 +98,8 @@ int main()
     cin >> start;
 
     shared_ptr<Vertex> item (new Vertex { start });
-    map<int, int> dist;
-    map<int, int> path;
+    unordered_map<int, int> dist;
+    unordered_map<int, int> path;
 
     shortestPath(points, item, dist, path);
 
