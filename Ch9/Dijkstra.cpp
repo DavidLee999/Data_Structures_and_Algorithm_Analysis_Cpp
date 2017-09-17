@@ -79,6 +79,8 @@ int main()
         g.addEdge(p1, p2, weight);
     }
 
+    g.printGraph();
+
     int start;
 
     cin.clear();
@@ -87,8 +89,6 @@ int main()
 
     auto it = find(g.points.begin(), g.points.end(), Vertex { start });
     
-    // g.printGraph();
-
     unordered_map<int, int> dist;
     unordered_map<int, int> path;
 
