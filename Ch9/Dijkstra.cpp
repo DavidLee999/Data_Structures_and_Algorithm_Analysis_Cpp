@@ -31,12 +31,10 @@ void djikstra(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int,
 
     while (count < numVertex || pq.empty()) {
         int name = pq.top().second;
-        int distance = pq.top().first;
+        int dist_v = pq.top().first;
         // Edge e = pq.top();
         pq.pop();
         // shared_ptr<Vertex>& to = e.end;
-
-        cout << name;
 
         auto v = find(g.points.begin(), g.points.end(), Vertex{ name });
         // const shared_ptr<Vertex>& v = *temp; 
@@ -51,7 +49,7 @@ void djikstra(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int,
                 // const Edge* tmp = g.findEdge(v, (*it));
                 int cvw = g.findEdge((*v), (*it))->weight;
 
-                int dist_v = dist.find((*v)->name)->second;
+                // int dist_v = dist.find((*v)->name)->second;
                 int dist_w =  dist.find((*it)->name)->second;
 
                 if (dist_v + cvw < dist_w)
