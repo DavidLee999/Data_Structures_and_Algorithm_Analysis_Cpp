@@ -6,9 +6,9 @@ using namespace std;
 
 void printPath(const unordered_map<int, int>& path, int name, ostream& out = cout)
 {
-    if (path.find(name)->scond != 0)
+    if (path.find(name)->second != 0)
     {
-        printSingelVertex(path, path.find(name)->second);
+        printPath(path, path.find(name)->second);
         out << " -> ";
     }
 

@@ -8,6 +8,7 @@ using namespace std;
 
 #include "Vertex.h"
 #include "Graph.h"
+#include "Graph.cpp"
 
 void djikstra(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int, int>& dist, unordered_map<int, int>& path)
 {
@@ -92,6 +93,15 @@ int main()
     unordered_map<int, int> path;
 
     djikstra(g, *it, dist, path);
+
+    int end;
+    cout << "\ninput end point: ";
+    cin >> end;
+
+    printPath(path, end);
+
+    cout << "\nShortest weighted path is " << dist.find(end)->second << endl;
+    
 
     cout << "Distances: " << '\n';
     for (auto it = dist.begin(); it != dist.end(); ++it)
