@@ -100,6 +100,16 @@ unordered_map<int, int> slackTime(const unordered_map<int, int>& earlist, const 
     return slack;
 }
 
+void printCriticalPath(int name, const unordered_map<int, int>& path, const unordered_map<int, int>& slack, ostream& out = cout)
+{
+    if (path.find(name)->second != 0 && slack.find(name)->second == 0)
+    {
+        printCriticalPath(path.find(name)->second, path, slack);
+        out << " -> ";
+    }
+
+    out << name;
+}
 int main()
 {
     Graph g {};
@@ -137,7 +147,7 @@ int main()
 
     unordered_map<int, int> slack = slackTime(earlist, latest);
 
-    printPath(path, end);
+    // printPath(path, end);
 
     cout << "\nThe earlest time the project can be finished:  " << earlist.find(end)->second << endl;
     
@@ -152,6 +162,9 @@ int main()
     cout << "The slack time for each event: " << '\n';
     for (auto it = slack.begin(); it != slack.end(); ++it)
         cout << it->first << " " << it->second << '\n';
+
+    cout << "The critiacl path is: \n";
+    printCriticalPath(end, path, slack);
 
     // cout << "Path: " << '\n';
     // for (auto it = path.begin(); it != path.end(); ++it)
