@@ -1,3 +1,6 @@
+#ifndef TPSORT_CPP
+#define TPSORT_CPP
+
 #include <iostream>
 // #include <list>
 #include <vector>
@@ -9,10 +12,13 @@ using namespace std;
 #include "Vertex.h"
 #include "Vertex.cpp"
 
-void topSort(const vector<shared_ptr<Vertex> >& points)
+
+vector<int> topSort(const vector<shared_ptr<Vertex> >& points)
 {
     std::vector<shared_ptr<Vertex> > p = points;
     std::queue<shared_ptr<Vertex> > q;
+
+    vector<int> tp_order;
     
     for (auto it = p.begin(); it != p.end(); ++it)
     {
@@ -24,7 +30,8 @@ void topSort(const vector<shared_ptr<Vertex> >& points)
         shared_ptr<Vertex>& v = q.front();
         q.pop();
 
-        cout << v->name << " ";
+        tp_order.push_back(v->name);
+        // cout << v->name << " ";
 
         for (auto it = v->adj.begin(); it != v->adj.end(); ++it)
         {
@@ -33,69 +40,40 @@ void topSort(const vector<shared_ptr<Vertex> >& points)
         }
     }
 
+    return tp_order;
+
 }
 
-int main()
-{
-    vector<shared_ptr<Vertex> > points;
-    int from, to;
 
-    while (cin >> from >> to) {
+#endif
 
-        shared_ptr<Vertex> p1 { new Vertex { from } };
-        shared_ptr<Vertex> p2 { new Vertex { to } };
 
-        readEdges(points, p1, p2);
-        // auto it1 = find(points.begin(), points.end(), p1);
-        // auto it2 = find(points.begin(), points.end(), p2);
+// int main()
+// {
+    // vector<shared_ptr<Vertex> > points;
+    // int from, to;
 
-        // if (it1 == points.end() && it2 == points.end())
-        // {
-            // ++(p2->indegree);
-            // p1->add(p2);
+    // while (cin >> from >> to) {
 
-            // points.push_back(p1);
-            // points.push_back(p2);
-        // }
+        // shared_ptr<Vertex> p1 { new Vertex { from } };
+        // shared_ptr<Vertex> p2 { new Vertex { to } };
 
-        // else if (it1 != points.end() && it2 == points.end())
-        // {
-            // ++(p2->indegree);
-            // (*it1)->add(p2);
+        // readEdges(points, p1, p2);
+    // }
 
-            // points.push_back(p2);
-        // }
+    // for (auto it = points.begin(); it != points.end(); ++it)
+    // {
+        // cout << (*it)->name << " " << (*it)->indegree <<  ": ";
+        // for (auto it2 = (*it)->adj.begin(); it2 != (*it)->adj.end(); ++it2)
+            // cout << (*it2)->name << " ";
+        // cout << endl;
+    // }
 
-        // else if (it1 == points.end() && it2 != points.end())
-        // {
-            // ++((*it2)->indegree);
-            // p1->add(*it2);
+    // vector<int> tp_order = topSort(points);
+    // cout << "topological sort: ";
+    // for (int i = 0; i < tp_order.size(); ++i)
+        // cout << tp_order[i] << " ";
+    // cout << endl;
 
-            // points.push_back(p1);
-        // }
-
-        // else if (it1 != points.end() && it2 != points.end())
-        // {
-            // if ((*it1)->isLinked(*it2) == false)
-            // {
-                // ++((*it2)->indegree);
-                // (*it1)->add(*it2);
-            // }
-        // }
-
-    }
-
-    for (auto it = points.begin(); it != points.end(); ++it)
-    {
-        cout << (*it)->name << " " << (*it)->indegree <<  ": ";
-        for (auto it2 = (*it)->adj.begin(); it2 != (*it)->adj.end(); ++it2)
-            cout << (*it2)->name << " ";
-        cout << endl;
-    }
-
-    cout << "topological sort: ";
-    topSort(points);
-    cout << endl;
-
-    return 0;
-}
+    // return 0;
+// }
