@@ -13,8 +13,8 @@ using namespace std;
 
 void djikstra(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int, int>& dist, unordered_map<int, int>& path)
 {
-    const int MAX = std::numeric_limits<int>::max();
-    unordered_map<int, bool> known;
+    const int MAX = 100;
+    // unordered_map<int, bool> known;
 
     vector<int> tp_order = topSort(g.points);
 
@@ -22,12 +22,10 @@ void djikstra(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int,
     {
         dist.insert( make_pair((*it)->name, MAX) );
         path.insert( make_pair((*it)->name, 0) );
-        known.insert( make_pair((*it)->name, false) );
+        // known.insert( make_pair((*it)->name, false) );
     }
 
     dist.find(item->name)->second = 0;
-
-    int count = 1;
 
     for (auto start = find(tp_order.begin(), tp_order.end(), item->name); start != tp_order.end(); ++start)
     {
@@ -36,23 +34,22 @@ void djikstra(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int,
 
         auto v = find(g.points.begin(), g.points.end(), Vertex{ name });
 
-        known.find((*v)->name)->second = true;
-        ++count;
+        // known.find((*v)->name)->second = true;
 
         for (auto it = (*v)->adj.begin(); it != (*v)->adj.end(); ++it)
         {
-            if (known.find( (*it)->name )->second == false)
+            // if (known.find( (*it)->name )->second == false)
+            // {
+            int cvw = g.findEdge((*v), (*it))->weight;
+
+            int dist_w =  dist.find((*it)->name)->second;
+
+            if (dist_v + cvw < dist_w)
             {
-                int cvw = g.findEdge((*v), (*it))->weight;
-
-                int dist_w =  dist.find((*it)->name)->second;
-
-                if (dist_v + cvw < dist_w)
-                {
-                    dist.find((*it)->name)->second = dist_v + cvw;
-                    path.find((*it)->name)->second = (*v)->name;
-                }
+                dist.find((*it)->name)->second = dist_v + cvw;
+                path.find((*it)->name)->second = (*v)->name;
             }
+            // }
         }
 
     } 
