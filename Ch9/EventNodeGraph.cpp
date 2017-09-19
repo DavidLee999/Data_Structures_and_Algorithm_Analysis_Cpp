@@ -11,7 +11,7 @@ using namespace std;
 #include "Graph.cpp"
 #include "topologicalSort.cpp"
 
-void earliestTime(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int, int>& dist, unordered_map<int, int>& path)
+void earlistTime(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int, int>& dist, unordered_map<int, int>& path)
 {
     const int MAX = -1; // std::numeric_limits<int>::min();
 
@@ -50,7 +50,7 @@ void earliestTime(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<
 
 void latestTime(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int, int>& dist, int latestWeight)
 {
-    const int MAX = 100; std::numeric_limits<int>::min();
+    const int MAX = latestWeight; // std::numeric_limits<int>::min();
 
     vector<int> tp_order = topSort(g.points);
 
@@ -84,6 +84,22 @@ void latestTime(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<in
     } 
 }
 
+unordered_map<int, int> slackTime(const unordered_map<int, int>& earlist, const unordered_map<int, int>& latest)
+{
+    unordered_map<int, int> slack;
+
+    for (auto it = latest.begin(); it != latest.end(); ++it)
+    {
+        int name = it->first;
+        int latest_time = it->second;
+        int earlist_time = earlist.find(name)->second;
+
+        slack.insert( make_pair(name, latest_time - earlist_time) );
+    }
+
+    return slack;
+}
+
 int main()
 {
     Graph g {};
@@ -107,26 +123,38 @@ int main()
 
     auto it = find(g.points.begin(), g.points.end(), Vertex { start });
     
-    unordered_map<int, int> dist;
+    unordered_map<int, int> earlist, latest;
     unordered_map<int, int> path;
 
-    // earliestTime(g, *it, dist, path);
-    latestTime(g, *it, dist, 10);
+    int end;
+    cout << "\ninput end point: ";
+    cin >> end;
 
-    // int end;
-    // cout << "\ninput end point: ";
-    // cin >> end;
+    auto it2 = find(g.points.begin(), g.points.end(), Vertex { end });
 
-    // printPath(path, end);
+    earlistTime(g, *it, earlist, path);
+    latestTime(g, *it2, latest, earlist.find(end)->second);
 
-    // cout << "\nShortest weighted path is " << dist.find(end)->second << endl;
+    unordered_map<int, int> slack = slackTime(earlist, latest);
+
+    printPath(path, end);
+
+    cout << "\nThe earlest time the project can be finished:  " << earlist.find(end)->second << endl;
     
-    cout << "Distances: " << '\n';
-    for (auto it = dist.begin(); it != dist.end(); ++it)
+    cout << "The earlist finish time for each event: " << '\n';
+    for (auto it = earlist.begin(); it != earlist.end(); ++it)
         cout << it->first << " " << it->second << '\n';
 
-    cout << "Path: " << '\n';
-    for (auto it = path.begin(); it != path.end(); ++it)
-        cout << it->first << " " << it->second <<'\n';
+    cout << "The latest finish time for each event: " << '\n';
+    for (auto it = latest.begin(); it != latest.end(); ++it)
+        cout << it->first << " " << it->second << '\n';
+
+    cout << "The slack time for each event: " << '\n';
+    for (auto it = slack.begin(); it != slack.end(); ++it)
+        cout << it->first << " " << it->second << '\n';
+
+    // cout << "Path: " << '\n';
+    // for (auto it = path.begin(); it != path.end(); ++it)
+        // cout << it->first << " " << it->second <<'\n';
     return 0;
 }
