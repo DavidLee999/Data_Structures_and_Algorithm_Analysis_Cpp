@@ -30,7 +30,7 @@ void djikstra(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int,
     int numVertex = g.points.size();
     int count = 1;
 
-    while (count < numVertex || pq.empty()) {
+    while (count < numVertex) {
         int name = pq.top().second;
         int dist_v = pq.top().first;
         // Edge e = pq.top();
