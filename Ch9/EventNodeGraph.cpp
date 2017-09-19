@@ -13,7 +13,7 @@ using namespace std;
 
 void djikstra(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int, int>& dist, unordered_map<int, int>& path)
 {
-    const int MAX = std::numeric_limits<int>::max();
+    const int MAX = std::numeric_limits<int>::min();
     unordered_map<int, bool> known;
 
     vector<int> tp_order = topSort(g.points);
@@ -47,7 +47,7 @@ void djikstra(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int,
 
                 int dist_w =  dist.find((*it)->name)->second;
 
-                if (dist_v + cvw < dist_w)
+                if (dist_v + cvw > dist_w)
                 {
                     dist.find((*it)->name)->second = dist_v + cvw;
                     path.find((*it)->name)->second = (*v)->name;
