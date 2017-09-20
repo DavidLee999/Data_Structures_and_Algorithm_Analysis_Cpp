@@ -44,7 +44,7 @@ struct Graph
     void addEdge(const shared_ptr<Vertex>& p1, const shared_ptr<Vertex>& p2, int w = 1)
     {
         auto it1 = find(points.begin(), points.end(), p1);
-        auto it2 = find(points.end(), points.end(), p2);
+        auto it2 = find(points.begin(), points.end(), p2);
 
          if (it1 == points.end() && it2 == points.end())
         {
@@ -90,6 +90,80 @@ struct Graph
                 Edge line{*it1, *it2, w};
 
                 lines.push_back(line);
+            }
+        }
+    }
+
+    
+    void addEdge_undirected(const shared_ptr<Vertex>& p1, const shared_ptr<Vertex>& p2, int w = 1)
+    {
+        auto it1 = find(points.begin(), points.end(), p1);
+        auto it2 = find(points.begin(), points.end(), p2);
+
+        if (it1 == points.end() && it2 == points.end())
+        {
+            ++(p2->indegree);
+            p1->add(p2);
+
+            ++(p1->indegree);
+            p2->add(p1);
+
+            Edge line12 { p1, p2, w };
+            Edge line21 { p2, p1, w };
+
+            points.push_back(p1);
+            points.push_back(p2);
+            lines.push_back(line12);
+            lines.push_back(line21);
+        }
+
+        else if (it1 != points.end() && it2 == points.end())
+        {
+            ++(p2->indegree);
+            (*it1)->add(p2);
+
+            ++((*it1)->indegree);
+            p2->add((*it1));
+
+            Edge line12 { *it1, p2, w };
+            Edge line21 { p2, *it1, w };
+
+            points.push_back(p2);
+            lines.push_back(line12);
+            lines.push_back(line21);
+        }
+
+        else if (it1 == points.end() && it2 != points.end())
+        {
+            ++((*it2)->indegree);
+            p1->add(*it2);
+
+            ++(p1->indegree);
+            (*it2)->add(p1);
+
+            Edge line12 { p1, *it2, w };
+            Edge line21 { *it2, p1, w };
+
+            points.push_back(p1);
+            lines.push_back(line12);
+            lines.push_back(line21);
+        }
+
+        else if (it1 != points.end() && it2 != points.end())
+        {
+            if ((*it1)->isLinked(*it2) == false)
+            {
+                ++((*it2)->indegree);
+                (*it1)->add(*it2);
+
+                ++((*it1)->indegree);
+                (*it2)->add(*it1);
+
+                Edge line12 { *it1, *it2, w };
+                Edge line21 { *it2, *it1, w };
+
+                lines.push_back(line12);
+                lines.push_back(line21);
             }
         }
     }
