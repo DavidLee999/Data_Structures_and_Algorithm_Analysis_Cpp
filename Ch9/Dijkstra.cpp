@@ -57,9 +57,10 @@ void djikstra(const Graph& g, const shared_ptr<Vertex>& item, unordered_map<int,
                 {
                     dist.find((*it)->name)->second = dist_v + cvw;
                     path.find((*it)->name)->second = (*v)->name;
+
+                    pq.push( make_pair(dist.find((*it)->name)->second, (*it)->name) );
                 }
 
-                pq.push( make_pair(dist.find((*it)->name)->second, (*it)->name) );
             }
         }
 
