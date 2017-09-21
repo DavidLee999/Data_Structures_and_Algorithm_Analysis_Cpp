@@ -85,14 +85,19 @@ int main()
 
     Prim(g, *it, dist, path);
 
+    int totalWeight = 0;
     cout << "Distances: " << '\n';
     for (auto it = dist.begin(); it != dist.end(); ++it)
+    {
         cout << it->first << " " << it->second << '\n';
+        totalWeight += it->second;
+    }
 
     cout << "Path: " << '\n';
     for (auto it = path.begin(); it != path.end(); ++it)
         cout << it->first << " " << it->second <<'\n';
 
+    cout << "The weight of the MST is " << totalWeight << '\n';
     // for (auto it = g.points.begin(); it != g.points.end(); ++it)
     // {
         // cout << (*it)->name << " " << (*it)->indegree <<  ": ";

@@ -111,10 +111,10 @@ struct Graph
             Edge line12 { p1, p2, w };
             Edge line21 { p2, p1, w };
 
-            points.push_back(p1);
-            points.push_back(p2);
             lines.push_back(line12);
             lines.push_back(line21);
+            points.push_back(p1);
+            points.push_back(p2);
         }
 
         else if (it1 != points.end() && it2 == points.end())
@@ -128,9 +128,9 @@ struct Graph
             Edge line12 { *it1, p2, w };
             Edge line21 { p2, *it1, w };
 
-            points.push_back(p2);
             lines.push_back(line12);
             lines.push_back(line21);
+            points.push_back(p2);
         }
 
         else if (it1 == points.end() && it2 != points.end())
@@ -144,9 +144,9 @@ struct Graph
             Edge line12 { p1, *it2, w };
             Edge line21 { *it2, p1, w };
 
-            points.push_back(p1);
             lines.push_back(line12);
             lines.push_back(line21);
+            points.push_back(p1);
         }
 
         else if (it1 != points.end() && it2 != points.end())
