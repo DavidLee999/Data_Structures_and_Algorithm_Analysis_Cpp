@@ -32,9 +32,10 @@ The linked list consists of a series of nodes, which are not necessarily adjacen
 
 - The `findKth()` operation takes *O(i)* times and works by traversing down the list.
 
-- The `remove()` method can be executed in one `next` pointer change.![Snip20171214_4](/Users/lipenghua/Downloads/Snip20171214_4.png)
+- The `remove()` method can be executed in one `next` pointer change.
+![Snip20171214_4](/Users/lipenghua/Downloads/Snip20171214_4.png)
 
-- The `insert()` method can be executed by using a `new` call and tow `next` pointer maneuvers.
+- The `insert()` method can be executed by using a `new` call and two `next` pointer maneuvers.
 
   ![Snip20171214_5](/Users/lipenghua/Downloads/Snip20171214_5.png)
 
@@ -44,7 +45,7 @@ A implementation of *Vector* can be found in [Vector](https://github.com/DavidLe
 
 **NOTE**: 
 
-- For teh `List` class, it make scene to create **an extra node at the end** of the list tp representing the endmarker and **an extra node at the front** representing the beginning marker.
+- For the `List` class, it make scene to create **an extra node at the end** of the list tp representing the endmarker and **an extra node at the front** representing the beginning marker.
 
 ![Snip20171214_6](/Users/lipenghua/Downloads/Snip20171214_6.png)
 
