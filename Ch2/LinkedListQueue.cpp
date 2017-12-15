@@ -114,7 +114,10 @@ class Queue {
             theSize--;
 
             if( isEmpty() )
-                tail = nullptr;
+            {
+                head->next = tail;
+                tail->next = nullptr;
+            }
 
             return item;
         }
@@ -129,6 +132,10 @@ int main()
     Queue<int> a{};
 
     a.enqueue(1);
+
+    std::cout << a.dequeue() << '\n';
+
+    a.enqueue(2);
 
     std::cout << a.dequeue();
     return 0;
