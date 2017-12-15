@@ -16,11 +16,14 @@ class Queue {
         void init()
         {
             theSize = 0;
-            head = new Node;
-            tail = new Node;
+            // head = new Node;
+            // tail = new Node;
 
-            head->next = tail;
-            tail->next = nullptr;
+            // head->next = tail;
+            // tail->next = nullptr;
+
+            head = nullptr;
+            tail = nullptr;
         }
 
         void clear()
@@ -40,6 +43,9 @@ class Queue {
             init();
 
             Node* current = rhs.head;
+            if (current == nullptr)
+                return;
+
             while( current->next != nullptr )
             {
                 enqueue(current->data);
@@ -81,20 +87,23 @@ class Queue {
         void enqueue( const Type& x )
         {
             Node* oldtail = tail;
-
             tail = new Node;
 
             tail->data = x;
             tail->next = nullptr;
 
-            oldtail->next = tail;
-
-            if( isEmpty() )
-            {
-                delete oldtail;
-                delete head;
+            if (isEmpty())
                 head = tail;
-            }
+            else
+                oldtail->next = tail;
+            // oldtail->next = tail;
+
+            // if( isEmpty() )
+            // {
+                // delete oldtail;
+                // delete head;
+                // head = tail;
+            // }
 
             theSize++;
         }
@@ -110,14 +119,12 @@ class Queue {
             Type item = oldhead->data;
 
             delete oldhead;
+            oldhead = nullptr;
 
             theSize--;
 
             if( isEmpty() )
-            {
-                head->next = tail;
-                tail->next = nullptr;
-            }
+                init();
 
             return item;
         }
@@ -137,6 +144,25 @@ int main()
 
     a.enqueue(2);
 
-    std::cout << a.dequeue();
+    std::cout << a.dequeue() << '\n';
+
+    Queue<int> b = a;
+
+    b.enqueue(3);
+    b.enqueue(4);
+    b.enqueue(5);
+    b.enqueue(5);
+    b.enqueue(5);
+    b.enqueue(5);
+    b.enqueue(5);
+    b.enqueue(5);
+    b.enqueue(5);
+    b.enqueue(5);
+
+    std::cout << "size: " << b.size() << '\n';
+
+    while (b.size() != 0)
+        std:: cout << b.dequeue() << '\n';
+
     return 0;
 }
