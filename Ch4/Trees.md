@@ -184,3 +184,175 @@ The average running time of all the operations is O(log N), but this is not enti
 
 1. One solution to the problem is to insist on an extra structural condition called **balance**: No node is allowed to get too deep.
 2. A second method is to allow the tree to be arbitrarily deep, but after every operation, a restructuring rule is applied that tends to make future operations efﬁcient which is called **self-adjusting**.
+
+## AVL Trees
+
+An *AVL tree* is a binary search tree with a **balance condition**. The balance condition ensures that the depth of the tree is O(log N).
+
+**DEFINITION**: An AVL tree is identical to a binary search tree, except that for every node in the tree, **the height of the left and right subtrees can differ by at most 1**. (The height of an empty tree is deﬁned to be −1.) 
+
+Height information is kept for **each node** (in the node structure).
+
+**PROPERTY**: The minimum number of nodes, S(h), in an AVL tree of height *h* is given by S(h) = S(h − 1) + S(h − 2) + 1. For h = 0, S(h) = 1. For h = 1, S(h) = 2.
+
+Thus, all the tree operations can be performed in O(log N) time, except possibly insertion and deletion. When we do an **insertion**, we need to **1) update all the balancing information** for the nodes on the path back to the root, but the insertion could **2) violate the balance**. If this is the case, then the property has to be **restored before the insertion** step is considered over and the operation is called **rotate**.
+
+After an insertion, only **nodes that are on the path from the insertion point to the root** might have their balance altered because only those nodes have their subtrees altered. 
+
+Let us call the node tht must be balanced $$\alpha$$. A height imbalance requires that $\alpha$’s **two subtrees’ heights differ by two**, it is easy to see that a violation might occur in **four cases**:
+
+1. $\alpha \to left \to h > \alpha \to right \to h$
+   1. An insertion into the left subtree of the left child of $\alpha$. ($\alpha \to left \to left \to h  \ge \alpha \to  left \to right \to h$);
+   2. An insertion into the right subtree of the left child of $\alpha$. ($\alpha \to left \to left \to h < \alpha \to  left \to right \to h$);
+2. $\alpha \to right \to h > \alpha \to left \to h$
+   1. An insertion into the left subtree of the right child of $\alpha$. ($\alpha \to right \to right \to h < \alpha \to right \to left \to h$)
+   2. An insertion into the right subtree of the right child of $\alpha$. ($\alpha \to right \to right \to h  \ge\alpha \to  right \to left \to h$)
+
+Case 1.1 and 2.2 are mirror image symmetries w.r.t. $\alpha$, as are case 1.2 and 2.1. The first situation, in which the insertion occurs on the "**outside**", is fixed by a **single rotation** of the tree. The second case, in which the insertion occurs on the "**inside**", is handle by the **double rotation**.
+
+### Single Rotation
+
+Following figure shows the *single rotation* that fixes case 1.1.
+
+![屏幕快照 2017-12-20 17.02.28](../../../Downloads/屏幕快照 2017-12-20 17.02.28.png)
+
+**OBJECT**: To ideally rebalance the tree, we would like to move X up a level and Z down a level.
+
+The **result** is that k~1~ will be the new root and k~2~ becomes the right child of k~1~ in the new tree. X and Z remain as the left child of k~1~ and right child of k~2~ , respectively. Subtree Y, which holds **items that are between k~1~ and k~2~** in the original tree, can be placed as k~2~ ’s left child in the new tree and satisfy all the ordering requirements.
+
+**PROCEDURE**: This result only requires a few **pointer changes**. k~2~ and k~1~ not only satisfy the AVL requirements, but they also have subtrees that are exactly **the same height**. Furthermore, the new height of the entire subtree is **exactly the same** as the height of the original subtree **prior** to the insertion that caused X to grow. Only the heights of k~1~ and k~2~ need to be changed. No further updating of heights on the path to the root is needed, and consequently no further rotations are needed.
+
+Case 2.2 is a symmetric case as shown in follows.
+
+![屏幕快照 2017-12-20 17.30.25](../../../Downloads/屏幕快照 2017-12-20 17.30.25.png)
+
+**NOTE**: Besides the local change caused by the rotation, it should be remembered that the rest of the tree has to be informed of this change.
+
+### Double Rotation
+
+The algorithm described above cannot solve the case 1.2 and 2.1. The following figure shows the *left-right double rotation* to fix case 1.2. For case 1.2, the tree may be viewed as four subtrees connected by three nodes. As the diagram suggests, exactly one of tree B or C is two levels deeper than D (unless all are empty), but we cannot be sure which one.
+
+![屏幕快照 2017-12-20 17.40.32](../../../Downloads/屏幕快照 2017-12-20 17.40.32.png)
+
+We need to place k~2~ as the new root. This forces k~1~ to be k~2~ ’s left child and k~3~ to be its right child, and it also completely determines the resulting locations of the four subtrees.
+
+Following figure shows the *right-left double rotation* to fix case 2.1.
+
+![屏幕快照 2017-12-20 17.59.15](../../../Downloads/屏幕快照 2017-12-20 17.59.15.png)
+
+### Summary
+
+平衡AVL树，我们可以利用一下步骤：
+
+1. Which case -> which strategy;
+2. 确定k~1~, k~2~, k~3~;
+3. 确定A, B, C, D;
+4. Rotation。
+
+### Implementation
+
+Description: To insert a new node with item X into an AVL tree T, we recursively insert X into the appropriate subtree of T (let us call this T~LR~ ). 
+
+- If the height of T~LR~ does not change, then we are done.
+- If a height imbalance appears in T, we do the appropriate single or double rotation depending on X and the items in T and T~LR~ , updating the heights and making the connection from the rest of the tree above.
+
+A full relization of AVL tree is in [AVLTree](https://github.com/DavidLee999/Data_Structures_and_Algorithm_Analysis_Cpp/blob/master/Ch4/AVLTree.cpp).
+
+#### Node
+
+```C++
+struct AvlNode 
+{
+  Comparable element; 
+  AvlNode *left; 
+  AvlNode *right; 
+  int height;
+};
+```
+
+#### `insert` method
+
+```c++
+void insert( const Comparable & x, AvlNode * & t ) 
+{
+  if( t == nullptr )
+    t = new AvlNode{ x, nullptr, nullptr };
+  else if( x < t->element )
+    insert( x, t->left );
+  else if( t->element < x )
+    insert( x, t->right );
+  
+  balance( t );
+}
+```
+
+#### `balance` method
+
+```c++
+void balance( AvlNode * & t ) 
+{
+  if( t == nullptr ) 
+    return; 
+  if( height( t->left ) - height( t->right ) > ALLOWED_IMBALANCE ) // case 1 
+    if( height( t->left->left ) >= height( t->left->right ) ) // case 1.1
+      rotateWithLeftChild( t ); 
+  	else // case 1.2
+      doubleWithLeftChild( t ); 
+  else if( height( t->right ) - height( t->left ) > ALLOWED_IMBALANCE )  // case 2
+    if( height( t->right->right ) >= height( t->right->left ) ) // case 2.2
+      rotateWithRightChild( t ); 
+  	else // case 2.1
+      doubleWithRightChild( t ); 
+  
+  t->height = max( height( t->left ), height( t->right ) ) + 1;
+}
+```
+
+```C++
+void rotateWithLeftChild( AvlNode * & k2 ) 
+{
+  AvlNode *k1 = k2->left;
+  k2->left = k1->right;
+  k1->right = k2;
+  k2->height = max( height( k2->left ), height( k2->right ) ) + 1;
+  k1->height = max( height( k1->left ), k2->height ) + 1;
+  k2 = k1;
+}
+```
+
+```C++
+void doubleWithLeftChild( AvlNode * & k3 )
+{
+  rotateWithRightChild( k3->left );
+  rotateWithLeftChild( k3 ); 
+}
+```
+
+#### `remove` mthod
+
+```C++
+void remove( const Comparable & x, AvlNode * & t )
+{
+  if( t == nullptr )
+    return; // Item not found; do nothing
+  
+  if( x < t->element ) 
+    remove( x, t->left ); 
+  else if( t->element < x )
+    remove( x, t->right ); 
+  else if( t->left != nullptr && t->right != nullptr ) // two children
+  {
+    t->element = findMin( t->right )->element;
+    remove( t->element, t->right );
+  } 
+  else 
+  {
+    AvlNode *oldNode = t;
+    t = ( t->left != nullptr ) ? t->left : t->right;
+    delete oldNode; 
+  }
+  
+  balance( t );
+}
+```
+
