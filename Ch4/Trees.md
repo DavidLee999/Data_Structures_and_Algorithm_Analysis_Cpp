@@ -421,6 +421,8 @@ An *M-ary search tree* allows M-way branching. Whereas a complete binary tree ha
 
 In an M-ary search tree, we need ***M − 1* keys** to decide which branch to take. To make this scheme efﬁcient in the worst case, we need to ensure that the M-ary search tree is balanced in some way.
 
+###Definition:
+
 A B-tree of **order *M*** is an M-ary tree with the following **properties**: 
 
 1. The data items are stored at leaves.
@@ -428,3 +430,14 @@ A B-tree of **order *M*** is an M-ary tree with the following **properties**:
 3. The **root** is either a leaf or has between **2 and *M* children**.
 4. All **non-leaf nodes** (except the root) have between ***M/2* and *M* children**.
 5. All leaves are at the same depth and have between ***L/2* and *L* data items**, for some L (the determination of L is described shortly).
+
+![屏幕快照 2018-01-03 20.41.28](../../../Downloads/屏幕快照 2018-01-03 20.41.28.png)
+
+Above is a B-tree of order 5 with L = 5 as well. Requiring nodes to be half full guarantees that the B-tree does not degenerate into a simple binary tree. Each node represents a disk block, so we choose *M* and *L* on the basis of **the size of the items** that are being stored.
+
+( **Example**: suppose one block holds 8,192 bytes. In the Florida example, each key uses 32 bytes. In a B-tree of order *M*, we would have *M−1* keys, for a total of *32M − 32* bytes, plus *M* branches. Since each branch is essentially a number of another disk block, we can assume that a branch is 4 bytes. Thus the branches use *4M* bytes. The total memory requirement for a non-leaf node is thus *36M−32*. The largest value of *M* for which this is no more than 8,192 is 228. Thus we would choose *M = 228*. Since each data record is 256 bytes, we would be able to ﬁt 32 records in a block. Thus we would choose *L = 32*. We are guaranteed that each leaf has between 16 and 32 data records and that each internal node (except the root) branches in at least 114 ways. Since there are 10,000,000 (N) records, there are, at most, (N / 16 = ) 625,000 leaves. Consequently, in the worst case, leaves would be on level (*log~114~ N* = ) 4. In more concrete terms, the worst-case number of accesses is given by approximately *log~M/2~ N*, give or take 1. (For example, the root and the next level could be cached in main memory, so that over the long run, disk accesses would be needed only for level 3 and deeper.))
+
+### Operations:
+
+#### Insertion:
+
