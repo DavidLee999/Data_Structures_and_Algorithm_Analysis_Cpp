@@ -328,7 +328,7 @@ void doubleWithLeftChild( AvlNode * & k3 )
 }
 ```
 
-#### `remove` mthod
+#### `remove` method
 
 ```C++
 void remove( const Comparable & x, AvlNode * & t )
@@ -356,3 +356,75 @@ void remove( const Comparable & x, AvlNode * & t )
 }
 ```
 
+## Splay Trees
+
+**Property1**: any *M* **consecutive** tree operations starting from an empty tree take at most *O(M logN)* time. So there are no bad input sequences.
+
+( **DEFINITION**: when a sequence of *M* operations has **total worst-case running time** of *O(M f(N))*, we say that the **amortized running time** is *O(f(N))*. Thus, a splay tree has an *O(log N)* amortized cost per operation.)
+
+**Basic idea**: after a node is accessed, it is **pushed to the root** by a series of AVL tree rotations (because if any particular operation is allowed to have an *O(N)* worst-case time bound, and we still want an *O(log N)* amortized time bound, then whenever a node is accessed, it must be moved) and if the node is unduly deep, we want this restructuring to have the side effect of **balancing the tree**.
+
+### A (not working) simple idea
+
+One way of performing the restructuring is to perform **single rotations**, bottom up. This means that we **rotate every node on the access path with its parent**.
+
+Assuming we accessed *k~1~* node through the dashed line in following figure.
+
+![屏幕快照 2018-01-03 19.44.44](../../../Downloads/屏幕快照 2018-01-03 19.44.44.png)
+
+Then we firstly performed a single rotation between *k~1~* and *k~2~* as shown below and then between *k~1~* and *k~3~* and so on. 
+
+![屏幕快照 2018-01-03 19.46.53](../../../Downloads/屏幕快照 2018-01-03 19.46.53.png)
+
+And finally we have
+
+![屏幕快照 2018-01-03 19.47.18](../../../Downloads/屏幕快照 2018-01-03 19.47.18.png)
+
+**Drawbacks**: These rotations have the effect of pushing *k~1~* all the way to the root. However, it has pushed another node (*k~3~*) almost as deep as *k~1~* used to be. An access on that node will then push another node deep, and so on. **So this idea is not quite good enough**.
+
+### Splaying
+
+The splaying strategy is similar to the rotation idea above, except that we are more selective about how rotations are performed.
+
+####Procedure:
+
+Let *X* be a (non-root) node on the access path at which we are rotating. 
+
+If the parent of *X* is the root of the tree, we merely rotate *X* and the root. This is the last rotation along the access path. 
+
+Otherwise, X has both a parent (*P*) and a grandparent (*G*), and there are **two cases** (plus symmetries) to consider. 
+
+1. **The zig-zag case**（之字型）: Here *X* is a right child and *P* is a left child (or vice versa). We perform a **double rotation,** exactly like an AVL double rotation.
+
+   ![屏幕快照 2018-01-03 20.05.22](../../../Downloads/屏幕快照 2018-01-03 20.05.22.png)
+
+2. **The zig-zig case**（一字型）: X and P are both left children (or, in the symmetric case, both right children). In that case, we transform the tree on the left to the tree on the right.
+
+   ![屏幕快照 2018-01-03 20.07.23](../../../Downloads/屏幕快照 2018-01-03 20.07.23.png)
+
+**Property**: 
+
+- Splaying not only **moves the accessed node to the root** but also roughly **halves the depth** of most nodes on the access path (some shallow nodes are pushed down at most two levels).
+- When access paths are long, thus leading to a longer-than-normal search time, the rotations tend to be good for future operations. When accesses are cheap, the rotations are not as good and can be bad.
+
+### Deletion:
+
+We perform deletion by accessing the node to be deleted. This puts the node at the root. If it is deleted, we get **two subtrees** *T~L~* and *T~R~* (left and right). If we ﬁnd the **largest element** in *T~L~* (which is easy), then this element is **rotated to the root** of *T~L~* , and *T~L~* will now have **a root with no right child**. We can ﬁnish the deletion by making *T~R~* the right child.
+
+## B-Trees
+
+Assume we have more data than can ﬁt in main memory and must have the data structure reside on disk. In this cases, it is **the number of disk accesses** that will dominate the running time.
+
+We want to **reduce the number of disk accesses** to a very small constant, such as three or four. It should probably be clear that **a binary search tree will not work**. We cannot go below *logN* using a binary search tree. The **solution** is intuitively simple: If we have **more branching**, we have **less height**.
+
+An *M-ary search tree* allows M-way branching. Whereas a complete binary tree has height that is roughly *log~2~N*, a complete M-ary tree has height that is roughly *log~M~N*.
+
+In an M-ary search tree, we need ***M − 1* keys** to decide which branch to take. To make this scheme efﬁcient in the worst case, we need to ensure that the M-ary search tree is balanced in some way.
+
+A B-tree of **order *M*** is an M-ary tree with the following **properties**: 
+
+1. The data items are stored at leaves.
+2. The non-leaf nodes store up to *M − 1* keys to guide the searching; key *i* represents the **smallest key** in subtree *i + 1*.
+3. The **root** is either a leaf or has between **2 and *M* children**.
+4. All **non-leaf nodes** (except the root) have between ***M/2* and *M* children**.
+5. All leaves are at the same depth and have between ***L/2* and *L* data items**, for some L (the determination of L is described shortly).
