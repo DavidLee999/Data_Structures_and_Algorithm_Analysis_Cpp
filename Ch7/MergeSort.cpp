@@ -4,6 +4,7 @@
 template <typename Comparable>
 void merge( std::vector<Comparable>& a, std::vector<Comparable>& tmpArray, int leftPos, int rightPos, int rightEnd)
 {
+
     int i = leftPos, j = rightPos, k = leftPos;
     while( k <= rightEnd )
     {
