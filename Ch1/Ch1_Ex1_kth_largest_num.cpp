@@ -22,7 +22,7 @@ void bubbleSort(T* arr, size_t N)
 
 int main()
 {
-	size_t N {};
+	size_t N { 0 };
 	
 	cin >> N;
 	
